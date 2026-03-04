@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings &amp; Billing — CCDS</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+    <a href="../dashboard.html" class="logo"><span class="logo-icon">🌿</span><span>CCDS</span></a>
+  </div>
+  <div class="topbar-center"><span class="period-badge">FY2026 Reporting Period</span></div>
+  <div class="topbar-right">
+    <a href="../notifications.html" class="notif-btn">🔔<span class="badge">3</span></a>
+    <div class="avatar">SM</div>
+  </div>
+</header>
+<div class="app-shell">
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-section"><a href="../dashboard.html" class="nav-item"><span class="nav-icon">📊</span><span class="nav-label">Dashboard</span></a></div>
+    <div class="nav-section">
+      <a href="../setup/company.html" class="nav-item"><span class="nav-icon">⚙️</span><span class="nav-label">Setup &amp; Eligibility</span></a>
+      <a href="../governance/index.html" class="nav-item"><span class="nav-icon">🛡️</span><span class="nav-label">Governance</span></a>
+      <a href="../strategy/index.html" class="nav-item"><span class="nav-icon">🎯</span><span class="nav-label">Strategy &amp; Transition</span></a>
+      <a href="../risk-management/index.html" class="nav-item"><span class="nav-icon">⚠️</span><span class="nav-label">Risk Management</span></a>
+      <a href="../emissions/overview.html" class="nav-item"><span class="nav-icon">🌱</span><span class="nav-label">Emissions &amp; Energy</span></a>
+      <a href="../metrics/targets.html" class="nav-item"><span class="nav-icon">📈</span><span class="nav-label">Metrics &amp; Targets</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="../reports/index.html" class="nav-item"><span class="nav-icon">📄</span><span class="nav-label">Reports</span></a>
+      <a href="../evidence.html" class="nav-item"><span class="nav-icon">📁</span><span class="nav-label">Evidence Library</span></a>
+      <a href="../audit-log.html" class="nav-item"><span class="nav-icon">📜</span><span class="nav-label">Audit Log</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="../notifications.html" class="nav-item"><span class="nav-icon">🔔</span><span class="nav-label">Notifications</span><span class="nav-badge">3</span></a>
+      <a href="index.html" class="nav-item active"><span class="nav-icon">👥</span><span class="nav-label">Administration</span></a>
+    </div>
+  </nav>
+  <main class="main-content">
+    <div class="breadcrumb">
+      <a href="../dashboard.html">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="index.html">Administration</a><span class="breadcrumb-sep">›</span>
+      <span class="current">Settings &amp; Billing</span>
+    </div>
+    <div class="tab-nav" style="margin-bottom:24px;">
+      <a href="index.html" class="tab-btn">Overview</a>
+      <a href="users.html" class="tab-btn">User Management</a>
+      <a href="integrations.html" class="tab-btn">Integrations</a>
+      <a href="settings.html" class="tab-btn active">Settings &amp; Billing</a>
+    </div>
+    <div class="page-header">
+      <h1 class="page-title">Settings &amp; Billing</h1>
+      <p class="page-subtitle">Subscription plan, security settings, data retention, and billing details.</p>
+    </div>
+
+    <div style="max-width:760px;display:flex;flex-direction:column;gap:24px;">
+
+      <!-- Subscription -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Subscription Plan</span>
+          <span class="badge badge-green">Pro</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;font-size:var(--text-sm);">
+          <div style="padding:12px;background:var(--color-neutral-50);border-radius:var(--border-radius);">
+            <div style="color:var(--color-neutral-500);font-size:var(--text-xs);margin-bottom:2px;">Current plan</div>
+            <div style="font-weight:700;font-size:var(--text-lg);">CCDS Pro</div>
+            <div style="color:var(--color-neutral-600);">Up to 20 users · 10 sites · Full AASB S2</div>
+          </div>
+          <div style="padding:12px;background:var(--color-neutral-50);border-radius:var(--border-radius);">
+            <div style="color:var(--color-neutral-500);font-size:var(--text-xs);margin-bottom:2px;">Billing</div>
+            <div style="font-weight:700;font-size:var(--text-lg);">$3,200 / month</div>
+            <div style="color:var(--color-neutral-600);">Annual · Renews 1 Jul 2026 · Auto-renew on</div>
+          </div>
+          <div style="padding:12px;background:var(--color-neutral-50);border-radius:var(--border-radius);">
+            <div style="color:var(--color-neutral-500);font-size:var(--text-xs);margin-bottom:2px;">Usage</div>
+            <div style="font-weight:600;">7 / 20 users &nbsp;·&nbsp; 8 / 10 sites</div>
+          </div>
+          <div style="padding:12px;background:var(--color-neutral-50);border-radius:var(--border-radius);">
+            <div style="color:var(--color-neutral-500);font-size:var(--text-xs);margin-bottom:2px;">Data storage</div>
+            <div style="font-weight:600;">4.2 GB / 50 GB</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;">
+          <button class="btn btn-secondary" onclick="alert('Contacting sales for upgrade...')">Upgrade plan</button>
+          <button class="btn btn-ghost" onclick="alert('Downloading invoices...')">Download invoices</button>
+        </div>
+      </div>
+
+      <!-- Security settings -->
+      <div class="card">
+        <div class="card-header"><span class="card-title">Security Settings</span></div>
+        <div style="display:flex;flex-direction:column;gap:16px;font-size:var(--text-sm);">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid var(--color-neutral-100);">
+            <div>
+              <div style="font-weight:600;">Multi-Factor Authentication (MFA)</div>
+              <div style="color:var(--color-neutral-600);font-size:var(--text-xs);margin-top:2px;">Require MFA for all users. Currently enforced via Microsoft Entra ID SSO.</div>
+            </div>
+            <span class="badge badge-green">Enforced</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid var(--color-neutral-100);">
+            <div>
+              <div style="font-weight:600;">Session timeout</div>
+              <div style="color:var(--color-neutral-600);font-size:var(--text-xs);margin-top:2px;">Automatically log out inactive users after:</div>
+            </div>
+            <select class="form-select" style="width:160px;">
+              <option>30 minutes</option>
+              <option selected>1 hour</option>
+              <option>4 hours</option>
+              <option>8 hours</option>
+            </select>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid var(--color-neutral-100);">
+            <div>
+              <div style="font-weight:600;">IP allowlist</div>
+              <div style="color:var(--color-neutral-600);font-size:var(--text-xs);margin-top:2px;">Restrict access to specific IP ranges (leave empty to allow all)</div>
+            </div>
+            <button class="btn btn-ghost btn-sm" onclick="alert('Configure IP allowlist...')">Configure</button>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div>
+              <div style="font-weight:600;">CFO approval PIN</div>
+              <div style="color:var(--color-neutral-600);font-size:var(--text-xs);margin-top:2px;">Require 6-digit PIN for CFO approval actions (in addition to MFA)</div>
+            </div>
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+              <input type="checkbox" checked>
+              <span>Enabled</span>
+            </label>
+          </div>
+        </div>
+        <div style="margin-top:16px;">
+          <button class="btn btn-primary btn-sm" onclick="alert('Security settings saved.')">Save settings</button>
+        </div>
+      </div>
+
+      <!-- Data retention -->
+      <div class="card">
+        <div class="card-header"><span class="card-title">Data Retention</span></div>
+        <div style="font-size:var(--text-sm);display:flex;flex-direction:column;gap:16px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid var(--color-neutral-100);">
+            <div>
+              <div style="font-weight:600;">Audit log retention</div>
+              <div style="color:var(--color-neutral-600);font-size:var(--text-xs);margin-top:2px;">ASIC requires 7 years minimum retention of sustainability disclosure records.</div>
+            </div>
+            <select class="form-select" style="width:160px;">
+              <option>5 years</option>
+              <option selected>7 years (recommended)</option>
+              <option>10 years</option>
+              <option>Indefinitely</option>
+            </select>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid var(--color-neutral-100);">
+            <div>
+              <div style="font-weight:600;">Evidence document retention</div>
+              <div style="color:var(--color-neutral-600);font-size:var(--text-xs);margin-top:2px;">Source documents (bills, invoices, board minutes) used in calculations.</div>
+            </div>
+            <select class="form-select" style="width:160px;">
+              <option selected>7 years</option>
+              <option>10 years</option>
+              <option>Indefinitely</option>
+            </select>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div>
+              <div style="font-weight:600;">Draft data retention</div>
+              <div style="color:var(--color-neutral-600);font-size:var(--text-xs);margin-top:2px;">Superseded report drafts and version history.</div>
+            </div>
+            <select class="form-select" style="width:160px;">
+              <option>1 year</option>
+              <option selected>3 years</option>
+              <option>7 years</option>
+            </select>
+          </div>
+        </div>
+        <div style="margin-top:16px;">
+          <button class="btn btn-primary btn-sm" onclick="alert('Retention settings saved.')">Save settings</button>
+        </div>
+      </div>
+
+      <!-- Data hosting & compliance -->
+      <div class="card">
+        <div class="card-header"><span class="card-title">Data Hosting &amp; Compliance</span></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:var(--text-sm);">
+          <div style="padding:12px;background:var(--color-neutral-50);border-radius:var(--border-radius);">
+            <div style="color:var(--color-neutral-500);font-size:var(--text-xs);margin-bottom:2px;">Data residency</div>
+            <div style="font-weight:600;">🇦🇺 Australia (ap-southeast-2)</div>
+            <div style="color:var(--color-neutral-600);font-size:var(--text-xs);">AWS Sydney — all data at rest and in transit encrypted</div>
+          </div>
+          <div style="padding:12px;background:var(--color-neutral-50);border-radius:var(--border-radius);">
+            <div style="color:var(--color-neutral-500);font-size:var(--text-xs);margin-bottom:2px;">Certifications</div>
+            <div style="font-weight:600;">ISO 27001 · SOC 2 Type II</div>
+            <div style="color:var(--color-neutral-600);font-size:var(--text-xs);">Certificates available on request</div>
+          </div>
+          <div style="padding:12px;background:var(--color-neutral-50);border-radius:var(--border-radius);">
+            <div style="color:var(--color-neutral-500);font-size:var(--text-xs);margin-bottom:2px;">Privacy framework</div>
+            <div style="font-weight:600;">Privacy Act 1988 (Cth)</div>
+            <div style="color:var(--color-neutral-600);font-size:var(--text-xs);">Australian Privacy Principles compliant</div>
+          </div>
+          <div style="padding:12px;background:var(--color-neutral-50);border-radius:var(--border-radius);">
+            <div style="color:var(--color-neutral-500);font-size:var(--text-xs);margin-bottom:2px;">Backup</div>
+            <div style="font-weight:600;">Daily backups · 30-day RPO</div>
+            <div style="color:var(--color-neutral-600);font-size:var(--text-xs);">Point-in-time recovery available</div>
+          </div>
+        </div>
+        <div style="margin-top:16px;display:flex;gap:8px;">
+          <button class="btn btn-ghost btn-sm" onclick="alert('Downloading DPA...')">📄 Download DPA</button>
+          <button class="btn btn-ghost btn-sm" onclick="alert('Requesting security report...')">📋 Security report</button>
+        </div>
+      </div>
+
+      <!-- Danger zone -->
+      <div class="card" style="border-color:var(--color-danger-300);">
+        <div class="card-header">
+          <span class="card-title" style="color:var(--color-danger-600);">Danger Zone</span>
+        </div>
+        <div style="font-size:var(--text-sm);display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:12px;border:1px solid var(--color-danger-200);border-radius:var(--border-radius);">
+            <div>
+              <div style="font-weight:600;">Export all data</div>
+              <div style="color:var(--color-neutral-600);font-size:var(--text-xs);">Download a complete export of all your CCDS data as JSON and PDF.</div>
+            </div>
+            <button class="btn btn-ghost btn-sm" onclick="alert('Preparing full data export...')">Export data</button>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:12px;border:1px solid var(--color-danger-200);border-radius:var(--border-radius);">
+            <div>
+              <div style="font-weight:600;color:var(--color-danger-600);">Cancel subscription</div>
+              <div style="color:var(--color-neutral-600);font-size:var(--text-xs);">Data will be retained for 90 days after cancellation. This cannot be undone.</div>
+            </div>
+            <button class="btn btn-ghost btn-sm" style="color:var(--color-danger-600);" onclick="alert('Please contact support to cancel your subscription.')">Cancel plan</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+<script>function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }</script>
+</body>
+</html>

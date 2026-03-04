@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notifications — CCDS</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .notif-item { display: flex; gap: 16px; padding: 16px; border-bottom: 1px solid var(--color-neutral-100); cursor: pointer; }
+    .notif-item:hover { background: var(--color-neutral-50); }
+    .notif-item.unread { background: var(--color-primary-100); border-left: 3px solid var(--color-primary-700); }
+    .notif-item.unread:hover { background: #D1EAE0; }
+    .notif-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .notif-icon.overdue { background: var(--color-danger-100); }
+    .notif-icon.warning { background: var(--color-warning-100); }
+    .notif-icon.info { background: var(--color-info-100); }
+    .notif-icon.success { background: var(--color-success-100); }
+    .notif-title { font-size: var(--text-sm); font-weight: 600; margin-bottom: 2px; }
+    .notif-body { font-size: var(--text-sm); color: var(--color-neutral-600); margin-bottom: 4px; }
+    .notif-meta { font-size: var(--text-xs); color: var(--color-neutral-400); }
+    .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+    .cal-day { text-align: center; font-size: var(--text-xs); padding: 4px 2px; border-radius: 4px; }
+    .cal-day.header { font-weight: 600; color: var(--color-neutral-500); }
+    .cal-day.today { background: var(--color-primary-700); color: white; font-weight: 700; border-radius: 50%; }
+    .cal-day.has-deadline { background: var(--color-danger-100); color: var(--color-danger-600); font-weight: 600; }
+    .cal-day.has-event { background: var(--color-warning-100); color: var(--color-warning-600); }
+    .cal-day.past { color: var(--color-neutral-300); }
+    .deadline-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--color-neutral-100); font-size: var(--text-sm); }
+    .deadline-date { width: 80px; flex-shrink: 0; font-weight: 600; }
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+    <a href="dashboard.html" class="logo"><span class="logo-icon">🌿</span><span>CCDS</span></a>
+  </div>
+  <div class="topbar-center"><span class="period-badge">FY2026 Reporting Period</span></div>
+  <div class="topbar-right">
+    <a href="notifications.html" class="notif-btn">🔔<span class="badge">3</span></a>
+    <div class="avatar">SM</div>
+  </div>
+</header>
+<div class="app-shell">
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-section"><a href="dashboard.html" class="nav-item"><span class="nav-icon">📊</span><span class="nav-label">Dashboard</span></a></div>
+    <div class="nav-section">
+      <a href="setup/company.html" class="nav-item"><span class="nav-icon">⚙️</span><span class="nav-label">Setup &amp; Eligibility</span></a>
+      <a href="governance/index.html" class="nav-item"><span class="nav-icon">🛡️</span><span class="nav-label">Governance</span></a>
+      <a href="strategy/index.html" class="nav-item"><span class="nav-icon">🎯</span><span class="nav-label">Strategy &amp; Transition</span></a>
+      <a href="risk-management/index.html" class="nav-item"><span class="nav-icon">⚠️</span><span class="nav-label">Risk Management</span></a>
+      <a href="emissions/overview.html" class="nav-item"><span class="nav-icon">🌱</span><span class="nav-label">Emissions &amp; Energy</span></a>
+      <a href="metrics/targets.html" class="nav-item"><span class="nav-icon">📈</span><span class="nav-label">Metrics &amp; Targets</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="reports/index.html" class="nav-item"><span class="nav-icon">📄</span><span class="nav-label">Reports</span></a>
+      <a href="evidence.html" class="nav-item"><span class="nav-icon">📁</span><span class="nav-label">Evidence Library</span></a>
+      <a href="audit-log.html" class="nav-item"><span class="nav-icon">📜</span><span class="nav-label">Audit Log</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="notifications.html" class="nav-item active"><span class="nav-icon">🔔</span><span class="nav-label">Notifications</span><span class="nav-badge">3</span></a>
+      <a href="admin/index.html" class="nav-item"><span class="nav-icon">👥</span><span class="nav-label">Administration</span></a>
+    </div>
+  </nav>
+  <main class="main-content">
+    <div class="page-header" style="display:flex;align-items:flex-start;justify-content:space-between;">
+      <div>
+        <h1 class="page-title">Notifications</h1>
+        <p class="page-subtitle">Alerts, deadlines, approvals, and system messages.</p>
+      </div>
+      <button class="btn btn-ghost" onclick="markAllRead()">Mark all as read</button>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 320px;gap:24px;">
+      <!-- Notifications feed -->
+      <div>
+        <!-- Unread -->
+        <div class="card" style="margin-bottom:24px;">
+          <div class="card-header">
+            <span class="card-title">Unread <span class="badge badge-amber">3</span></span>
+          </div>
+
+          <div class="notif-item unread" onclick="this.classList.remove('unread')">
+            <div class="notif-icon overdue">⚠️</div>
+            <div style="flex:1;">
+              <div class="notif-title">Dandenong Plant data submission overdue</div>
+              <div class="notif-body">David Park has not submitted FY2026 site data. Due date was 15 Feb 2026 — now 17 days overdue. This is blocking your Emissions &amp; Metrics section.</div>
+              <div class="notif-meta">System · 4 Mar 2026 08:00</div>
+              <div style="margin-top:8px;display:flex;gap:8px;">
+                <button class="btn btn-secondary btn-sm" onclick="event.stopPropagation();alert('Reminder sent to David Park.')">Send reminder</button>
+                <a href="emissions/site-entry.html" class="btn btn-ghost btn-sm" onclick="event.stopPropagation();">View site →</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="notif-item unread" onclick="this.classList.remove('unread')">
+            <div class="notif-icon warning">❓</div>
+            <div style="flex:1;">
+              <div class="notif-title">Auditor query Q01 requires response</div>
+              <div class="notif-body">Marcus Thompson (BDO) has raised a query about diesel consumption at Dandenong Plant: "28,000L vs 19,500L in FY2025 — please clarify the increase." Your response is required to progress the assurance engagement.</div>
+              <div class="notif-meta">Marcus Thompson (Auditor) · 3 Mar 2026 16:30</div>
+              <div style="margin-top:8px;">
+                <a href="dashboard-auditor.html" class="btn btn-secondary btn-sm" onclick="event.stopPropagation();">View query →</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="notif-item unread" onclick="this.classList.remove('unread')">
+            <div class="notif-icon info">🎯</div>
+            <div style="flex:1;">
+              <div class="notif-title">Strategy section: 2°C scenario required</div>
+              <div class="notif-body">The Strategy &amp; Transition section cannot be submitted for CFO approval until a 2°C (well below 2°C) scenario analysis is completed. This is a mandatory AASB S2 §14 requirement.</div>
+              <div class="notif-meta">System · 22 Feb 2026 09:00</div>
+              <div style="margin-top:8px;">
+                <a href="strategy/scenarios.html" class="btn btn-secondary btn-sm" onclick="event.stopPropagation();">Go to scenarios →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Earlier -->
+        <div class="card">
+          <div class="card-header"><span class="card-title">Earlier</span></div>
+
+          <div class="notif-item">
+            <div class="notif-icon success">✅</div>
+            <div style="flex:1;">
+              <div class="notif-title">Governance section — Board approved</div>
+              <div class="notif-body">Jennifer Walsh (Board Director) has approved the Governance disclosure. This section is now locked for FY2026.</div>
+              <div class="notif-meta">Jennifer Walsh · 14 Feb 2026 11:20</div>
+            </div>
+          </div>
+
+          <div class="notif-item">
+            <div class="notif-icon success">✅</div>
+            <div style="flex:1;">
+              <div class="notif-title">Governance section — CFO approved</div>
+              <div class="notif-body">Alex Chen (CFO) has approved the Governance disclosure and submitted it for Board approval.</div>
+              <div class="notif-meta">Alex Chen · 13 Feb 2026 15:04</div>
+            </div>
+          </div>
+
+          <div class="notif-item">
+            <div class="notif-icon info">📦</div>
+            <div style="flex:1;">
+              <div class="notif-title">Auditor access activated</div>
+              <div class="notif-body">External auditor Marcus Thompson (BDO Australia) has been granted read-only portal access for the FY2026 assurance engagement. Access expires 31 May 2026.</div>
+              <div class="notif-meta">System · 3 Mar 2026 09:00</div>
+            </div>
+          </div>
+
+          <div class="notif-item">
+            <div class="notif-icon info">📊</div>
+            <div style="flex:1;">
+              <div class="notif-title">5 of 8 sites have submitted FY2026 data</div>
+              <div class="notif-body">Footscray Office, Geelong Warehouse, Perth Distribution, and Adelaide Facility have submitted. Dandenong Plant, Sydney HQ, and Townsville Depot remain outstanding.</div>
+              <div class="notif-meta">System · 28 Feb 2026 23:59</div>
+            </div>
+          </div>
+
+          <div class="notif-item">
+            <div class="notif-icon warning">⚠️</div>
+            <div style="flex:1;">
+              <div class="notif-title">Sydney HQ — data due in 5 days</div>
+              <div class="notif-body">Mei Lin has not yet started the FY2026 site data entry for Sydney HQ. Deadline: 22 Feb 2026.</div>
+              <div class="notif-meta">System · 17 Feb 2026 08:00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: calendar + notification settings -->
+      <div>
+        <!-- Deadline calendar -->
+        <div class="card" style="margin-bottom:16px;">
+          <div class="card-header"><span class="card-title">Deadline Calendar — Mar 2026</span></div>
+          <div class="calendar-grid" style="margin-bottom:8px;">
+            <div class="cal-day header">Mo</div>
+            <div class="cal-day header">Tu</div>
+            <div class="cal-day header">We</div>
+            <div class="cal-day header">Th</div>
+            <div class="cal-day header">Fr</div>
+            <div class="cal-day header">Sa</div>
+            <div class="cal-day header">Su</div>
+            <!-- Week 1 -->
+            <div class="cal-day"></div>
+            <div class="cal-day"></div>
+            <div class="cal-day"></div>
+            <div class="cal-day"></div>
+            <div class="cal-day"></div>
+            <div class="cal-day">1</div>
+            <div class="cal-day">2</div>
+            <!-- Week 2 -->
+            <div class="cal-day today">3</div>
+            <div class="cal-day has-event" title="Auditor access window open">4</div>
+            <div class="cal-day">5</div>
+            <div class="cal-day">6</div>
+            <div class="cal-day">7</div>
+            <div class="cal-day">8</div>
+            <div class="cal-day">9</div>
+            <!-- Week 3 -->
+            <div class="cal-day">10</div>
+            <div class="cal-day">11</div>
+            <div class="cal-day">12</div>
+            <div class="cal-day">13</div>
+            <div class="cal-day">14</div>
+            <div class="cal-day">15</div>
+            <div class="cal-day">16</div>
+            <!-- Week 4 -->
+            <div class="cal-day">17</div>
+            <div class="cal-day">18</div>
+            <div class="cal-day">19</div>
+            <div class="cal-day">20</div>
+            <div class="cal-day">21</div>
+            <div class="cal-day">22</div>
+            <div class="cal-day">23</div>
+            <!-- Week 5 -->
+            <div class="cal-day">24</div>
+            <div class="cal-day">25</div>
+            <div class="cal-day">26</div>
+            <div class="cal-day">27</div>
+            <div class="cal-day">28</div>
+            <div class="cal-day has-deadline" title="Scenario analysis target">28</div>
+            <div class="cal-day">30</div>
+            <div class="cal-day">31</div>
+          </div>
+          <div style="font-size:var(--text-xs);color:var(--color-neutral-500);display:flex;gap:12px;flex-wrap:wrap;margin-top:4px;">
+            <span><span style="background:var(--color-danger-100);padding:1px 4px;border-radius:2px;">Red</span> = hard deadline</span>
+            <span><span style="background:var(--color-warning-100);padding:1px 4px;border-radius:2px;">Orange</span> = event / milestone</span>
+          </div>
+        </div>
+
+        <!-- Upcoming deadlines -->
+        <div class="card" style="margin-bottom:16px;">
+          <div class="card-header"><span class="card-title">Upcoming Deadlines</span></div>
+          <div class="deadline-item">
+            <div class="deadline-date" style="color:var(--color-danger-600);">NOW</div>
+            <div><div style="font-size:var(--text-sm);font-weight:600;">Dandenong Plant data</div><div style="font-size:var(--text-xs);color:var(--color-neutral-500);">17 days overdue — David Park</div></div>
+          </div>
+          <div class="deadline-item">
+            <div class="deadline-date" style="color:var(--color-warning-600);">28 Mar</div>
+            <div><div style="font-size:var(--text-sm);font-weight:600;">2°C scenario target</div><div style="font-size:var(--text-xs);color:var(--color-neutral-500);">Internal target to unblock strategy section</div></div>
+          </div>
+          <div class="deadline-item">
+            <div class="deadline-date">30 Apr</div>
+            <div><div style="font-size:var(--text-sm);font-weight:600;">Risk Management section</div><div style="font-size:var(--text-xs);color:var(--color-neutral-500);">Internal target for CFO approval by deadline</div></div>
+          </div>
+          <div class="deadline-item">
+            <div class="deadline-date">31 May</div>
+            <div><div style="font-size:var(--text-sm);font-weight:600;">Auditor access expires</div><div style="font-size:var(--text-xs);color:var(--color-neutral-500);">Marcus Thompson (BDO) portal access ends</div></div>
+          </div>
+          <div class="deadline-item">
+            <div class="deadline-date">31 Jul</div>
+            <div><div style="font-size:var(--text-sm);font-weight:600;">Draft report due (internal)</div><div style="font-size:var(--text-xs);color:var(--color-neutral-500);">All sections must be CFO-approved</div></div>
+          </div>
+          <div class="deadline-item" style="border:none;">
+            <div class="deadline-date" style="color:var(--color-danger-600);">30 Sep</div>
+            <div><div style="font-size:var(--text-sm);font-weight:600;">ASIC lodgement deadline</div><div style="font-size:var(--text-xs);color:var(--color-neutral-500);">FY2026 Sustainability Report</div></div>
+          </div>
+        </div>
+
+        <!-- Notification preferences -->
+        <div class="card">
+          <div class="card-header"><span class="card-title">Notification Settings</span></div>
+          <div style="font-size:var(--text-sm);display:flex;flex-direction:column;gap:10px;">
+            <label style="display:flex;align-items:center;gap:8px;"><input type="checkbox" checked> Overdue site data alerts</label>
+            <label style="display:flex;align-items:center;gap:8px;"><input type="checkbox" checked> Approval requests (CFO, Board)</label>
+            <label style="display:flex;align-items:center;gap:8px;"><input type="checkbox" checked> Auditor queries</label>
+            <label style="display:flex;align-items:center;gap:8px;"><input type="checkbox" checked> Deadline reminders (7 days prior)</label>
+            <label style="display:flex;align-items:center;gap:8px;"><input type="checkbox"> Weekly progress digest</label>
+            <label style="display:flex;align-items:center;gap:8px;"><input type="checkbox" checked> Email notifications</label>
+          </div>
+          <button class="btn btn-secondary btn-sm" style="margin-top:12px;" onclick="alert('Notification preferences saved.')">Save preferences</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script>
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }
+function markAllRead() {
+  document.querySelectorAll('.notif-item.unread').forEach(el => el.classList.remove('unread'));
+  document.querySelector('.notif-btn .badge').textContent = '0';
+  document.querySelector('.nav-badge').textContent = '0';
+}
+</script>
+</body>
+</html>

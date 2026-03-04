@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administration — CCDS</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+    <a href="../dashboard.html" class="logo"><span class="logo-icon">🌿</span><span>CCDS</span></a>
+  </div>
+  <div class="topbar-center"><span class="period-badge">FY2026 Reporting Period</span></div>
+  <div class="topbar-right">
+    <a href="../notifications.html" class="notif-btn">🔔<span class="badge">3</span></a>
+    <div class="topbar-account">
+      <div class="avatar">SM</div>
+      <span class="topbar-account-name">Sarah Miller</span>
+    </div>
+  </div>
+</header>
+<div class="app-shell">
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-section"><a href="../dashboard.html" class="nav-item"><span class="nav-icon">📊</span><span class="nav-label">Dashboard</span></a></div>
+    <div class="nav-section">
+      <a href="../setup/company.html" class="nav-item"><span class="nav-icon">⚙️</span><span class="nav-label">Setup &amp; Eligibility</span></a>
+      <a href="../governance/index.html" class="nav-item"><span class="nav-icon">🛡️</span><span class="nav-label">Governance</span></a>
+      <a href="../strategy/index.html" class="nav-item"><span class="nav-icon">🎯</span><span class="nav-label">Strategy &amp; Transition</span></a>
+      <a href="../risk-management/index.html" class="nav-item"><span class="nav-icon">⚠️</span><span class="nav-label">Risk Management</span></a>
+      <a href="../emissions/overview.html" class="nav-item"><span class="nav-icon">🌱</span><span class="nav-label">Emissions &amp; Energy</span></a>
+      <a href="../metrics/targets.html" class="nav-item"><span class="nav-icon">📈</span><span class="nav-label">Metrics &amp; Targets</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="../reports/index.html" class="nav-item"><span class="nav-icon">📄</span><span class="nav-label">Reports</span></a>
+      <a href="../evidence.html" class="nav-item"><span class="nav-icon">📁</span><span class="nav-label">Evidence Library</span></a>
+      <a href="../audit-log.html" class="nav-item"><span class="nav-icon">📜</span><span class="nav-label">Audit Log</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="../notifications.html" class="nav-item"><span class="nav-icon">🔔</span><span class="nav-label">Notifications</span><span class="nav-badge">3</span></a>
+      <a href="index.html" class="nav-item active"><span class="nav-icon">👥</span><span class="nav-label">Administration</span></a>
+    </div>
+  </nav>
+  <main class="main-content">
+    <div class="page-header">
+      <h1 class="page-title">Administration</h1>
+      <p class="page-subtitle">Organisation settings, user management, integrations, and subscription.</p>
+    </div>
+
+    <!-- Admin tabs -->
+    <div class="tab-nav" style="margin-bottom:24px;">
+      <a href="index.html" class="tab-btn active">Overview</a>
+      <a href="users.html" class="tab-btn">User Management</a>
+      <a href="integrations.html" class="tab-btn">Integrations</a>
+      <a href="settings.html" class="tab-btn">Settings &amp; Billing</a>
+    </div>
+
+    <!-- Quick stats -->
+    <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr));margin-bottom:24px;">
+      <div class="stat-card">
+        <div class="stat-label">Active users</div>
+        <div class="stat-value">7</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Pending invites</div>
+        <div class="stat-value">1</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Sites registered</div>
+        <div class="stat-value">8</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Integrations</div>
+        <div class="stat-value" style="color:var(--color-success-600);">2 active</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Subscription</div>
+        <div class="stat-value" style="font-size:var(--text-xl);">Pro</div>
+      </div>
+    </div>
+
+    <!-- Admin action cards -->
+    <div class="card-grid" style="grid-template-columns:1fr 1fr;gap:24px;">
+      <a href="users.html" class="card" style="text-decoration:none;color:inherit;cursor:pointer;border-top:4px solid var(--color-primary-700);">
+        <div style="font-size:40px;margin-bottom:16px;">👥</div>
+        <h2 style="font-size:var(--text-lg);font-weight:600;margin-bottom:8px;">User Management</h2>
+        <p style="font-size:var(--text-sm);color:var(--color-neutral-600);margin-bottom:16px;">Add, remove, and manage user roles. Configure site manager assignments and auditor access.</p>
+        <div style="font-size:var(--text-sm);">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;"><span>✅</span> 7 active users</div>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="color:var(--color-warning-600);">⏳</span> 1 pending invite</div>
+        </div>
+      </a>
+
+      <a href="integrations.html" class="card" style="text-decoration:none;color:inherit;cursor:pointer;border-top:4px solid var(--color-info-600);">
+        <div style="font-size:40px;margin-bottom:16px;">🔌</div>
+        <h2 style="font-size:var(--text-lg);font-weight:600;margin-bottom:8px;">Integrations</h2>
+        <p style="font-size:var(--text-sm);color:var(--color-neutral-600);margin-bottom:16px;">Connect your ERP, utility data providers, and SSO identity provider. Manage API keys.</p>
+        <div style="font-size:var(--text-sm);">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;"><span>✅</span> SAP ERP — connected</div>
+          <div style="display:flex;align-items:center;gap:8px;"><span>✅</span> Microsoft Entra ID — SSO active</div>
+        </div>
+      </a>
+
+      <a href="settings.html" class="card" style="text-decoration:none;color:inherit;cursor:pointer;border-top:4px solid var(--color-success-600);">
+        <div style="font-size:40px;margin-bottom:16px;">⚙️</div>
+        <h2 style="font-size:var(--text-lg);font-weight:600;margin-bottom:8px;">Settings &amp; Billing</h2>
+        <p style="font-size:var(--text-sm);color:var(--color-neutral-600);margin-bottom:16px;">Manage subscription plan, billing details, data retention policy, and security settings.</p>
+        <div style="font-size:var(--text-sm);">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;"><span>✅</span> Pro plan — renews 1 Jul 2026</div>
+          <div style="display:flex;align-items:center;gap:8px;"><span>✅</span> MFA enforced for all users</div>
+        </div>
+      </a>
+
+      <a href="../audit-log.html" class="card" style="text-decoration:none;color:inherit;cursor:pointer;border-top:4px solid var(--color-neutral-300);">
+        <div style="font-size:40px;margin-bottom:16px;">📜</div>
+        <h2 style="font-size:var(--text-lg);font-weight:600;margin-bottom:8px;">Audit Log</h2>
+        <p style="font-size:var(--text-sm);color:var(--color-neutral-600);margin-bottom:16px;">View all system events, user actions, approvals, and data changes. Export for compliance records.</p>
+        <div style="font-size:var(--text-sm);">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;"><span>📊</span> 284 events recorded</div>
+          <div style="display:flex;align-items:center;gap:8px;"><span>📅</span> 23 events this week</div>
+        </div>
+      </a>
+    </div>
+  </main>
+</div>
+<script>function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }</script>
+</body>
+</html>

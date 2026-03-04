@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Climate Transition Plan — CCDS</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+    <a href="../dashboard.html" class="logo"><span class="logo-icon">🌿</span><span>CCDS</span></a>
+  </div>
+  <div class="topbar-center"><span class="period-badge">FY2026 Reporting Period</span></div>
+  <div class="topbar-right">
+    <a href="../notifications.html" class="notif-btn">🔔<span class="badge">3</span></a>
+    <div class="avatar">SM</div>
+  </div>
+</header>
+<div class="app-shell">
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-section"><a href="../dashboard.html" class="nav-item"><span class="nav-icon">📊</span><span class="nav-label">Dashboard</span></a></div>
+    <div class="nav-section">
+      <a href="../setup/company.html" class="nav-item"><span class="nav-icon">⚙️</span><span class="nav-label">Setup &amp; Eligibility</span></a>
+      <a href="../governance/index.html" class="nav-item"><span class="nav-icon">🛡️</span><span class="nav-label">Governance</span></a>
+      <a href="index.html" class="nav-item active"><span class="nav-icon">🎯</span><span class="nav-label">Strategy &amp; Transition</span></a>
+      <a href="../risk-management/index.html" class="nav-item"><span class="nav-icon">⚠️</span><span class="nav-label">Risk Management</span></a>
+      <a href="../emissions/overview.html" class="nav-item"><span class="nav-icon">🌱</span><span class="nav-label">Emissions &amp; Energy</span></a>
+      <a href="../metrics/targets.html" class="nav-item"><span class="nav-icon">📈</span><span class="nav-label">Metrics &amp; Targets</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="../reports/index.html" class="nav-item"><span class="nav-icon">📄</span><span class="nav-label">Reports</span></a>
+      <a href="../evidence.html" class="nav-item"><span class="nav-icon">📁</span><span class="nav-label">Evidence Library</span></a>
+      <a href="../audit-log.html" class="nav-item"><span class="nav-icon">📜</span><span class="nav-label">Audit Log</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="../notifications.html" class="nav-item"><span class="nav-icon">🔔</span><span class="nav-label">Notifications</span><span class="nav-badge">3</span></a>
+      <a href="../admin/index.html" class="nav-item"><span class="nav-icon">👥</span><span class="nav-label">Administration</span></a>
+    </div>
+  </nav>
+  <main class="main-content">
+    <div class="breadcrumb">
+      <a href="../dashboard.html">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="index.html">Strategy &amp; Transition</a><span class="breadcrumb-sep">›</span>
+      <span class="current">Climate Transition Plan</span>
+    </div>
+    <div class="tab-nav">
+      <a href="risks.html" class="tab-btn">Risks &amp; Opportunities</a>
+      <a href="scenarios.html" class="tab-btn">Scenario Analysis</a>
+      <a href="transition-plan.html" class="tab-btn active">Transition Plan</a>
+      <a href="disclosure.html" class="tab-btn">Strategy Disclosure</a>
+    </div>
+
+    <div class="liability-banner">
+      <span>🛡️</span>
+      <div><strong>MODIFIED LIABILITY PROTECTION APPLIES</strong><br>
+      Disclosures in this section are covered by the modified liability regime under the Corporations Act for FY2025–FY2027. Civil litigation immunity applies to forward-looking statements made in good faith with a reasonable basis. See your legal adviser for details.</div>
+    </div>
+
+    <div class="page-header">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+        <div>
+          <h1 class="page-title">Climate Transition Plan</h1>
+          <p class="page-subtitle">AASB S2 §15–§16 · Versioned document · Board-approved annually</p>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <select class="table-filter-select" id="version-select">
+            <option value="v2">Version 2 (current draft)</option>
+            <option value="v1">Version 1 (Final — 15 Nov 2024)</option>
+          </select>
+          <span class="badge badge-amber">Draft</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 280px;gap:24px;">
+      <!-- CTP Editor -->
+      <div>
+        <div class="card" style="margin-bottom:16px;background:var(--color-neutral-100);">
+          <div style="font-size:var(--text-xs);color:var(--color-neutral-600);">Version 2 · Last edited 20 Feb 2026 by Sarah Mitchell · Status: Draft</div>
+        </div>
+
+        <!-- Toolbar -->
+        <div style="background:white;border:1px solid var(--color-neutral-200);border-radius:var(--border-radius) var(--border-radius) 0 0;padding:8px 12px;display:flex;gap:4px;flex-wrap:wrap;">
+          <button class="btn btn-ghost btn-sm" title="Bold"><strong>B</strong></button>
+          <button class="btn btn-ghost btn-sm" title="Italic"><em>I</em></button>
+          <button class="btn btn-ghost btn-sm" title="Heading 2">H2</button>
+          <button class="btn btn-ghost btn-sm" title="Heading 3">H3</button>
+          <span style="width:1px;background:var(--color-neutral-200);margin:0 4px;"></span>
+          <button class="btn btn-ghost btn-sm" title="Bullet list">≡</button>
+          <button class="btn btn-ghost btn-sm" title="Numbered list">1.</button>
+          <button class="btn btn-ghost btn-sm" title="Table">⊞</button>
+          <span style="width:1px;background:var(--color-neutral-200);margin:0 4px;"></span>
+          <button class="btn btn-ghost btn-sm" title="Insert AASB S2 paragraph reference">§ Ref</button>
+        </div>
+        <textarea class="form-textarea" style="border-radius:0 0 var(--border-radius) var(--border-radius);min-height:520px;font-size:var(--text-sm);line-height:1.8;border-top:none;">AusMetal Holdings — Climate Transition Plan (CTP)
+Version 2 — December 2025
+
+1. OVERVIEW AND COMMITMENT
+
+AusMetal Holdings Pty Ltd is committed to achieving net zero Scope 1 and Scope 2 greenhouse gas emissions by 2045, consistent with a 1.5°C warming pathway. This Climate Transition Plan (CTP) describes our strategy, actions, and milestones to meet that commitment.
+
+This plan has been approved by the AusMetal Board on 5 December 2025 and will be updated annually.
+
+2. EMISSIONS REDUCTION PATHWAY
+
+Our target trajectory:
+- Baseline (FY2019): 8,200 tCO₂e (Scope 1 + Scope 2)
+- FY2025 actual: 5,540 tCO₂e (32% reduction from baseline)
+- FY2026 target: 5,200 tCO₂e (37% reduction from baseline)
+- FY2030 milestone: 4,100 tCO₂e (50% reduction from baseline)
+- FY2035 milestone: 2,460 tCO₂e (70% reduction from baseline)
+- FY2045 target: 0 tCO₂e (net zero)
+
+3. KEY TRANSITION ACTIONS
+
+3.1 Renewable Energy Procurement
+- Current renewable electricity: 8% (FY2025)
+- Target: 50% by FY2028 through Power Purchase Agreement (PPA)
+- Action: Finalise 10-year PPA with renewable energy provider by June 2026
+- Estimated abatement: ~1,600 tCO₂e/year
+
+3.2 Energy Efficiency Programme
+- Capital investment: $3.2M over FY2026–FY2028
+- Scope: HVAC upgrades, LED lighting, compressed air system optimisation
+- Sites: Dandenong Plant, Adelaide Facility, Geelong Warehouse (highest intensity)
+- Estimated abatement: ~480 tCO₂e/year by FY2028
+
+3.3 Fleet Electrification
+- Current fleet: 28 diesel vehicles (site and light commercial)
+- Plan: 50% electric by FY2028, 100% by FY2032
+- Capital investment: $1.8M over FY2026–FY2032
+- Estimated abatement: ~140 tCO₂e/year (FY2028 onwards)
+
+3.4 Scope 3 Value Chain Engagement
+- Year 1 (FY2026): Establish Scope 3 measurement baseline
+- Year 2 (FY2027): Engage top 20 suppliers on emissions data
+- Year 3 (FY2028): Set Scope 3 reduction targets
+- Partnership: Supply chain emissions reduction programme with industry body
+
+4. CAPITAL ALLOCATION
+
+Total planned climate capital investment FY2026–FY2030: $12.4M
+- Renewable energy: $6.0M (PPA deposits and on-site solar)
+- Energy efficiency: $3.2M
+- Fleet electrification: $1.8M
+- Scope 3 measurement: $0.8M
+- Reporting and assurance: $0.6M
+
+5. GOVERNANCE OF THIS PLAN
+
+This CTP is reviewed annually by the Board's Audit & Risk Committee (BARC) and approved by the full Board. Progress against milestones is reported quarterly to BARC and annually in the Sustainability Report.
+
+The ESG Manager maintains the CTP and is responsible for tracking action items. Material deviations from the plan are escalated to the CFO and reported to BARC within 30 days.
+
+6. ASSUMPTIONS AND LIMITATIONS
+
+This plan contains forward-looking statements based on current information and reasonable assumptions. Key assumptions include:
+- Carbon price trajectory: $30/t in FY2026, increasing to $75/t by FY2030 (consistent with Australian government policy signals)
+- Grid electricity emission factors declining per CER projections
+- Renewable energy PPA pricing based on current market rates
+- Technology costs declining per IEA projections
+
+This plan may be revised if material changes occur in regulatory, market, or operational conditions.</textarea>
+
+        <div style="display:flex;gap:12px;margin-top:16px;">
+          <button class="btn btn-primary" onclick="saveCTP()">💾 Save Draft</button>
+          <button class="btn btn-secondary">Submit for CFO Review</button>
+          <button class="btn btn-ghost btn-sm" style="margin-left:auto;">Preview as PDF</button>
+        </div>
+      </div>
+
+      <!-- Version history + AASB -->
+      <div>
+        <div class="card" style="margin-bottom:16px;">
+          <div style="font-size:var(--text-sm);font-weight:600;margin-bottom:12px;">Version History</div>
+          <div class="readiness-list">
+            <div class="readiness-item">
+              <div style="font-size:18px;">📄</div>
+              <div>
+                <div style="font-size:var(--text-sm);font-weight:500;">Version 2 <span class="badge badge-amber">Current</span></div>
+                <div style="font-size:var(--text-xs);color:var(--color-neutral-600);">Draft · Last edited 20 Feb 2026</div>
+              </div>
+            </div>
+            <div class="readiness-item">
+              <div style="font-size:18px;">🔒</div>
+              <div>
+                <div style="font-size:var(--text-sm);font-weight:500;">Version 1 <span class="badge badge-grey">Final</span></div>
+                <div style="font-size:var(--text-xs);color:var(--color-neutral-600);">Locked · 15 Nov 2024 · Board approved</div>
+                <a href="../evidence.html" class="btn btn-ghost btn-sm" style="margin-top:4px;padding:2px 8px;">📎 Download</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div style="font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--color-neutral-600);margin-bottom:12px;">AASB S2 §15–§16</div>
+          <div class="aasb-ref-item">
+            <div class="aasb-ref-code">§15 — Transition plan</div>
+            <div class="aasb-ref-text">Disclose aspects of the transition plan to a lower-carbon economy, including targets, actions, and capital deployment.</div>
+            <div class="aasb-mandatory">✅ Mandatory</div>
+          </div>
+          <div class="aasb-ref-item">
+            <div class="aasb-ref-code">§16 — Annual update</div>
+            <div class="aasb-ref-text">Update the transition plan disclosure annually. Explain significant changes from the prior period.</div>
+            <div class="aasb-mandatory">✅ Mandatory</div>
+          </div>
+          <div style="margin-top:12px;">
+            <div class="alert info" style="margin-bottom:0;font-size:var(--text-xs);">
+              <span>ℹ️</span><span>Liability protection applies to forward-looking statements in this section through FY2027.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script>
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }
+function saveCTP() { alert('Draft saved. Version 2 updated.'); }
+</script>
+</body>
+</html>

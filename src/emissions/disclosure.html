@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emissions Disclosure — CCDS</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+    <a href="../dashboard.html" class="logo"><span class="logo-icon">🌿</span><span>CCDS</span></a>
+  </div>
+  <div class="topbar-center"><span class="period-badge">FY2026 Reporting Period</span></div>
+  <div class="topbar-right">
+    <a href="../notifications.html" class="notif-btn">🔔<span class="badge">3</span></a>
+    <div class="avatar">SM</div>
+  </div>
+</header>
+<div class="app-shell">
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-section"><a href="../dashboard.html" class="nav-item"><span class="nav-icon">📊</span><span class="nav-label">Dashboard</span></a></div>
+    <div class="nav-section">
+      <a href="../setup/company.html" class="nav-item"><span class="nav-icon">⚙️</span><span class="nav-label">Setup &amp; Eligibility</span></a>
+      <a href="../governance/index.html" class="nav-item"><span class="nav-icon">🛡️</span><span class="nav-label">Governance</span></a>
+      <a href="../strategy/index.html" class="nav-item"><span class="nav-icon">🎯</span><span class="nav-label">Strategy &amp; Transition</span></a>
+      <a href="../risk-management/index.html" class="nav-item"><span class="nav-icon">⚠️</span><span class="nav-label">Risk Management</span></a>
+      <a href="overview.html" class="nav-item active"><span class="nav-icon">🌱</span><span class="nav-label">Emissions &amp; Energy</span></a>
+      <a href="../metrics/targets.html" class="nav-item"><span class="nav-icon">📈</span><span class="nav-label">Metrics &amp; Targets</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="../reports/index.html" class="nav-item"><span class="nav-icon">📄</span><span class="nav-label">Reports</span></a>
+      <a href="../evidence.html" class="nav-item"><span class="nav-icon">📁</span><span class="nav-label">Evidence Library</span></a>
+      <a href="../audit-log.html" class="nav-item"><span class="nav-icon">📜</span><span class="nav-label">Audit Log</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="../notifications.html" class="nav-item"><span class="nav-icon">🔔</span><span class="nav-label">Notifications</span><span class="nav-badge">3</span></a>
+      <a href="../admin/index.html" class="nav-item"><span class="nav-icon">👥</span><span class="nav-label">Administration</span></a>
+    </div>
+  </nav>
+  <main class="main-content with-right-panel">
+    <div class="breadcrumb">
+      <a href="../dashboard.html">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="overview.html">Emissions &amp; Energy</a><span class="breadcrumb-sep">›</span>
+      <span class="current">Emissions Disclosure</span>
+    </div>
+    <div class="tab-nav">
+      <a href="overview.html" class="tab-btn">Emissions Overview</a>
+      <a href="site-entry.html" class="tab-btn">Site Data Entry</a>
+      <a href="factors.html" class="tab-btn">Emission Factors</a>
+      <a href="disclosure.html" class="tab-btn active">Emissions Disclosure</a>
+    </div>
+    <div class="page-header">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+        <div>
+          <h1 class="page-title">Emissions &amp; Metrics Disclosure — FY2026</h1>
+          <p class="page-subtitle">AASB S2 §29–§41 · Auto-populated from site data entries</p>
+        </div>
+        <span class="badge-status badge-in-review">In Review — Pending CFO</span>
+      </div>
+    </div>
+
+    <div class="alert warning" style="margin-bottom:24px;">
+      <span>⚠️</span>
+      <div><strong>3 sites outstanding:</strong> Dandenong Plant, Sydney HQ, Townsville Depot have not submitted data. Figures marked with * are incomplete.</div>
+    </div>
+
+    <!-- Approval chain -->
+    <div class="approval-chain" style="margin-bottom:24px;">
+      <div class="approval-step done">
+        <div class="approval-step-num">✓</div>
+        <div class="approval-step-info">
+          <div class="approval-step-name">1. Prepared by Sarah Mitchell</div>
+          <div class="approval-step-meta">ESG Manager · Auto-compiled from site submissions</div>
+        </div>
+        <span class="badge-status badge-approved">Done</span>
+      </div>
+      <div class="approval-step active">
+        <div class="approval-step-num">2</div>
+        <div class="approval-step-info">
+          <div class="approval-step-name">2. CFO Review — Alex Chen</div>
+          <div class="approval-step-meta">Awaiting CFO review (3 sites still outstanding)</div>
+        </div>
+        <span class="badge-status badge-in-review">⏳ Pending</span>
+      </div>
+    </div>
+
+    <!-- Auto-populated figures -->
+    <div class="card" style="margin-bottom:24px;">
+      <div class="card-header">
+        <span class="card-title">Auto-Populated Emission Figures</span>
+        <a href="overview.html" class="btn btn-ghost btn-sm">View calculations →</a>
+      </div>
+      <div class="alert info" style="margin-bottom:16px;">
+        <span>ℹ️</span><span>These figures are auto-calculated from site data entries and will update as outstanding sites submit. Changes to source data are tracked in the audit log.</span>
+      </div>
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr><th>Category</th><th>FY2026 (partial *)</th><th>FY2025 (prior year)</th><th>Change</th><th>Unit</th><th>AASB S2</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="scope-badge scope-1">Scope 1</span> — Stationary combustion</td>
+              <td style="font-family:monospace;"><strong>892*</strong></td>
+              <td style="font-family:monospace;">1,050</td>
+              <td style="color:var(--color-success-600);">-15%</td>
+              <td>tCO₂e</td>
+              <td style="font-size:var(--text-xs);">§29(a)</td>
+            </tr>
+            <tr>
+              <td><span class="scope-badge scope-1">Scope 1</span> — Mobile combustion</td>
+              <td style="font-family:monospace;"><strong>348*</strong></td>
+              <td style="font-family:monospace;">410</td>
+              <td style="color:var(--color-success-600);">-15%</td>
+              <td>tCO₂e</td>
+              <td style="font-size:var(--text-xs);">§29(a)</td>
+            </tr>
+            <tr style="background:var(--color-neutral-100);">
+              <td><strong>Total Scope 1</strong></td>
+              <td style="font-family:monospace;"><strong>1,240*</strong></td>
+              <td style="font-family:monospace;"><strong>1,460</strong></td>
+              <td style="color:var(--color-success-600);"><strong>-15%</strong></td>
+              <td>tCO₂e</td>
+              <td style="font-size:var(--text-xs);">§29</td>
+            </tr>
+            <tr>
+              <td><span class="scope-badge scope-2">Scope 2</span> — Location-based</td>
+              <td style="font-family:monospace;"><strong>3,890*</strong></td>
+              <td style="font-family:monospace;">4,180</td>
+              <td style="color:var(--color-success-600);">-7%</td>
+              <td>tCO₂e</td>
+              <td style="font-size:var(--text-xs);">§29(b)</td>
+            </tr>
+            <tr>
+              <td><span class="scope-badge scope-2">Scope 2</span> — Market-based</td>
+              <td style="font-family:monospace;"><strong>3,890*</strong></td>
+              <td style="font-family:monospace;">4,180</td>
+              <td style="color:var(--color-success-600);">-7%</td>
+              <td>tCO₂e</td>
+              <td style="font-size:var(--text-xs);">§29(c)</td>
+            </tr>
+            <tr>
+              <td><span class="scope-badge scope-3">Scope 3</span></td>
+              <td colspan="4" style="color:var(--color-neutral-400);font-style:italic;">Not disclosed — Year 1, optional (AASB S2 §33 transition relief)</td>
+              <td style="font-size:var(--text-xs);">§33</td>
+            </tr>
+            <tr style="background:var(--color-primary-100);">
+              <td><strong>Total Scope 1 + 2 (location)</strong></td>
+              <td style="font-family:monospace;"><strong>5,130*</strong></td>
+              <td style="font-family:monospace;"><strong>5,640</strong></td>
+              <td style="color:var(--color-success-600);"><strong>-9%</strong></td>
+              <td>tCO₂e</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="padding:8px 16px;font-size:var(--text-xs);color:var(--color-neutral-600);">* Incomplete — 3 sites outstanding. Final figures will update when all sites submit.</div>
+    </div>
+
+    <!-- Scope 3 liability banner -->
+    <div class="liability-banner" style="margin-bottom:24px;">
+      <span>🛡️</span>
+      <div><strong>MODIFIED LIABILITY PROTECTION APPLIES</strong> — Scope 3 disclosures (if made) are covered by the modified liability regime for FY2025–FY2027. This entity is availing of the Year 1 transitional relief from mandatory Scope 3 disclosure.</div>
+    </div>
+
+    <!-- Narrative editor -->
+    <div class="disclosure-pane">
+      <div class="card">
+        <div style="font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--color-neutral-600);margin-bottom:16px;">DISCLOSURE NARRATIVE</div>
+        <textarea class="form-textarea" style="min-height:320px;font-size:var(--text-sm);line-height:1.8;">§29 – Greenhouse Gas Emissions
+
+AusMetal Holdings discloses Scope 1 (direct) and Scope 2 (indirect) greenhouse gas emissions for FY2026. Scope 3 value chain emissions are not disclosed in Year 1, consistent with AASB S2 transitional relief provisions (§33).
+
+All emissions are expressed in metric tonnes of carbon dioxide equivalent (tCO₂e) using Global Warming Potential values from the IPCC Fifth Assessment Report (AR5, 100-year time horizon).
+
+Scope 1 emissions are calculated using NGER Measurement Determination 2024 emission factors applied to measured fuel consumption data from all operational sites. Scope 2 emissions are calculated using the Clean Energy Regulator's 2024 state-based grid emission factors (location-based method).
+
+§30 – Methodology
+
+Emission factors: NGER Measurement Determination 2024 (stationary and mobile combustion), CER Grid Factor Report 2024 (electricity).
+
+Organisational boundary: Operational control approach, consistent with NGER Act 2007.
+
+Measurement approach: Direct metering at each site supplemented by utility billing data. All data collected quarterly.
+
+§34 – Energy use
+
+Total electricity consumed: 4,805,000 kWh* (FY2026, partial)
+Total fossil fuel consumed: 72,400 GJ* (FY2026, partial, natural gas and diesel combined)
+
+* Incomplete — 3 sites outstanding.</textarea>
+
+        <div style="display:flex;gap:12px;margin-top:16px;">
+          <button class="btn btn-primary" onclick="alert('Draft saved.')">💾 Save Draft</button>
+          <button class="btn btn-secondary">Submit for CFO Review</button>
+        </div>
+      </div>
+
+      <div class="disclosure-references">
+        <div style="font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--color-neutral-600);margin-bottom:12px;">AASB S2 CHECKLIST</div>
+        <div class="aasb-ref-item">
+          <div class="aasb-ref-code">§29(a) Scope 1</div>
+          <div class="aasb-mandatory">✅ Auto-populated</div>
+        </div>
+        <div class="aasb-ref-item">
+          <div class="aasb-ref-code">§29(b) Scope 2 location</div>
+          <div class="aasb-mandatory">✅ Auto-populated</div>
+        </div>
+        <div class="aasb-ref-item">
+          <div class="aasb-ref-code">§29(c) Scope 2 market</div>
+          <div class="aasb-mandatory">✅ Auto-populated</div>
+        </div>
+        <div class="aasb-ref-item">
+          <div class="aasb-ref-code">§30 Methodology</div>
+          <div class="aasb-mandatory">✅ In narrative</div>
+        </div>
+        <div class="aasb-ref-item">
+          <div class="aasb-ref-code">§33 Scope 3</div>
+          <div style="font-size:var(--text-xs);color:var(--color-info-600);">ℹ️ Year 1 relief applied</div>
+        </div>
+        <div class="aasb-ref-item">
+          <div class="aasb-ref-code">§34 Energy use</div>
+          <div class="aasb-mandatory">✅ In narrative</div>
+        </div>
+        <div class="aasb-ref-item">
+          <div class="aasb-ref-code">§35 GHG intensity</div>
+          <div style="font-size:var(--text-xs);color:var(--color-warning-600);">⏳ Not yet added</div>
+        </div>
+        <div style="margin-top:12px;padding:8px;background:var(--color-warning-100);border-radius:var(--border-radius);font-size:var(--text-xs);color:var(--color-warning-600);font-weight:600;">
+          ⚠️ 3 sites pending — finalise before submission
+        </div>
+      </div>
+    </div>
+  </main>
+  <aside class="right-panel">
+    <h3>AASB S2 GUIDANCE</h3>
+    <div class="aasb-ref-item">
+      <div class="aasb-ref-code">§29 — GHG emissions</div>
+      <div class="aasb-ref-text" style="font-style:italic;">"An entity shall disclose its Scope 1, Scope 2 (location-based and market-based), and Scope 3 greenhouse gas emissions."</div>
+    </div>
+    <div class="aasb-ref-item">
+      <div class="aasb-mandatory">Assurance (Yr 1): Yes — Scope 1 &amp; 2</div>
+    </div>
+    <div class="aasb-ref-item">
+      <div class="aasb-ref-code">§33 — Scope 3 transition relief</div>
+      <div class="aasb-ref-text">Year 1 entities may omit Scope 3 if not yet measurable.</div>
+      <div style="font-size:var(--text-xs);color:var(--color-info-600);">ℹ️ Applied this year</div>
+    </div>
+  </aside>
+</div>
+<script>
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }
+</script>
+</body>
+</html>

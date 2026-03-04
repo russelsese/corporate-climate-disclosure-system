@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assurance-Ready Data Pack — CCDS</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+    <a href="../dashboard.html" class="logo"><span class="logo-icon">🌿</span><span>CCDS</span></a>
+  </div>
+  <div class="topbar-center"><span class="period-badge">FY2026 Reporting Period</span></div>
+  <div class="topbar-right">
+    <a href="../notifications.html" class="notif-btn">🔔<span class="badge">3</span></a>
+    <div class="avatar">SM</div>
+  </div>
+</header>
+<div class="app-shell">
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-section"><a href="../dashboard.html" class="nav-item"><span class="nav-icon">📊</span><span class="nav-label">Dashboard</span></a></div>
+    <div class="nav-section">
+      <a href="../setup/company.html" class="nav-item"><span class="nav-icon">⚙️</span><span class="nav-label">Setup &amp; Eligibility</span></a>
+      <a href="../governance/index.html" class="nav-item"><span class="nav-icon">🛡️</span><span class="nav-label">Governance</span></a>
+      <a href="../strategy/index.html" class="nav-item"><span class="nav-icon">🎯</span><span class="nav-label">Strategy &amp; Transition</span></a>
+      <a href="../risk-management/index.html" class="nav-item"><span class="nav-icon">⚠️</span><span class="nav-label">Risk Management</span></a>
+      <a href="../emissions/overview.html" class="nav-item"><span class="nav-icon">🌱</span><span class="nav-label">Emissions &amp; Energy</span></a>
+      <a href="../metrics/targets.html" class="nav-item"><span class="nav-icon">📈</span><span class="nav-label">Metrics &amp; Targets</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="index.html" class="nav-item active"><span class="nav-icon">📄</span><span class="nav-label">Reports</span></a>
+      <a href="../evidence.html" class="nav-item"><span class="nav-icon">📁</span><span class="nav-label">Evidence Library</span></a>
+      <a href="../audit-log.html" class="nav-item"><span class="nav-icon">📜</span><span class="nav-label">Audit Log</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="../notifications.html" class="nav-item"><span class="nav-icon">🔔</span><span class="nav-label">Notifications</span><span class="nav-badge">3</span></a>
+      <a href="../admin/index.html" class="nav-item"><span class="nav-icon">👥</span><span class="nav-label">Administration</span></a>
+    </div>
+  </nav>
+  <main class="main-content">
+    <div class="breadcrumb">
+      <a href="../dashboard.html">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="index.html">Reports</a><span class="breadcrumb-sep">›</span>
+      <span class="current">Assurance-Ready Data Pack</span>
+    </div>
+    <div class="page-header" style="display:flex;align-items:flex-start;justify-content:space-between;">
+      <div>
+        <h1 class="page-title">Assurance-Ready Data Pack</h1>
+        <p class="page-subtitle">Compile evidence, workpapers, and methodology notes for external auditor Marcus Thompson.</p>
+      </div>
+      <button class="btn btn-primary" onclick="alert('Building ZIP pack... This may take a moment.')">📦 Build &amp; Export ZIP</button>
+    </div>
+
+    <!-- Auditor access info -->
+    <div class="card" style="margin-bottom:24px;background:var(--color-info-100);border-color:var(--color-info-600);">
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+        <div style="flex:1;">
+          <div style="font-size:var(--text-sm);font-weight:600;color:var(--color-info-600);margin-bottom:4px;">AUDITOR ACCESS — Marcus Thompson (BDO Australia)</div>
+          <div style="font-size:var(--text-sm);color:var(--color-neutral-700);">Read-only portal access granted from 3 Mar 2026 · Expires 31 May 2026 · ASSA 5010 Limited Assurance</div>
+        </div>
+        <div style="display:flex;gap:8px;">
+          <button class="btn btn-secondary btn-sm" onclick="alert('Resending auditor invitation...')">Resend invite</button>
+          <button class="btn btn-ghost btn-sm" onclick="alert('Extending access window...')">Extend access</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+      <!-- Pack contents -->
+      <div>
+        <div class="card" style="margin-bottom:24px;">
+          <div class="card-header">
+            <span class="card-title">Pack Contents</span>
+            <span class="badge badge-green">Auto-generated</span>
+          </div>
+
+          <!-- Evidence index -->
+          <div style="margin-bottom:16px;">
+            <div style="font-size:var(--text-sm);font-weight:600;margin-bottom:8px;">📁 Evidence Index</div>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr><th>Document</th><th>Type</th><th>Section</th><th>Added</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>utility-q4-2025.pdf</td>
+                    <td>Utility bill</td>
+                    <td>Emissions – Scope 1</td>
+                    <td>10 Feb 2026</td>
+                  </tr>
+                  <tr>
+                    <td>natural-gas-invoices-fy2026.pdf</td>
+                    <td>Invoice</td>
+                    <td>Emissions – Scope 1</td>
+                    <td>12 Feb 2026</td>
+                  </tr>
+                  <tr>
+                    <td>board-minutes-sustainability-dec25.pdf</td>
+                    <td>Board minutes</td>
+                    <td>Governance</td>
+                    <td>15 Feb 2026</td>
+                  </tr>
+                  <tr>
+                    <td>sustainability-committee-charter.pdf</td>
+                    <td>Policy doc</td>
+                    <td>Governance</td>
+                    <td>15 Feb 2026</td>
+                  </tr>
+                  <tr>
+                    <td>electricity-bills-fy2026-all-sites.zip</td>
+                    <td>Utility bills</td>
+                    <td>Emissions – Scope 2</td>
+                    <td>18 Feb 2026</td>
+                  </tr>
+                  <tr>
+                    <td>nger-factors-2024.pdf</td>
+                    <td>Reference</td>
+                    <td>Emissions methodology</td>
+                    <td>01 Feb 2026</td>
+                  </tr>
+                  <tr>
+                    <td>cfo-approval-governance-13feb.pdf</td>
+                    <td>Approval record</td>
+                    <td>Governance</td>
+                    <td>13 Feb 2026</td>
+                  </tr>
+                  <tr>
+                    <td>board-approval-governance-14feb.pdf</td>
+                    <td>Approval record</td>
+                    <td>Governance</td>
+                    <td>14 Feb 2026</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr><td colspan="3"><strong>28 documents total</strong></td><td><a href="../evidence.html" class="btn btn-ghost btn-sm">View all</a></td></tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Calculation workpapers -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Calculation Workpapers</span>
+            <span class="badge badge-green">Auto-generated</span>
+          </div>
+          <div class="task-list">
+            <div class="task-item">
+              <div class="task-icon">✅</div>
+              <div class="task-body">
+                <div class="task-title">Scope 1 — Stationary combustion workpaper</div>
+                <div class="task-meta">9 emission sources · 3 sites · NGER 2024 factors · Auto-calculated</div>
+                <div class="task-actions">
+                  <button class="btn btn-ghost btn-sm" onclick="alert('Downloading workpaper...')">⬇ Download XLSX</button>
+                </div>
+              </div>
+            </div>
+            <div class="task-item">
+              <div class="task-icon">✅</div>
+              <div class="task-body">
+                <div class="task-title">Scope 1 — Mobile combustion workpaper</div>
+                <div class="task-meta">Fleet vehicles &amp; mobile plant · 8 sites · Auto-calculated</div>
+                <div class="task-actions">
+                  <button class="btn btn-ghost btn-sm" onclick="alert('Downloading workpaper...')">⬇ Download XLSX</button>
+                </div>
+              </div>
+            </div>
+            <div class="task-item">
+              <div class="task-icon">✅</div>
+              <div class="task-body">
+                <div class="task-title">Scope 2 — Location-based electricity workpaper</div>
+                <div class="task-meta">NEM grid factors by state · 8 sites · Quarterly actuals</div>
+                <div class="task-actions">
+                  <button class="btn btn-ghost btn-sm" onclick="alert('Downloading workpaper...')">⬇ Download XLSX</button>
+                </div>
+              </div>
+            </div>
+            <div class="task-item">
+              <div class="task-icon">✅</div>
+              <div class="task-body">
+                <div class="task-title">Scope 2 — Market-based electricity workpaper</div>
+                <div class="task-meta">GreenPower certificates · Renewable PPA attributes</div>
+                <div class="task-actions">
+                  <button class="btn btn-ghost btn-sm" onclick="alert('Downloading workpaper...')">⬇ Download XLSX</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: methodology + build config -->
+      <div>
+        <div class="card" style="margin-bottom:24px;">
+          <div class="card-header"><span class="card-title">Methodology Notes</span></div>
+          <div class="task-list">
+            <div class="task-item">
+              <div class="task-icon">📄</div>
+              <div class="task-body">
+                <div class="task-title">Emission Factor Methodology</div>
+                <div class="task-meta">NGER Act 2007, Method 1 (default factors) · Updated annually</div>
+                <div class="task-actions">
+                  <a href="../emissions/factors.html" class="btn btn-ghost btn-sm">View factors →</a>
+                </div>
+              </div>
+            </div>
+            <div class="task-item">
+              <div class="task-icon">📄</div>
+              <div class="task-body">
+                <div class="task-title">Organisational Boundary</div>
+                <div class="task-meta">Operational control approach · 4 entities · Pacific Metals JV at 50% equity share</div>
+              </div>
+            </div>
+            <div class="task-item">
+              <div class="task-icon">📄</div>
+              <div class="task-body">
+                <div class="task-title">Scope 3 Category Assessment</div>
+                <div class="task-meta">Transitional relief applied FY2026 · Full disclosure from FY2027</div>
+              </div>
+            </div>
+            <div class="task-item">
+              <div class="task-icon">📄</div>
+              <div class="task-body">
+                <div class="task-title">Data Collection Process</div>
+                <div class="task-meta">Site manager self-entry via CCDS portal · Monthly meter reads + invoice reconciliation</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pack build config -->
+        <div class="card" style="margin-bottom:24px;">
+          <div class="card-header"><span class="card-title">Pack Configuration</span></div>
+          <div style="font-size:var(--text-sm);display:flex;flex-direction:column;gap:12px;">
+            <label style="display:flex;align-items:center;gap:8px;"><input type="checkbox" checked> Evidence index (CSV + linked PDFs)</label>
+            <label style="display:flex;align-items:center;gap:8px;"><input type="checkbox" checked> Calculation workpapers (XLSX)</label>
+            <label style="display:flex;align-items:center;gap:8px;"><input type="checkbox" checked> Methodology notes (PDF)</label>
+            <label style="display:flex;align-items:center;gap:8px;"><input type="checkbox" checked> Approval audit trail (PDF)</label>
+            <label style="display:flex;align-items:center;gap:8px;"><input type="checkbox" checked> Audit log extract (CSV)</label>
+            <label style="display:flex;align-items:center;gap:8px;"><input type="checkbox"> Draft sustainability report (PDF)</label>
+          </div>
+        </div>
+
+        <!-- Previous packs -->
+        <div class="card">
+          <div class="card-header"><span class="card-title">Previous Packs</span></div>
+          <div style="font-size:var(--text-sm);">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--color-neutral-100);">
+              <div>
+                <div style="font-weight:500;">assurance-pack-fy2026-v1.zip</div>
+                <div style="font-size:var(--text-xs);color:var(--color-neutral-500);">Built 20 Feb 2026 by SM · 24 docs · 18.4 MB</div>
+              </div>
+              <button class="btn btn-ghost btn-sm">⬇ Download</button>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;">
+              <div>
+                <div style="font-weight:500;">assurance-pack-fy2025-final.zip</div>
+                <div style="font-size:var(--text-xs);color:var(--color-neutral-500);">Built 1 Sep 2025 · 31 docs · 26.1 MB · <span class="badge-status badge-approved">Finalised</span></div>
+              </div>
+              <button class="btn btn-ghost btn-sm">⬇ Download</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script>function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }</script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emission Factors Library — CCDS</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+    <a href="../dashboard.html" class="logo"><span class="logo-icon">🌿</span><span>CCDS</span></a>
+  </div>
+  <div class="topbar-center"><span class="period-badge">FY2026 Reporting Period</span></div>
+  <div class="topbar-right">
+    <a href="../notifications.html" class="notif-btn">🔔<span class="badge">3</span></a>
+    <div class="avatar">SM</div>
+  </div>
+</header>
+<div class="app-shell">
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-section"><a href="../dashboard.html" class="nav-item"><span class="nav-icon">📊</span><span class="nav-label">Dashboard</span></a></div>
+    <div class="nav-section">
+      <a href="../setup/company.html" class="nav-item"><span class="nav-icon">⚙️</span><span class="nav-label">Setup &amp; Eligibility</span></a>
+      <a href="../governance/index.html" class="nav-item"><span class="nav-icon">🛡️</span><span class="nav-label">Governance</span></a>
+      <a href="../strategy/index.html" class="nav-item"><span class="nav-icon">🎯</span><span class="nav-label">Strategy &amp; Transition</span></a>
+      <a href="../risk-management/index.html" class="nav-item"><span class="nav-icon">⚠️</span><span class="nav-label">Risk Management</span></a>
+      <a href="overview.html" class="nav-item active"><span class="nav-icon">🌱</span><span class="nav-label">Emissions &amp; Energy</span></a>
+      <a href="../metrics/targets.html" class="nav-item"><span class="nav-icon">📈</span><span class="nav-label">Metrics &amp; Targets</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="../reports/index.html" class="nav-item"><span class="nav-icon">📄</span><span class="nav-label">Reports</span></a>
+      <a href="../evidence.html" class="nav-item"><span class="nav-icon">📁</span><span class="nav-label">Evidence Library</span></a>
+      <a href="../audit-log.html" class="nav-item"><span class="nav-icon">📜</span><span class="nav-label">Audit Log</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="../notifications.html" class="nav-item"><span class="nav-icon">🔔</span><span class="nav-label">Notifications</span><span class="nav-badge">3</span></a>
+      <a href="../admin/index.html" class="nav-item"><span class="nav-icon">👥</span><span class="nav-label">Administration</span></a>
+    </div>
+  </nav>
+  <main class="main-content">
+    <div class="breadcrumb">
+      <a href="../dashboard.html">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="overview.html">Emissions &amp; Energy</a><span class="breadcrumb-sep">›</span>
+      <span class="current">Emission Factors Library</span>
+    </div>
+    <div class="tab-nav">
+      <a href="overview.html" class="tab-btn">Emissions Overview</a>
+      <a href="site-entry.html" class="tab-btn">Site Data Entry</a>
+      <a href="factors.html" class="tab-btn active">Emission Factors</a>
+      <a href="disclosure.html" class="tab-btn">Emissions Disclosure</a>
+    </div>
+    <div class="page-header">
+      <h1 class="page-title">Emission Factors Library</h1>
+      <p class="page-subtitle">Pre-loaded NGER factors and custom factors used in CO₂e calculations. All factors are version-controlled and auditable.</p>
+    </div>
+
+    <div class="alert success" style="margin-bottom:24px;">
+      <span>✅</span>
+      <div><strong>NGER factors current:</strong> 2024 NGER Measurement Determination values loaded. Effective 1 July 2024. <a href="../evidence.html">View source document →</a></div>
+    </div>
+
+    <!-- NGER Factors -->
+    <div class="card" style="margin-bottom:24px;">
+      <div class="card-header">
+        <span class="card-title">NGER Methodology Factors — 2024</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="badge badge-green">Read-only</span>
+          <select class="table-filter-select" title="Version">
+            <option>v2024 (current)</option>
+            <option>v2023</option>
+            <option>v2022</option>
+          </select>
+        </div>
+      </div>
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr><th>Fuel / Activity</th><th>Category</th><th>Factor</th><th>Unit</th><th>GWP basis</th><th>NGER Reference</th><th>Effective from</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Natural gas</strong></td>
+              <td><span class="scope-badge scope-1">Scope 1</span> Stationary</td>
+              <td style="font-family:monospace;font-weight:600;">51.53</td>
+              <td>kgCO₂e/GJ</td>
+              <td>AR5 (100yr)</td>
+              <td>Table 1, Cl. 2.02</td>
+              <td>1 Jul 2024</td>
+            </tr>
+            <tr>
+              <td><strong>Diesel — stationary combustion</strong></td>
+              <td><span class="scope-badge scope-1">Scope 1</span> Stationary</td>
+              <td style="font-family:monospace;font-weight:600;">69.90</td>
+              <td>kgCO₂e/GJ</td>
+              <td>AR5</td>
+              <td>Table 1, Cl. 2.02</td>
+              <td>1 Jul 2024</td>
+            </tr>
+            <tr>
+              <td><strong>Diesel — mobile combustion</strong></td>
+              <td><span class="scope-badge scope-1">Scope 1</span> Mobile</td>
+              <td style="font-family:monospace;font-weight:600;">2.68</td>
+              <td>kgCO₂e/L</td>
+              <td>AR5</td>
+              <td>Table 2, Cl. 2.10</td>
+              <td>1 Jul 2024</td>
+            </tr>
+            <tr>
+              <td><strong>Petrol — mobile combustion</strong></td>
+              <td><span class="scope-badge scope-1">Scope 1</span> Mobile</td>
+              <td style="font-family:monospace;font-weight:600;">2.31</td>
+              <td>kgCO₂e/L</td>
+              <td>AR5</td>
+              <td>Table 2, Cl. 2.10</td>
+              <td>1 Jul 2024</td>
+            </tr>
+            <tr>
+              <td><strong>LPG</strong></td>
+              <td><span class="scope-badge scope-1">Scope 1</span> Stationary/Mobile</td>
+              <td style="font-family:monospace;font-weight:600;">1.56</td>
+              <td>kgCO₂e/L</td>
+              <td>AR5</td>
+              <td>Table 1, Cl. 2.02</td>
+              <td>1 Jul 2024</td>
+            </tr>
+            <tr style="background:var(--color-primary-100);">
+              <td><strong>Electricity — VIC grid</strong></td>
+              <td><span class="scope-badge scope-2">Scope 2</span> Location-based</td>
+              <td style="font-family:monospace;font-weight:600;">0.81</td>
+              <td>kgCO₂e/kWh</td>
+              <td>AR5</td>
+              <td>CER Grid Factor Report 2024</td>
+              <td>1 Jan 2024</td>
+            </tr>
+            <tr>
+              <td><strong>Electricity — NSW grid</strong></td>
+              <td><span class="scope-badge scope-2">Scope 2</span> Location-based</td>
+              <td style="font-family:monospace;font-weight:600;">0.75</td>
+              <td>kgCO₂e/kWh</td>
+              <td>AR5</td>
+              <td>CER Grid Factor Report 2024</td>
+              <td>1 Jan 2024</td>
+            </tr>
+            <tr>
+              <td><strong>Electricity — QLD grid</strong></td>
+              <td><span class="scope-badge scope-2">Scope 2</span> Location-based</td>
+              <td style="font-family:monospace;font-weight:600;">0.86</td>
+              <td>kgCO₂e/kWh</td>
+              <td>AR5</td>
+              <td>CER Grid Factor Report 2024</td>
+              <td>1 Jan 2024</td>
+            </tr>
+            <tr>
+              <td><strong>Electricity — SA grid</strong></td>
+              <td><span class="scope-badge scope-2">Scope 2</span> Location-based</td>
+              <td style="font-family:monospace;font-weight:600;">0.30</td>
+              <td>kgCO₂e/kWh</td>
+              <td>AR5</td>
+              <td>CER Grid Factor Report 2024</td>
+              <td>1 Jan 2024</td>
+            </tr>
+            <tr>
+              <td><strong>Electricity — WA grid (SWIS)</strong></td>
+              <td><span class="scope-badge scope-2">Scope 2</span> Location-based</td>
+              <td style="font-family:monospace;font-weight:600;">0.68</td>
+              <td>kgCO₂e/kWh</td>
+              <td>AR5</td>
+              <td>CER Grid Factor Report 2024</td>
+              <td>1 Jan 2024</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="padding:12px 16px;background:var(--color-neutral-100);border-top:1px solid var(--color-neutral-200);font-size:var(--text-xs);color:var(--color-neutral-600);">
+        Source: NGER Measurement Determination 2024, Clean Energy Regulator | <a href="../evidence.html">Download full factor table PDF →</a>
+      </div>
+    </div>
+
+    <!-- Custom Factors -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Custom Emission Factors</span>
+        <button class="btn btn-secondary btn-sm" onclick="document.getElementById('custom-modal').style.display='flex'">+ Add custom factor</button>
+      </div>
+      <div class="empty-state" style="padding:48px 32px;">
+        <div class="empty-state-icon">🧪</div>
+        <h3>No custom factors defined</h3>
+        <p>Custom factors can be used when NGER methodology factors are not available or appropriate. Each custom factor requires a documented justification.</p>
+        <div class="empty-state aasb-note">AASB S2 §30: Methodology must be disclosed if custom factors are used.</div>
+        <button class="btn btn-secondary" onclick="document.getElementById('custom-modal').style.display='flex'">Add custom factor</button>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Add custom factor modal -->
+<div id="custom-modal" class="modal-overlay" style="display:none;">
+  <div class="modal" style="max-width:560px;">
+    <div class="modal-header">
+      <h2 class="modal-title">Add Custom Emission Factor</h2>
+      <button class="modal-close" onclick="document.getElementById('custom-modal').style.display='none'">✕</button>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Factor name <span class="required">*</span></label>
+        <input class="form-input" type="text" placeholder="e.g. Biogas combustion">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Emission scope <span class="required">*</span></label>
+        <select class="form-select"><option>Scope 1</option><option>Scope 2</option><option>Scope 3</option></select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Factor value <span class="required">*</span></label>
+        <input class="form-input" type="number" placeholder="0.000">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Unit <span class="required">*</span></label>
+        <select class="form-select">
+          <option>kgCO₂e/GJ</option><option>kgCO₂e/kWh</option><option>kgCO₂e/L</option><option>kgCO₂e/kg</option><option>tCO₂e/t</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Source / Justification <span class="required">*</span></label>
+      <textarea class="form-textarea" placeholder="Explain why this custom factor is used instead of an NGER factor, and cite the data source."></textarea>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="document.getElementById('custom-modal').style.display='none'">Cancel</button>
+      <button class="btn btn-primary" onclick="document.getElementById('custom-modal').style.display='none';alert('Custom factor saved.')">Save factor</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }
+</script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reports — CCDS</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+    <a href="../dashboard.html" class="logo"><span class="logo-icon">🌿</span><span>CCDS</span></a>
+  </div>
+  <div class="topbar-center"><span class="period-badge">FY2026 Reporting Period</span></div>
+  <div class="topbar-right">
+    <a href="../notifications.html" class="notif-btn">🔔<span class="badge">3</span></a>
+    <div class="avatar">SM</div>
+  </div>
+</header>
+<div class="app-shell">
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-section"><a href="../dashboard.html" class="nav-item"><span class="nav-icon">📊</span><span class="nav-label">Dashboard</span></a></div>
+    <div class="nav-section">
+      <a href="../setup/company.html" class="nav-item"><span class="nav-icon">⚙️</span><span class="nav-label">Setup &amp; Eligibility</span></a>
+      <a href="../governance/index.html" class="nav-item"><span class="nav-icon">🛡️</span><span class="nav-label">Governance</span></a>
+      <a href="../strategy/index.html" class="nav-item"><span class="nav-icon">🎯</span><span class="nav-label">Strategy &amp; Transition</span></a>
+      <a href="../risk-management/index.html" class="nav-item"><span class="nav-icon">⚠️</span><span class="nav-label">Risk Management</span></a>
+      <a href="../emissions/overview.html" class="nav-item"><span class="nav-icon">🌱</span><span class="nav-label">Emissions &amp; Energy</span></a>
+      <a href="../metrics/targets.html" class="nav-item"><span class="nav-icon">📈</span><span class="nav-label">Metrics &amp; Targets</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="index.html" class="nav-item active"><span class="nav-icon">📄</span><span class="nav-label">Reports</span></a>
+      <a href="../evidence.html" class="nav-item"><span class="nav-icon">📁</span><span class="nav-label">Evidence Library</span></a>
+      <a href="../audit-log.html" class="nav-item"><span class="nav-icon">📜</span><span class="nav-label">Audit Log</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="../notifications.html" class="nav-item"><span class="nav-icon">🔔</span><span class="nav-label">Notifications</span><span class="nav-badge">3</span></a>
+      <a href="../admin/index.html" class="nav-item"><span class="nav-icon">👥</span><span class="nav-label">Administration</span></a>
+    </div>
+  </nav>
+  <main class="main-content">
+    <div class="page-header">
+      <h1 class="page-title">Reports</h1>
+      <p class="page-subtitle">Generate, export, and manage your AASB S2 compliance reports.</p>
+    </div>
+
+    <!-- Overall readiness -->
+    <div class="card" style="margin-bottom:32px;">
+      <div class="card-header">
+        <span class="card-title">Section Readiness — FY2026</span>
+        <span class="badge badge-amber">2 / 4 sections approved</span>
+      </div>
+      <div class="alert warning" style="margin-bottom:16px;">
+        <span>⚠️</span><span>The Sustainability Report requires all 4 sections to be CFO-approved. Strategy and Risk Management sections are still in progress.</span>
+      </div>
+      <div class="readiness-list">
+        <div class="readiness-item">
+          <div class="readiness-icon">✅</div>
+          <div class="readiness-label">Governance</div>
+          <div class="readiness-status"><span class="badge-status badge-approved">CFO Approved · Board Approved</span></div>
+        </div>
+        <div class="readiness-item">
+          <div class="readiness-icon">⏳</div>
+          <div class="readiness-label">Strategy &amp; Transition</div>
+          <div class="readiness-status"><span class="badge-status badge-in-progress">In Draft — 2°C scenario missing</span></div>
+        </div>
+        <div class="readiness-item">
+          <div class="readiness-icon">❌</div>
+          <div class="readiness-label">Risk Management</div>
+          <div class="readiness-status"><span class="badge-status badge-in-progress">In Progress — 20% complete</span></div>
+        </div>
+        <div class="readiness-item">
+          <div class="readiness-icon">⏳</div>
+          <div class="readiness-label">Emissions &amp; Metrics</div>
+          <div class="readiness-status"><span class="badge-status badge-in-review">In Review — 3 sites pending</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Report type cards -->
+    <div class="card-grid" style="grid-template-columns:1fr 1fr;gap:24px;">
+      <div class="card" style="border-top:4px solid var(--color-primary-700);">
+        <div style="font-size:40px;margin-bottom:16px;">📋</div>
+        <h2 style="font-size:var(--text-xl);font-weight:600;margin-bottom:8px;">Sustainability Report Builder</h2>
+        <p style="font-size:var(--text-sm);color:var(--color-neutral-600);margin-bottom:16px;">Generate the full AASB S2 Sustainability Report. Requires all 4 sections to be CFO-approved. Preview before exporting as PDF or DOCX.</p>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;font-size:var(--text-sm);">
+          <div style="display:flex;align-items:center;gap:8px;"><span>✅</span> Governance — approved</div>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="color:var(--color-warning-600);">⚠️</span> Strategy — in draft</div>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="color:var(--color-danger-600);">❌</span> Risk Management — incomplete</div>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="color:var(--color-warning-600);">⚠️</span> Emissions &amp; Metrics — in review</div>
+        </div>
+        <a href="sustainability-report.html" class="btn btn-primary w-full">Go to Report Builder</a>
+      </div>
+
+      <div class="card" style="border-top:4px solid var(--color-info-600);">
+        <div style="font-size:40px;margin-bottom:16px;">📦</div>
+        <h2 style="font-size:var(--text-xl);font-weight:600;margin-bottom:8px;">Assurance-Ready Data Pack</h2>
+        <p style="font-size:var(--text-sm);color:var(--color-neutral-600);margin-bottom:16px;">Compile evidence index, calculation workpapers, and methodology notes for the external auditor. Export as a structured ZIP file.</p>
+        <div style="font-size:var(--text-sm);margin-bottom:16px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><span>✅</span> 28 evidence documents indexed</div>
+          <div style="display:flex;align-items:center;gap:8px;"><span>✅</span> Calculation workpapers auto-generated</div>
+          <div style="display:flex;align-items:center;gap:8px;"><span>✅</span> Auditor Marcus Thompson has access</div>
+        </div>
+        <a href="assurance-pack.html" class="btn btn-primary w-full">Build Assurance Pack</a>
+      </div>
+
+      <div class="card" style="border-top:4px solid var(--color-success-600);">
+        <div style="font-size:40px;margin-bottom:16px;">📊</div>
+        <h2 style="font-size:var(--text-xl);font-weight:600;margin-bottom:8px;">Executive Summary</h2>
+        <p style="font-size:var(--text-sm);color:var(--color-neutral-600);margin-bottom:16px;">Generate a 1–2 page board-ready PDF summarising compliance status, key risks, and emissions performance. Available at any time during the reporting cycle.</p>
+        <div style="font-size:var(--text-sm);margin-bottom:16px;">
+          <div style="display:flex;align-items:center;gap:8px;"><span>✅</span> Available now (draft data)</div>
+          <div style="display:flex;align-items:center;gap:8px;"><span>✅</span> Board-ready PDF format</div>
+        </div>
+        <a href="executive-summary.html" class="btn btn-primary w-full">Generate Executive Summary</a>
+      </div>
+
+      <div class="card" style="border-top:4px solid var(--color-neutral-300);">
+        <div style="font-size:40px;margin-bottom:16px;">🗂️</div>
+        <h2 style="font-size:var(--text-xl);font-weight:600;margin-bottom:8px;">Report History</h2>
+        <p style="font-size:var(--text-sm);color:var(--color-neutral-600);margin-bottom:16px;">View all previously generated and finalised reports. Version archive with approval metadata and download links.</p>
+        <div style="font-size:var(--text-sm);margin-bottom:16px;">
+          <div style="display:flex;align-items:center;gap:8px;"><span>📄</span> FY2025 — Final · Lodged 12 Sep 2025</div>
+          <div style="display:flex;align-items:center;gap:8px;"><span>⏳</span> FY2026 — In progress</div>
+        </div>
+        <a href="history.html" class="btn btn-secondary w-full">View Report History</a>
+      </div>
+    </div>
+  </main>
+</div>
+<script>function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }</script>
+</body>
+</html>

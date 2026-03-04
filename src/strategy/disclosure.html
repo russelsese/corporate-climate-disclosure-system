@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strategy Disclosure — CCDS</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+    <a href="../dashboard.html" class="logo"><span class="logo-icon">🌿</span><span>CCDS</span></a>
+  </div>
+  <div class="topbar-center"><span class="period-badge">FY2026 Reporting Period</span></div>
+  <div class="topbar-right">
+    <a href="../notifications.html" class="notif-btn">🔔<span class="badge">3</span></a>
+    <div class="avatar">SM</div>
+  </div>
+</header>
+<div class="app-shell">
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-section"><a href="../dashboard.html" class="nav-item"><span class="nav-icon">📊</span><span class="nav-label">Dashboard</span></a></div>
+    <div class="nav-section">
+      <a href="../setup/company.html" class="nav-item"><span class="nav-icon">⚙️</span><span class="nav-label">Setup &amp; Eligibility</span></a>
+      <a href="../governance/index.html" class="nav-item"><span class="nav-icon">🛡️</span><span class="nav-label">Governance</span></a>
+      <a href="index.html" class="nav-item active"><span class="nav-icon">🎯</span><span class="nav-label">Strategy &amp; Transition</span></a>
+      <a href="../risk-management/index.html" class="nav-item"><span class="nav-icon">⚠️</span><span class="nav-label">Risk Management</span></a>
+      <a href="../emissions/overview.html" class="nav-item"><span class="nav-icon">🌱</span><span class="nav-label">Emissions &amp; Energy</span></a>
+      <a href="../metrics/targets.html" class="nav-item"><span class="nav-icon">📈</span><span class="nav-label">Metrics &amp; Targets</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="../reports/index.html" class="nav-item"><span class="nav-icon">📄</span><span class="nav-label">Reports</span></a>
+      <a href="../evidence.html" class="nav-item"><span class="nav-icon">📁</span><span class="nav-label">Evidence Library</span></a>
+      <a href="../audit-log.html" class="nav-item"><span class="nav-icon">📜</span><span class="nav-label">Audit Log</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="../notifications.html" class="nav-item"><span class="nav-icon">🔔</span><span class="nav-label">Notifications</span><span class="nav-badge">3</span></a>
+      <a href="../admin/index.html" class="nav-item"><span class="nav-icon">👥</span><span class="nav-label">Administration</span></a>
+    </div>
+  </nav>
+  <main class="main-content with-right-panel">
+    <div class="breadcrumb">
+      <a href="../dashboard.html">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="index.html">Strategy &amp; Transition</a><span class="breadcrumb-sep">›</span>
+      <span class="current">Strategy Disclosure</span>
+    </div>
+    <div class="tab-nav">
+      <a href="risks.html" class="tab-btn">Risks &amp; Opportunities</a>
+      <a href="scenarios.html" class="tab-btn">Scenario Analysis</a>
+      <a href="transition-plan.html" class="tab-btn">Transition Plan</a>
+      <a href="disclosure.html" class="tab-btn active">Strategy Disclosure</a>
+    </div>
+    <div class="page-header">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+        <div>
+          <h1 class="page-title">Strategy Disclosure — FY2026</h1>
+          <p class="page-subtitle">AASB S2 §10–§22 · Narrative disclosure in progress</p>
+        </div>
+        <span class="badge-status badge-in-progress">In Progress</span>
+      </div>
+    </div>
+
+    <div class="alert warning" style="margin-bottom:24px;">
+      <span>⚠️</span>
+      <div><strong>Incomplete prerequisite:</strong> 2°C scenario analysis (§14) has not been started. Complete scenario analysis before submitting this disclosure for review.</div>
+    </div>
+
+    <!-- Approval chain -->
+    <div class="approval-chain" style="margin-bottom:24px;">
+      <div class="approval-step active">
+        <div class="approval-step-num">1</div>
+        <div class="approval-step-info">
+          <div class="approval-step-name">1. Preparation — Sarah Mitchell (ESG Manager)</div>
+          <div class="approval-step-meta">In progress — 2°C scenario required to complete</div>
+        </div>
+        <span class="badge-status badge-in-progress">In Progress</span>
+      </div>
+      <div class="approval-step">
+        <div class="approval-step-num">2</div>
+        <div class="approval-step-info">
+          <div class="approval-step-name">2. CFO Review — Alex Chen</div>
+          <div class="approval-step-meta">Not yet submitted</div>
+        </div>
+        <span class="badge-status badge-not-started">Pending</span>
+      </div>
+    </div>
+
+    <!-- AASB Checklist -->
+    <div class="card" style="margin-bottom:24px;">
+      <div class="card-header">
+        <span class="card-title" style="font-size:var(--text-base);">AASB S2 Requirement Checklist</span>
+        <span class="badge badge-amber">6 / 13 complete</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:var(--text-sm);">
+        <div style="display:flex;align-items:center;gap:8px;padding:6px;">✅ §10 — Business model &amp; value chain</div>
+        <div style="display:flex;align-items:center;gap:8px;padding:6px;">✅ §11 — Risks and opportunities identified</div>
+        <div style="display:flex;align-items:center;gap:8px;padding:6px;">✅ §12 — Financial effects of climate risks</div>
+        <div style="display:flex;align-items:center;gap:8px;padding:6px;">✅ §13 — Scenario analysis (1.5°C)</div>
+        <div style="display:flex;align-items:center;gap:8px;padding:6px;color:var(--color-danger-600);">❌ §14 — Scenario analysis (>2°C) — Missing</div>
+        <div style="display:flex;align-items:center;gap:8px;padding:6px;">✅ §15 — Climate Transition Plan</div>
+        <div style="display:flex;align-items:center;gap:8px;padding:6px;">✅ §16 — CTP annual update</div>
+        <div style="display:flex;align-items:center;gap:8px;padding:6px;color:var(--color-warning-600);">⏳ §17 — Resilience assessment</div>
+        <div style="display:flex;align-items:center;gap:8px;padding:6px;color:var(--color-warning-600);">⏳ §18 — Anticipated financial effects</div>
+        <div style="display:flex;align-items:center;gap:8px;padding:6px;color:var(--color-warning-600);">⏳ §19 — Climate opportunities</div>
+        <div style="display:flex;align-items:center;gap:8px;padding:6px;color:var(--color-neutral-400);">○ §20 — Capital deployment planned</div>
+        <div style="display:flex;align-items:center;gap:8px;padding:6px;color:var(--color-neutral-400);">○ §21 — Assumptions and uncertainties</div>
+        <div style="display:flex;align-items:center;gap:8px;padding:6px;color:var(--color-neutral-400);">○ §22 — Time horizons used</div>
+      </div>
+    </div>
+
+    <!-- Narrative editor -->
+    <div class="disclosure-pane">
+      <div class="card">
+        <div style="font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--color-neutral-600);margin-bottom:16px;">DISCLOSURE NARRATIVE</div>
+        <textarea class="form-textarea" style="min-height:400px;font-size:var(--text-sm);line-height:1.8;">§10 – Business Model and Value Chain
+
+AusMetal Holdings operates an integrated manufacturing and distribution business across Australia. Climate-related risks and opportunities affect our operations primarily through energy costs (Scope 1 & 2 emissions), supply chain disruptions (Scope 3), and regulatory compliance costs.
+
+Our value chain includes raw material sourcing (primarily steel inputs), manufacturing across 8 facilities, and distribution through our logistics network. Climate risks span across all segments, with physical risks most acute at our Dandenong Plant (flood risk — long-term) and transition risks most material for fuel and energy costs (short-term, carbon price).
+
+§11 – Climate Risks and Opportunities
+
+We have identified 8 risks and 4 opportunities through our climate risk assessment process (see Risk Register). The most financially material risk identified is the carbon price increase on fuel and energy (R01), estimated at -$2.4M annual revenue impact at a $50/t carbon price. The largest opportunity is renewable energy cost savings (O01), estimated at $800K/year by FY2028.
+
+§13 – Scenario Analysis (1.5°C)
+
+We conducted a 1.5°C aligned scenario analysis using the IEA Net Zero Emissions by 2050 (NZE) scenario. Under this scenario, our manufacturing operations remain viable through the transition period, provided we execute on our CTP milestones...
+
+[§14 — 2°C scenario analysis — NOT YET COMPLETE]
+
+§15 – Climate Transition Plan
+
+See the Climate Transition Plan (CTP v2) which details our pathway to net zero by 2045, including interim milestones, capital allocation, and action timelines. The CTP was approved by the Board on 5 December 2025.</textarea>
+
+        <div style="display:flex;gap:12px;margin-top:16px;">
+          <button class="btn btn-primary" onclick="alert('Draft saved.')">💾 Save Draft</button>
+          <button class="btn btn-secondary" disabled title="Complete 2°C scenario analysis first" style="opacity:.5;cursor:not-allowed;">Submit for CFO Review</button>
+          <a href="scenarios.html" class="btn btn-ghost btn-sm" style="margin-left:auto;">Complete 2°C scenario →</a>
+        </div>
+      </div>
+
+      <div class="disclosure-references">
+        <div style="font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--color-neutral-600);margin-bottom:12px;">AASB S2 REFERENCE</div>
+        <div class="aasb-ref-item">
+          <div class="aasb-ref-code">§10-§12 — Strategy core</div>
+          <div class="aasb-ref-text">Business model, value chain, risks and opportunities identified.</div>
+          <div class="aasb-mandatory">✅ Mandatory · Covered</div>
+        </div>
+        <div class="aasb-ref-item">
+          <div class="aasb-ref-code">§13-§14 — Scenarios</div>
+          <div class="aasb-ref-text">At least two climate scenarios: one well-below 2°C and one higher warming.</div>
+          <div style="font-size:var(--text-xs);color:var(--color-danger-600);font-weight:500;">❌ §14 incomplete</div>
+        </div>
+        <div class="aasb-ref-item">
+          <div class="aasb-ref-code">§15-§16 — Transition plan</div>
+          <div class="aasb-ref-text">Transition plan current period + annual update.</div>
+          <div class="aasb-mandatory">✅ Mandatory · Covered</div>
+        </div>
+        <div style="margin-top:12px;">
+          <div class="alert warning" style="margin-bottom:0;font-size:var(--text-xs);">
+            <span>⚠️</span><span>Liability protection applies to forward-looking statements (§14-§19) through FY2027.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <aside class="right-panel">
+    <h3>AASB S2 GUIDANCE</h3>
+    <div class="aasb-ref-item">
+      <div class="aasb-ref-code">§14 — Scenario analysis</div>
+      <div class="aasb-ref-text" style="font-style:italic;">"An entity shall use climate-related scenario analysis to assess the entity's climate-related risks and opportunities... using at least two climate scenarios."</div>
+    </div>
+    <div class="aasb-ref-item">
+      <div class="aasb-mandatory" style="color:var(--color-danger-600);">❌ Required — missing 2°C scenario</div>
+    </div>
+    <div style="margin-top:16px;">
+      <a href="scenarios.html" class="btn btn-primary btn-sm w-full">Go to Scenario Analysis →</a>
+    </div>
+  </aside>
+</div>
+<script>
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }
+</script>
+</body>
+</html>

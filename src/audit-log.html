@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audit Log — CCDS</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .log-type-badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+    .log-type-approval { background: var(--color-success-100); color: var(--color-success-700); }
+    .log-type-edit { background: var(--color-info-100); color: var(--color-info-600); }
+    .log-type-access { background: var(--color-neutral-100); color: var(--color-neutral-600); }
+    .log-type-submit { background: #EDE9FE; color: #5B21B6; }
+    .log-type-export { background: #FEF3C7; color: #92400E; }
+    .log-type-alert { background: var(--color-danger-100); color: var(--color-danger-600); }
+    .log-row td { font-size: var(--text-sm); vertical-align: top; }
+    .log-row:hover { background: var(--color-neutral-50); }
+    .log-detail { font-size: var(--text-xs); color: var(--color-neutral-500); margin-top: 2px; }
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+    <a href="dashboard.html" class="logo"><span class="logo-icon">🌿</span><span>CCDS</span></a>
+  </div>
+  <div class="topbar-center"><span class="period-badge">FY2026 Reporting Period</span></div>
+  <div class="topbar-right">
+    <a href="notifications.html" class="notif-btn">🔔<span class="badge">3</span></a>
+    <div class="avatar">SM</div>
+  </div>
+</header>
+<div class="app-shell">
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-section"><a href="dashboard.html" class="nav-item"><span class="nav-icon">📊</span><span class="nav-label">Dashboard</span></a></div>
+    <div class="nav-section">
+      <a href="setup/company.html" class="nav-item"><span class="nav-icon">⚙️</span><span class="nav-label">Setup &amp; Eligibility</span></a>
+      <a href="governance/index.html" class="nav-item"><span class="nav-icon">🛡️</span><span class="nav-label">Governance</span></a>
+      <a href="strategy/index.html" class="nav-item"><span class="nav-icon">🎯</span><span class="nav-label">Strategy &amp; Transition</span></a>
+      <a href="risk-management/index.html" class="nav-item"><span class="nav-icon">⚠️</span><span class="nav-label">Risk Management</span></a>
+      <a href="emissions/overview.html" class="nav-item"><span class="nav-icon">🌱</span><span class="nav-label">Emissions &amp; Energy</span></a>
+      <a href="metrics/targets.html" class="nav-item"><span class="nav-icon">📈</span><span class="nav-label">Metrics &amp; Targets</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="reports/index.html" class="nav-item"><span class="nav-icon">📄</span><span class="nav-label">Reports</span></a>
+      <a href="evidence.html" class="nav-item"><span class="nav-icon">📁</span><span class="nav-label">Evidence Library</span></a>
+      <a href="audit-log.html" class="nav-item active"><span class="nav-icon">📜</span><span class="nav-label">Audit Log</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="notifications.html" class="nav-item"><span class="nav-icon">🔔</span><span class="nav-label">Notifications</span><span class="nav-badge">3</span></a>
+      <a href="admin/index.html" class="nav-item"><span class="nav-icon">👥</span><span class="nav-label">Administration</span></a>
+    </div>
+  </nav>
+  <main class="main-content">
+    <div class="page-header" style="display:flex;align-items:flex-start;justify-content:space-between;">
+      <div>
+        <h1 class="page-title">Audit Log</h1>
+        <p class="page-subtitle">Immutable record of all actions, approvals, and data changes. Cannot be edited or deleted.</p>
+      </div>
+      <button class="btn btn-secondary" onclick="alert('Exporting audit log as CSV...')">⬇ Export CSV</button>
+    </div>
+
+    <!-- Stats -->
+    <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr));margin-bottom:24px;">
+      <div class="stat-card">
+        <div class="stat-label">Total events</div>
+        <div class="stat-value">284</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">This week</div>
+        <div class="stat-value">23</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Approvals</div>
+        <div class="stat-value" style="color:var(--color-success-600);">12</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Auditor access events</div>
+        <div class="stat-value">8</div>
+      </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="card">
+      <div class="table-toolbar">
+        <div class="table-filters">
+          <select class="table-filter-select" onchange="filterLog()">
+            <option value="">All event types</option>
+            <option value="approval">Approval</option>
+            <option value="edit">Edit / Save</option>
+            <option value="submit">Submit</option>
+            <option value="access">Access</option>
+            <option value="export">Export</option>
+            <option value="alert">Alert / Flag</option>
+          </select>
+          <select class="table-filter-select" onchange="filterLog()">
+            <option>All users</option>
+            <option>Sarah Mitchell</option>
+            <option>Alex Chen</option>
+            <option>David Park</option>
+            <option>Marcus Thompson</option>
+            <option>Jennifer Walsh</option>
+          </select>
+          <select class="table-filter-select" onchange="filterLog()">
+            <option>All sections</option>
+            <option>Governance</option>
+            <option>Strategy</option>
+            <option>Risk Management</option>
+            <option>Emissions</option>
+            <option>Metrics</option>
+            <option>Reports</option>
+            <option>Administration</option>
+          </select>
+          <select class="table-filter-select">
+            <option>Last 30 days</option>
+            <option>Last 7 days</option>
+            <option>FY2026 (all)</option>
+            <option>FY2025</option>
+          </select>
+        </div>
+        <div class="table-search"><span>🔍</span><input type="text" placeholder="Search events…"></div>
+      </div>
+
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Timestamp</th>
+              <th>User</th>
+              <th>Event type</th>
+              <th>Section / Entity</th>
+              <th>Detail</th>
+              <th>IP address</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="log-row">
+              <td>4 Mar 2026 09:14</td>
+              <td>Sarah Mitchell</td>
+              <td><span class="log-type-badge log-type-edit">Edit</span></td>
+              <td>Reports</td>
+              <td>Generated draft sustainability report v3<div class="log-detail">File: sustainability-report-fy2026-v3.pdf</div></td>
+              <td style="font-size:var(--text-xs);color:var(--color-neutral-500);">203.15.xx.xx</td>
+            </tr>
+            <tr class="log-row">
+              <td>3 Mar 2026 16:42</td>
+              <td>Marcus Thompson</td>
+              <td><span class="log-type-badge log-type-access">Access</span></td>
+              <td>Emissions</td>
+              <td>Viewed Dandenong Plant site entry data<div class="log-detail">Auditor portal access · Read-only</div></td>
+              <td style="font-size:var(--text-xs);color:var(--color-neutral-500);">119.28.xx.xx</td>
+            </tr>
+            <tr class="log-row">
+              <td>3 Mar 2026 16:30</td>
+              <td>Marcus Thompson</td>
+              <td><span class="log-type-badge log-type-alert">Query raised</span></td>
+              <td>Emissions – Scope 1</td>
+              <td>Raised audit query Q01: Diesel consumption at Dandenong<div class="log-detail">Assigned to: Sarah Mitchell · Status: Open</div></td>
+              <td style="font-size:var(--text-xs);color:var(--color-neutral-500);">119.28.xx.xx</td>
+            </tr>
+            <tr class="log-row">
+              <td>3 Mar 2026 09:00</td>
+              <td>System</td>
+              <td><span class="log-type-badge log-type-access">Access granted</span></td>
+              <td>Administration</td>
+              <td>Auditor portal access activated for Marcus Thompson<div class="log-detail">Authorised by: Sarah Mitchell · Expires: 31 May 2026</div></td>
+              <td style="font-size:var(--text-xs);color:var(--color-neutral-500);">—</td>
+            </tr>
+            <tr class="log-row">
+              <td>14 Feb 2026 11:20</td>
+              <td>Jennifer Walsh</td>
+              <td><span class="log-type-badge log-type-approval">Board Approval</span></td>
+              <td>Governance</td>
+              <td>Board approved Governance section<div class="log-detail">Board resolution recorded · All directors present</div></td>
+              <td style="font-size:var(--text-xs);color:var(--color-neutral-500);">210.10.xx.xx</td>
+            </tr>
+            <tr class="log-row">
+              <td>13 Feb 2026 15:04</td>
+              <td>Alex Chen</td>
+              <td><span class="log-type-badge log-type-approval">CFO Approval</span></td>
+              <td>Governance</td>
+              <td>CFO approved Governance disclosure (PIN confirmed)<div class="log-detail">Approval hash: a3f9c…d21b</div></td>
+              <td style="font-size:var(--text-xs);color:var(--color-neutral-500);">203.15.xx.xx</td>
+            </tr>
+            <tr class="log-row">
+              <td>13 Feb 2026 09:30</td>
+              <td>Sarah Mitchell</td>
+              <td><span class="log-type-badge log-type-submit">Submit for review</span></td>
+              <td>Governance</td>
+              <td>Submitted Governance section for CFO review<div class="log-detail">Notified: Alex Chen</div></td>
+              <td style="font-size:var(--text-xs);color:var(--color-neutral-500);">203.15.xx.xx</td>
+            </tr>
+            <tr class="log-row">
+              <td>12 Feb 2026 17:15</td>
+              <td>Sarah Mitchell</td>
+              <td><span class="log-type-badge log-type-edit">Edit</span></td>
+              <td>Governance</td>
+              <td>Updated board oversight narrative (§6)<div class="log-detail">Character change: +342 chars · Previous version saved</div></td>
+              <td style="font-size:var(--text-xs);color:var(--color-neutral-500);">203.15.xx.xx</td>
+            </tr>
+            <tr class="log-row">
+              <td>18 Feb 2026 14:08</td>
+              <td>James Wong</td>
+              <td><span class="log-type-badge log-type-submit">Submit</span></td>
+              <td>Emissions – Footscray Office</td>
+              <td>Submitted site emissions data for FY2026<div class="log-detail">Scope 1: 113 tCO₂e · Scope 2: 210 tCO₂e</div></td>
+              <td style="font-size:var(--text-xs);color:var(--color-neutral-500);">120.30.xx.xx</td>
+            </tr>
+            <tr class="log-row">
+              <td>15 Feb 2026 08:00</td>
+              <td>System</td>
+              <td><span class="log-type-badge log-type-alert">Overdue alert</span></td>
+              <td>Emissions – Dandenong Plant</td>
+              <td>Site data submission overdue — Dandenong Plant<div class="log-detail">Due: 15 Feb 2026 · Assigned to: David Park · Reminder sent</div></td>
+              <td style="font-size:var(--text-xs);color:var(--color-neutral-500);">—</td>
+            </tr>
+            <tr class="log-row">
+              <td>20 Feb 2026 10:11</td>
+              <td>Sarah Mitchell</td>
+              <td><span class="log-type-badge log-type-export">Export</span></td>
+              <td>Reports</td>
+              <td>Built Assurance Pack v1<div class="log-detail">assurance-pack-fy2026-v1.zip · 24 documents · 18.4 MB</div></td>
+              <td style="font-size:var(--text-xs);color:var(--color-neutral-500);">203.15.xx.xx</td>
+            </tr>
+            <tr class="log-row">
+              <td>12 Aug 2024 10:30</td>
+              <td>Sarah Mitchell</td>
+              <td><span class="log-type-badge log-type-submit">Eligibility</span></td>
+              <td>Setup</td>
+              <td>Eligibility assessment completed — Group 1 entity<div class="log-detail">Revenue ✓ · Assets ✓ · Employees ✓ · NGER ✓</div></td>
+              <td style="font-size:var(--text-xs);color:var(--color-neutral-500);">203.15.xx.xx</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="padding:12px 16px;border-top:1px solid var(--color-neutral-200);display:flex;align-items:center;justify-content:space-between;font-size:var(--text-sm);">
+        <span style="color:var(--color-neutral-600);">Showing 12 of 284 events</span>
+        <div style="display:flex;gap:8px;">
+          <button class="btn btn-ghost btn-sm">← Previous</button>
+          <button class="btn btn-ghost btn-sm">Next →</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script>
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }
+function filterLog() { /* filtering would be implemented with real data */ }
+</script>
+</body>
+</html>

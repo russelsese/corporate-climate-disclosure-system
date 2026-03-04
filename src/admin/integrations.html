@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integrations — CCDS</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    .integration-card { display: flex; align-items: flex-start; gap: 16px; padding: 20px; border: 1px solid var(--color-neutral-200); border-radius: var(--border-radius-lg); margin-bottom: 12px; }
+    .integration-logo { width: 48px; height: 48px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 24px; background: var(--color-neutral-100); flex-shrink: 0; }
+    .integration-status { display: flex; align-items: center; gap: 6px; font-size: var(--text-xs); font-weight: 600; }
+    .integration-status.connected { color: var(--color-success-600); }
+    .integration-status.disconnected { color: var(--color-neutral-400); }
+    .integration-status.error { color: var(--color-danger-600); }
+    .api-key-row { display: flex; align-items: center; gap: 8px; background: var(--color-neutral-50); border: 1px solid var(--color-neutral-200); border-radius: var(--border-radius); padding: 8px 12px; font-family: monospace; font-size: var(--text-sm); }
+    .api-key-masked { flex: 1; color: var(--color-neutral-600); }
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+    <a href="../dashboard.html" class="logo"><span class="logo-icon">🌿</span><span>CCDS</span></a>
+  </div>
+  <div class="topbar-center"><span class="period-badge">FY2026 Reporting Period</span></div>
+  <div class="topbar-right">
+    <a href="../notifications.html" class="notif-btn">🔔<span class="badge">3</span></a>
+    <div class="avatar">SM</div>
+  </div>
+</header>
+<div class="app-shell">
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-section"><a href="../dashboard.html" class="nav-item"><span class="nav-icon">📊</span><span class="nav-label">Dashboard</span></a></div>
+    <div class="nav-section">
+      <a href="../setup/company.html" class="nav-item"><span class="nav-icon">⚙️</span><span class="nav-label">Setup &amp; Eligibility</span></a>
+      <a href="../governance/index.html" class="nav-item"><span class="nav-icon">🛡️</span><span class="nav-label">Governance</span></a>
+      <a href="../strategy/index.html" class="nav-item"><span class="nav-icon">🎯</span><span class="nav-label">Strategy &amp; Transition</span></a>
+      <a href="../risk-management/index.html" class="nav-item"><span class="nav-icon">⚠️</span><span class="nav-label">Risk Management</span></a>
+      <a href="../emissions/overview.html" class="nav-item"><span class="nav-icon">🌱</span><span class="nav-label">Emissions &amp; Energy</span></a>
+      <a href="../metrics/targets.html" class="nav-item"><span class="nav-icon">📈</span><span class="nav-label">Metrics &amp; Targets</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="../reports/index.html" class="nav-item"><span class="nav-icon">📄</span><span class="nav-label">Reports</span></a>
+      <a href="../evidence.html" class="nav-item"><span class="nav-icon">📁</span><span class="nav-label">Evidence Library</span></a>
+      <a href="../audit-log.html" class="nav-item"><span class="nav-icon">📜</span><span class="nav-label">Audit Log</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="../notifications.html" class="nav-item"><span class="nav-icon">🔔</span><span class="nav-label">Notifications</span><span class="nav-badge">3</span></a>
+      <a href="index.html" class="nav-item active"><span class="nav-icon">👥</span><span class="nav-label">Administration</span></a>
+    </div>
+  </nav>
+  <main class="main-content">
+    <div class="breadcrumb">
+      <a href="../dashboard.html">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="index.html">Administration</a><span class="breadcrumb-sep">›</span>
+      <span class="current">Integrations</span>
+    </div>
+    <div class="tab-nav" style="margin-bottom:24px;">
+      <a href="index.html" class="tab-btn">Overview</a>
+      <a href="users.html" class="tab-btn">User Management</a>
+      <a href="integrations.html" class="tab-btn active">Integrations</a>
+      <a href="settings.html" class="tab-btn">Settings &amp; Billing</a>
+    </div>
+    <div class="page-header">
+      <h1 class="page-title">Integrations</h1>
+      <p class="page-subtitle">Connect CCDS to your ERP, utility data providers, identity provider, and reporting APIs.</p>
+    </div>
+
+    <!-- Active integrations -->
+    <div class="card" style="margin-bottom:24px;">
+      <div class="card-header"><span class="card-title">Active Integrations</span><span class="badge badge-green">2 connected</span></div>
+
+      <div class="integration-card">
+        <div class="integration-logo">🏢</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+            <div>
+              <strong>SAP S/4HANA ERP</strong>
+              <div class="integration-status connected" style="margin-top:2px;">● Connected · Last sync: 4 Mar 2026 06:00</div>
+            </div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn btn-ghost btn-sm" onclick="alert('Syncing data from SAP...')">↻ Sync now</button>
+              <button class="btn btn-ghost btn-sm" onclick="document.getElementById('sap-modal').style.display='flex'">Configure</button>
+            </div>
+          </div>
+          <div style="font-size:var(--text-sm);color:var(--color-neutral-600);margin-bottom:8px;">
+            Imports activity data (fuel, electricity) and financial data for emissions calculations. Auto-syncs daily at 6:00 AM AEST.
+          </div>
+          <div style="display:flex;gap:16px;font-size:var(--text-xs);color:var(--color-neutral-500);">
+            <span>📊 8 cost centres mapped</span>
+            <span>⚡ Fuel &amp; energy data</span>
+            <span>💰 Financial data (assets, revenue)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="integration-card">
+        <div class="integration-logo">🔐</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+            <div>
+              <strong>Microsoft Entra ID (SSO)</strong>
+              <div class="integration-status connected" style="margin-top:2px;">● Connected · SAML 2.0</div>
+            </div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn btn-ghost btn-sm" onclick="alert('Testing SSO connection...')">Test connection</button>
+              <button class="btn btn-ghost btn-sm">Configure</button>
+            </div>
+          </div>
+          <div style="font-size:var(--text-sm);color:var(--color-neutral-600);margin-bottom:8px;">
+            Single Sign-On for all @ausmetal.com.au users. MFA inherited from Entra ID policy.
+          </div>
+          <div style="display:flex;gap:16px;font-size:var(--text-xs);color:var(--color-neutral-500);">
+            <span>👥 6 users via SSO</span>
+            <span>🛡️ MFA enforced</span>
+            <span>📧 JIT provisioning enabled</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Available integrations -->
+    <div class="card" style="margin-bottom:24px;">
+      <div class="card-header"><span class="card-title">Available Integrations</span></div>
+
+      <div class="integration-card" style="opacity:.8;">
+        <div class="integration-logo">⚡</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+            <div>
+              <strong>Utility Data API (metering)</strong>
+              <div class="integration-status disconnected" style="margin-top:2px;">○ Not connected</div>
+            </div>
+            <button class="btn btn-secondary btn-sm" onclick="alert('Connect utility data provider...')">Connect</button>
+          </div>
+          <div style="font-size:var(--text-sm);color:var(--color-neutral-600);">
+            Connect directly to AusNet or Jemena smart meter APIs to auto-import interval electricity data. Eliminates manual bill entry.
+          </div>
+        </div>
+      </div>
+
+      <div class="integration-card" style="opacity:.8;">
+        <div class="integration-logo">📁</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+            <div>
+              <strong>SharePoint / OneDrive (Evidence)</strong>
+              <div class="integration-status disconnected" style="margin-top:2px;">○ Not connected</div>
+            </div>
+            <button class="btn btn-secondary btn-sm" onclick="alert('Connect SharePoint...')">Connect</button>
+          </div>
+          <div style="font-size:var(--text-sm);color:var(--color-neutral-600);">
+            Sync evidence documents directly from your SharePoint document library. Two-way sync with evidence library.
+          </div>
+        </div>
+      </div>
+
+      <div class="integration-card" style="opacity:.8;">
+        <div class="integration-logo">🏦</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+            <div>
+              <strong>ASIC Regulatory Portal</strong>
+              <div class="integration-status disconnected" style="margin-top:2px;">○ Not connected — Coming soon</div>
+            </div>
+            <button class="btn btn-ghost btn-sm" disabled>Coming soon</button>
+          </div>
+          <div style="font-size:var(--text-sm);color:var(--color-neutral-600);">
+            Direct lodgement to ASIC's sustainability reporting portal. Available Q3 2026.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- API Keys -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">API Access</span>
+        <button class="btn btn-secondary btn-sm" onclick="alert('Generating new API key...')">+ Generate key</button>
+      </div>
+      <p style="font-size:var(--text-sm);color:var(--color-neutral-600);margin-bottom:16px;">Use the CCDS API to push emissions data from your own systems or pull report data programmatically. Bearer token authentication.</p>
+
+      <div style="margin-bottom:12px;">
+        <div style="font-size:var(--text-sm);font-weight:600;margin-bottom:8px;">Production API key</div>
+        <div class="api-key-row">
+          <span class="api-key-masked">ccds_prod_sk_••••••••••••••••••••••••••••••••••••••</span>
+          <button class="btn btn-ghost btn-sm" onclick="alert('Key revealed. Keep this secret.')">Reveal</button>
+          <button class="btn btn-ghost btn-sm" onclick="alert('Key copied to clipboard.')">Copy</button>
+          <button class="btn btn-ghost btn-sm" onclick="alert('Are you sure? This will invalidate the current key.')">Rotate</button>
+        </div>
+        <div style="font-size:var(--text-xs);color:var(--color-neutral-500);margin-top:4px;">Created 1 Feb 2026 · Last used 4 Mar 2026 · <strong style="color:var(--color-success-600);">Active</strong></div>
+      </div>
+
+      <div>
+        <div style="font-size:var(--text-sm);font-weight:600;margin-bottom:8px;">Webhook endpoint</div>
+        <div class="api-key-row">
+          <span class="api-key-masked" style="font-family:monospace;font-size:12px;">https://api.ccds.com.au/webhooks/ausmetal-fy2026</span>
+          <button class="btn btn-ghost btn-sm" onclick="alert('Endpoint copied.')">Copy</button>
+        </div>
+        <div style="font-size:var(--text-xs);color:var(--color-neutral-500);margin-top:4px;">Receives event notifications (site submissions, approvals, alerts)</div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- SAP config modal -->
+<div id="sap-modal" class="modal-overlay" style="display:none;">
+  <div class="modal" style="max-width:560px;">
+    <div class="modal-header">
+      <h2 class="modal-title">Configure SAP S/4HANA Integration</h2>
+      <button class="modal-close" onclick="document.getElementById('sap-modal').style.display='none'">✕</button>
+    </div>
+    <div class="form-group">
+      <label class="form-label">SAP System URL</label>
+      <input class="form-input" type="text" value="https://sap.ausmetal.internal/api/v1">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Client ID</label>
+        <input class="form-input" type="text" value="CCDS_INTEGRATION_001">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Client Secret</label>
+        <input class="form-input" type="password" value="••••••••••••••••">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Sync schedule</label>
+      <select class="form-select">
+        <option selected>Daily at 6:00 AM AEST</option>
+        <option>Every 6 hours</option>
+        <option>Manual only</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Data types to import</label>
+      <label class="form-radio"><input type="checkbox" checked> Fuel consumption (GL codes: 61xxx)</label>
+      <label class="form-radio"><input type="checkbox" checked> Electricity (GL codes: 62xxx)</label>
+      <label class="form-radio"><input type="checkbox" checked> Financial data (revenue, assets)</label>
+      <label class="form-radio"><input type="checkbox"> Fleet mileage data</label>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="document.getElementById('sap-modal').style.display='none'">Cancel</button>
+      <button class="btn btn-secondary" onclick="alert('Testing connection to SAP...')">Test connection</button>
+      <button class="btn btn-primary" onclick="document.getElementById('sap-modal').style.display='none';alert('SAP integration settings saved.')">Save changes</button>
+    </div>
+  </div>
+</div>
+
+<script>function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }</script>
+</body>
+</html>

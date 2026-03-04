@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Executive Summary — CCDS</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    .exec-doc { max-width: 680px; margin: 0 auto; background: white; border: 1px solid var(--color-neutral-200); border-radius: var(--border-radius-lg); padding: 40px; font-family: Georgia, serif; line-height: 1.7; }
+    .exec-doc h1 { font-size: 20px; font-weight: 700; color: var(--color-primary-700); margin-bottom: 4px; font-family: Inter, sans-serif; }
+    .exec-doc h2 { font-size: 13px; font-weight: 700; color: var(--color-neutral-700); text-transform: uppercase; letter-spacing: .06em; margin: 24px 0 8px; font-family: Inter, sans-serif; border-top: 2px solid var(--color-primary-700); padding-top: 12px; }
+    .exec-doc p { font-size: 13px; color: var(--color-neutral-800); margin-bottom: 10px; }
+    .exec-doc .kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 12px 0; }
+    .exec-doc .kpi { text-align: center; padding: 12px; border: 1px solid var(--color-neutral-200); border-radius: 6px; background: var(--color-neutral-50); }
+    .exec-doc .kpi-val { font-size: 20px; font-weight: 700; color: var(--color-primary-700); font-family: Inter, sans-serif; }
+    .exec-doc .kpi-lbl { font-size: 10px; color: var(--color-neutral-500); font-family: Inter, sans-serif; text-transform: uppercase; letter-spacing: .04em; margin-top: 2px; }
+    .exec-doc .status-row { display: flex; justify-content: space-between; align-items: center; font-size: 12px; padding: 6px 0; border-bottom: 1px solid var(--color-neutral-100); font-family: Inter, sans-serif; }
+    .exec-doc .watermark { color: var(--color-warning-600); font-size: 10px; font-family: Inter, sans-serif; font-weight: 600; background: var(--color-warning-100); padding: 2px 8px; border-radius: 4px; display: inline-block; margin-bottom: 16px; }
+    .exec-doc .footer { border-top: 1px solid var(--color-neutral-200); margin-top: 24px; padding-top: 12px; font-size: 10px; color: var(--color-neutral-400); font-family: Inter, sans-serif; }
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+    <a href="../dashboard.html" class="logo"><span class="logo-icon">🌿</span><span>CCDS</span></a>
+  </div>
+  <div class="topbar-center"><span class="period-badge">FY2026 Reporting Period</span></div>
+  <div class="topbar-right">
+    <a href="../notifications.html" class="notif-btn">🔔<span class="badge">3</span></a>
+    <div class="avatar">SM</div>
+  </div>
+</header>
+<div class="app-shell">
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-section"><a href="../dashboard.html" class="nav-item"><span class="nav-icon">📊</span><span class="nav-label">Dashboard</span></a></div>
+    <div class="nav-section">
+      <a href="../setup/company.html" class="nav-item"><span class="nav-icon">⚙️</span><span class="nav-label">Setup &amp; Eligibility</span></a>
+      <a href="../governance/index.html" class="nav-item"><span class="nav-icon">🛡️</span><span class="nav-label">Governance</span></a>
+      <a href="../strategy/index.html" class="nav-item"><span class="nav-icon">🎯</span><span class="nav-label">Strategy &amp; Transition</span></a>
+      <a href="../risk-management/index.html" class="nav-item"><span class="nav-icon">⚠️</span><span class="nav-label">Risk Management</span></a>
+      <a href="../emissions/overview.html" class="nav-item"><span class="nav-icon">🌱</span><span class="nav-label">Emissions &amp; Energy</span></a>
+      <a href="../metrics/targets.html" class="nav-item"><span class="nav-icon">📈</span><span class="nav-label">Metrics &amp; Targets</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="index.html" class="nav-item active"><span class="nav-icon">📄</span><span class="nav-label">Reports</span></a>
+      <a href="../evidence.html" class="nav-item"><span class="nav-icon">📁</span><span class="nav-label">Evidence Library</span></a>
+      <a href="../audit-log.html" class="nav-item"><span class="nav-icon">📜</span><span class="nav-label">Audit Log</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="../notifications.html" class="nav-item"><span class="nav-icon">🔔</span><span class="nav-label">Notifications</span><span class="nav-badge">3</span></a>
+      <a href="../admin/index.html" class="nav-item"><span class="nav-icon">👥</span><span class="nav-label">Administration</span></a>
+    </div>
+  </nav>
+  <main class="main-content">
+    <div class="breadcrumb">
+      <a href="../dashboard.html">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="index.html">Reports</a><span class="breadcrumb-sep">›</span>
+      <span class="current">Executive Summary</span>
+    </div>
+    <div class="page-header" style="display:flex;align-items:flex-start;justify-content:space-between;">
+      <div>
+        <h1 class="page-title">Executive Summary</h1>
+        <p class="page-subtitle">Board-ready 1–2 page summary of compliance status, key risks, and emissions performance. Available at any time.</p>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button class="btn btn-secondary" onclick="window.print()">🖨 Print</button>
+        <button class="btn btn-primary" onclick="alert('Generating PDF...')">⬇ Download PDF</button>
+      </div>
+    </div>
+
+    <div class="alert" style="background:var(--color-warning-100);border-color:var(--color-warning-600);color:var(--color-warning-700);margin-bottom:24px;">
+      <span>⚠️</span><span>This summary uses <strong>draft data</strong> — 3 sites pending and 2 sections not yet CFO-approved. Data will be updated automatically as sections are completed.</span>
+    </div>
+
+    <!-- Document preview -->
+    <div class="exec-doc">
+      <div class="watermark">DRAFT — Based on in-progress data · Generated 4 Mar 2026</div>
+      <h1>AusMetal Holdings Pty Ltd</h1>
+      <div style="font-size:13px;color:var(--color-neutral-500);font-family:Inter,sans-serif;margin-bottom:24px;">AASB S2 Climate Disclosure — Executive Summary · FY2026 · Prepared for Board</div>
+
+      <h2>Compliance Status</h2>
+      <div class="status-row"><span>Reporting group</span><span><strong>Group 1</strong> — mandatory from 1 Jan 2025</span></div>
+      <div class="status-row"><span>ASIC lodgement deadline</span><span><strong>30 Sep 2026</strong></span></div>
+      <div class="status-row"><span>Governance</span><span><span class="badge-status badge-approved" style="font-family:Inter;">CFO &amp; Board Approved ✅</span></span></div>
+      <div class="status-row"><span>Strategy &amp; Transition</span><span><span class="badge-status badge-in-progress" style="font-family:Inter;">In Draft — 2°C scenario missing ⚠️</span></span></div>
+      <div class="status-row"><span>Risk Management</span><span><span class="badge-status badge-in-progress" style="font-family:Inter;">In Progress — 20% complete ❌</span></span></div>
+      <div class="status-row"><span>Emissions &amp; Metrics</span><span><span class="badge-status badge-in-review" style="font-family:Inter;">In Review — 3 sites pending ⚠️</span></span></div>
+
+      <h2>Emissions Performance (FY2026 YTD — Draft)</h2>
+      <div class="kpi-row">
+        <div class="kpi">
+          <div class="kpi-val">1,240*</div>
+          <div class="kpi-lbl">Scope 1 tCO₂e</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-val">3,890*</div>
+          <div class="kpi-lbl">Scope 2 tCO₂e</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-val">5,130*</div>
+          <div class="kpi-lbl">Total (S1+S2)</div>
+        </div>
+      </div>
+      <p>* Partial — 5 of 8 sites submitted. Final figures pending Dandenong Plant (overdue), Sydney HQ, and Townsville Depot data. Figures will be updated upon submission.</p>
+      <div class="status-row"><span>vs FY2025 baseline (5 sites)</span><span style="color:var(--color-success-600);font-weight:600;">↓ 8.3% (on track)</span></div>
+      <div class="status-row"><span>Net zero target (2045)</span><span style="color:var(--color-success-600);font-weight:600;">On track — 37% below 2019 baseline</span></div>
+      <div class="status-row"><span>Renewable energy (FY2026)</span><span style="color:var(--color-warning-600);font-weight:600;">8% — below 15% FY2026 interim target ⚠️</span></div>
+
+      <h2>Key Climate Risks (FY2026)</h2>
+      <p><strong>Physical — Extreme heat events:</strong> High likelihood, high impact on Dandenong Plant operations. Adaptation measures under review.</p>
+      <p><strong>Transition — Carbon pricing:</strong> Potential exposure ~$2.1M at $75/tCO₂e under scenario modelling. Mitigation: renewable PPA and electrification programme.</p>
+      <p><strong>Regulatory:</strong> Full Scope 3 disclosure required from FY2027. Supply chain engagement programme commencing Q3 FY2026.</p>
+
+      <h2>Key Actions Required</h2>
+      <p>1. <strong>Dandenong Plant</strong> — site data submission overdue since 15 Feb 2026. Site manager David Park to submit urgently.</p>
+      <p>2. <strong>2°C scenario analysis</strong> — required before Strategy section can proceed to CFO approval. ESG team to complete by 28 Mar 2026.</p>
+      <p>3. <strong>Risk Management</strong> — section 20% complete. Target: 100% by 30 Apr 2026 to allow board approval by deadline.</p>
+      <p>4. <strong>Auditor query Q01</strong> — diesel consumption at Dandenong requires written response to Marcus Thompson (BDO).</p>
+
+      <div class="footer">
+        Generated by CCDS on 4 Mar 2026 · Draft data — not for external release · AusMetal Holdings Pty Ltd · AASB S2 Compliance Platform<br>
+        This summary uses draft and partial data. Final figures will differ. Under AASB S2 §6–§41 and modified liability regime (Corporations Act s.1707).
+      </div>
+    </div>
+  </main>
+</div>
+<script>function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }</script>
+</body>
+</html>
