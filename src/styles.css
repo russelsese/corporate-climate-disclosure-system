@@ -5,6 +5,7 @@
 
 /* ======================== FONTS ======================== */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/remixicon@3.7.0/fonts/remixicon.css');
 
 /* ======================== CSS VARIABLES ======================== */
 :root {
@@ -70,15 +71,15 @@
   --shadow-md: 0 4px 16px rgba(0,0,0,0.10), 0 2px 6px rgba(0,0,0,0.06);
   --shadow-lg: 0 10px 32px rgba(0,0,0,0.14), 0 4px 12px rgba(0,0,0,0.08);
 
-  /* Sidebar (dark) */
-  --sidebar-bg: #1A1F2E;
-  --sidebar-text: #94A3B8;
-  --sidebar-text-hover: #E2E8F0;
-  --sidebar-text-active: #FFFFFF;
-  --sidebar-hover-bg: rgba(255,255,255,0.06);
-  --sidebar-active-bg: rgba(46,125,82,0.25);
-  --sidebar-active-text: #6EE7B7;
-  --sidebar-divider: rgba(255,255,255,0.08);
+  /* Sidebar */
+  --sidebar-bg: #FFFFFF;
+  --sidebar-text: #6B7280;
+  --sidebar-text-hover: #111827;
+  --sidebar-text-active: var(--color-primary-700);
+  --sidebar-hover-bg: #F3F4F6;
+  --sidebar-active-bg: var(--color-primary-100);
+  --sidebar-active-text: var(--color-primary-700);
+  --sidebar-divider: var(--color-neutral-200);
 }
 
 /* ======================== RESET & BASE ======================== */
@@ -138,7 +139,7 @@ input, select, textarea, button { font-family: inherit; }
   text-decoration: none;
 }
 .logo:hover { text-decoration: none; }
-.logo-icon { font-size: 22px; }
+.logo-icon { font-size: 20px; line-height: 1; }
 .logo-subtitle { font-size: var(--text-xs); color: var(--color-neutral-600); margin-top: -2px; }
 
 .period-badge {
@@ -196,7 +197,7 @@ input, select, textarea, button { font-family: inherit; }
 .sidebar {
   width: var(--sidebar-width);
   background: var(--sidebar-bg);
-  border-right: none;
+  border-right: 1px solid var(--color-neutral-200);
   position: fixed;
   top: var(--topbar-height);
   left: 0;
@@ -207,7 +208,6 @@ input, select, textarea, button { font-family: inherit; }
   flex-direction: column;
   padding: var(--space-4) 0;
   transition: width 200ms ease-in-out;
-  box-shadow: 2px 0 12px rgba(0,0,0,0.15);
 }
 
 .nav-section {
@@ -234,8 +234,8 @@ input, select, textarea, button { font-family: inherit; }
 
 .nav-item:hover { background: var(--sidebar-hover-bg); color: var(--sidebar-text-hover); text-decoration: none; }
 .nav-item.active { background: var(--sidebar-active-bg); color: var(--sidebar-active-text); }
-.nav-item .nav-icon { font-size: 15px; flex-shrink: 0; opacity: 0.85; }
-.nav-item.active .nav-icon { opacity: 1; }
+.nav-item .nav-icon { font-size: 16px; flex-shrink: 0; line-height: 1; width: 16px; text-align: center; }
+.nav-item.active .nav-icon { color: var(--sidebar-active-text); }
 .nav-item .nav-badge {
   margin-left: auto;
   background: var(--color-danger-600); color: white;
@@ -1083,11 +1083,11 @@ input, select, textarea, button { font-family: inherit; }
 .eligibility-result.positive { background: var(--color-success-100); border: 1px solid var(--color-success-600); }
 .eligibility-result.negative { background: var(--color-neutral-100); border: 1px solid var(--color-neutral-300); }
 
-/* Sidebar custom scrollbar (dark bg) */
+/* Sidebar scrollbar */
 .sidebar::-webkit-scrollbar { width: 4px; }
 .sidebar::-webkit-scrollbar-track { background: transparent; }
-.sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
-.sidebar::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.25); }
+.sidebar::-webkit-scrollbar-thumb { background: var(--color-neutral-300); border-radius: 2px; }
+.sidebar::-webkit-scrollbar-thumb:hover { background: var(--color-neutral-400); }
 
 /* ======================== MOBILE OVERRIDES ======================== */
 @media (max-width: 768px) {
