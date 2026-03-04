@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Management Responsibilities — CCDS</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    .add-role-form {
+      display: none;
+      margin-top: var(--space-4);
+      padding: var(--space-6);
+      background: var(--color-neutral-100);
+      border: 1px solid var(--color-neutral-200);
+      border-radius: var(--border-radius-lg);
+    }
+    .add-role-form.open { display: block; }
+  </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">&#9776;</button>
+    <a href="../dashboard.html" class="logo">
+      <span class="logo-icon">🌿</span>
+      <div>
+        <div>CCDS</div>
+        <div class="logo-subtitle">Climate Disclosure System</div>
+      </div>
+    </a>
+  </div>
+  <div class="topbar-center">
+    <span class="period-badge">FY 2025–26</span>
+  </div>
+  <div class="topbar-right">
+    <a href="../notifications.html" class="notif-btn" aria-label="Notifications">
+      &#128276;
+      <span class="badge">3</span>
+    </a>
+    <div class="avatar" title="Sarah Mitchell">SM</div>
+  </div>
+</header>
+
+<!-- APP SHELL -->
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-section">
+      <a href="../dashboard.html" class="nav-item">
+        <span class="nav-icon">&#9681;</span>
+        <span class="nav-label">Dashboard</span>
+      </a>
+      <a href="../setup/company.html" class="nav-item">
+        <span class="nav-icon">&#9881;</span>
+        <span class="nav-label">Setup</span>
+      </a>
+      <a href="index.html" class="nav-item active">
+        <span class="nav-icon">&#127963;</span>
+        <span class="nav-label">Governance</span>
+      </a>
+      <a href="../strategy/index.html" class="nav-item">
+        <span class="nav-icon">&#127919;</span>
+        <span class="nav-label">Strategy</span>
+      </a>
+      <a href="../risk-management/index.html" class="nav-item">
+        <span class="nav-icon">&#9888;</span>
+        <span class="nav-label">Risk Management</span>
+      </a>
+      <a href="../emissions/overview.html" class="nav-item">
+        <span class="nav-icon">&#127981;</span>
+        <span class="nav-label">Emissions</span>
+      </a>
+      <a href="../metrics/targets.html" class="nav-item">
+        <span class="nav-icon">&#128200;</span>
+        <span class="nav-label">Metrics</span>
+      </a>
+      <a href="../reports/index.html" class="nav-item">
+        <span class="nav-icon">&#128196;</span>
+        <span class="nav-label">Reports</span>
+      </a>
+    </div>
+    <div class="nav-section">
+      <a href="../evidence.html" class="nav-item">
+        <span class="nav-icon">&#128193;</span>
+        <span class="nav-label">Evidence</span>
+      </a>
+      <a href="../audit-log.html" class="nav-item">
+        <span class="nav-icon">&#128203;</span>
+        <span class="nav-label">Audit Log</span>
+      </a>
+      <a href="../notifications.html" class="nav-item">
+        <span class="nav-icon">&#128276;</span>
+        <span class="nav-label">Notifications</span>
+        <span class="nav-badge">3</span>
+      </a>
+      <a href="../admin/index.html" class="nav-item">
+        <span class="nav-icon">&#128100;</span>
+        <span class="nav-label">Admin</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content with-right-panel">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+      <a href="../dashboard.html">Dashboard</a>
+      <span class="breadcrumb-sep">/</span>
+      <a href="index.html">Governance</a>
+      <span class="breadcrumb-sep">/</span>
+      <span class="current">Management Responsibilities</span>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <h1 class="page-title">Management Responsibilities</h1>
+      <p class="page-subtitle">AASB S2 §7(b) — Management's role in overseeing climate-related risks and opportunities</p>
+    </div>
+
+    <!-- Sub-nav Tabs -->
+    <div class="tab-nav">
+      <a href="board.html" class="tab-btn" style="text-decoration:none;">Board Oversight</a>
+      <a href="management.html" class="tab-btn active" style="text-decoration:none;">Management Responsibilities</a>
+      <a href="remuneration.html" class="tab-btn" style="text-decoration:none;">Executive Remuneration</a>
+      <a href="disclosure.html" class="tab-btn" style="text-decoration:none;">Governance Disclosure</a>
+    </div>
+
+    <!-- Role Register -->
+    <div class="card" style="margin-bottom: var(--space-6);">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Management Role Register</div>
+          <div class="card-subtitle">Roles with climate-related responsibilities and reporting lines</div>
+        </div>
+        <div style="display: flex; gap: var(--space-3);">
+          <span class="badge-status badge-approved">Approved</span>
+          <button class="btn btn-primary btn-sm" onclick="toggleAddRoleForm()">+ Add role</button>
+        </div>
+      </div>
+
+      <!-- Add Role Form (hidden by default) -->
+      <div class="add-role-form" id="addRoleForm">
+        <h4 style="font-size: var(--text-sm); font-weight: 600; margin-bottom: var(--space-4);">New Management Role</h4>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="roleTitle">Role Title <span class="required">*</span></label>
+            <input type="text" id="roleTitle" class="form-input" placeholder="e.g. Chief Sustainability Officer">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reportingLine">Reporting Line <span class="required">*</span></label>
+            <input type="text" id="reportingLine" class="form-input" placeholder="e.g. Reports to CEO">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="climateResponsibilities">Climate Responsibilities <span class="required">*</span></label>
+          <textarea id="climateResponsibilities" class="form-textarea" rows="3" placeholder="Describe the specific climate-related responsibilities for this role..."></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="roleStatus">Status</label>
+            <select id="roleStatus" class="form-select">
+              <option>Active</option>
+              <option>Draft</option>
+              <option>Under Review</option>
+            </select>
+          </div>
+        </div>
+        <div style="display: flex; gap: var(--space-3);">
+          <button class="btn btn-primary btn-sm" onclick="saveRole()">Save Role</button>
+          <button class="btn btn-ghost btn-sm" onclick="toggleAddRoleForm()">Cancel</button>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="table-container" style="margin-top: var(--space-4);">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Role Title</th>
+              <th>Climate Responsibilities</th>
+              <th>Reporting Line</th>
+              <th>Status</th>
+              <th class="actions-col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div style="font-weight: 500;">CFO</div>
+                <div style="font-size: var(--text-xs); color: var(--color-neutral-400);">Alex Chen</div>
+              </td>
+              <td>Climate Financial Risk — oversight of climate-related financial exposures, scenario analysis sign-off, and AASB S2 disclosure accuracy</td>
+              <td>Reports to CEO; presents to BARC quarterly</td>
+              <td><span class="badge-status badge-approved">Active</span></td>
+              <td class="actions-col">
+                <button class="btn btn-ghost btn-sm">Edit</button>
+                <button class="btn btn-ghost btn-sm" style="color: var(--color-danger-600);">Remove</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="font-weight: 500;">Chief Sustainability Officer</div>
+                <div style="font-size: var(--text-xs); color: var(--color-neutral-400);">Jordan Lee</div>
+              </td>
+              <td>Full ESG programme — leads climate strategy development, emissions measurement, supplier engagement, and sustainability reporting</td>
+              <td>Reports to CEO; co-presents to BARC with CFO</td>
+              <td><span class="badge-status badge-approved">Active</span></td>
+              <td class="actions-col">
+                <button class="btn btn-ghost btn-sm">Edit</button>
+                <button class="btn btn-ghost btn-sm" style="color: var(--color-danger-600);">Remove</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="font-weight: 500;">Operations Director</div>
+                <div style="font-size: var(--text-xs); color: var(--color-neutral-400);">Maria Santos</div>
+              </td>
+              <td>Emissions reduction targets — responsible for Scope 1 and Scope 2 operational emissions reduction, energy efficiency initiatives, and fleet electrification</td>
+              <td>Reports to CEO; updates CSO monthly</td>
+              <td><span class="badge-status badge-approved">Active</span></td>
+              <td class="actions-col">
+                <button class="btn btn-ghost btn-sm">Edit</button>
+                <button class="btn btn-ghost btn-sm" style="color: var(--color-danger-600);">Remove</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="font-weight: 500;">Risk Manager</div>
+                <div style="font-size: var(--text-xs); color: var(--color-neutral-400);">David Park</div>
+              </td>
+              <td>Climate risk process — manages the enterprise climate risk register, coordinates scenario analysis, and reports physical and transition risks to BARC</td>
+              <td>Reports to CFO; presents to BARC annually</td>
+              <td><span class="badge-status badge-approved">Active</span></td>
+              <td class="actions-col">
+                <button class="btn btn-ghost btn-sm">Edit</button>
+                <button class="btn btn-ghost btn-sm" style="color: var(--color-danger-600);">Remove</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="font-weight: 500;">Company Secretary</div>
+                <div style="font-size: var(--text-xs); color: var(--color-neutral-400);">Sarah Mitchell</div>
+              </td>
+              <td>Compliance &amp; lodgement — coordinates AASB S2 disclosure process, manages board approval workflow, and lodges statutory climate reports with ASIC</td>
+              <td>Reports to Board Chair; liaises with CFO and legal counsel</td>
+              <td><span class="badge-status badge-approved">Active</span></td>
+              <td class="actions-col">
+                <button class="btn btn-ghost btn-sm">Edit</button>
+                <button class="btn btn-ghost btn-sm" style="color: var(--color-danger-600);">Remove</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Escalation Procedures -->
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Escalation Procedures</div>
+          <div class="card-subtitle">How climate-related issues are escalated to the board</div>
+        </div>
+        <button class="btn btn-secondary btn-sm" onclick="toggleEscalationEdit()">Edit</button>
+      </div>
+
+      <div id="escalationView">
+        <div style="font-size: var(--text-sm); color: var(--color-neutral-700); line-height: 1.7;">
+          <p style="margin-bottom: var(--space-3);">
+            Management escalates climate-related matters to the Board Audit &amp; Risk Committee (BARC) according to the following thresholds and procedures:
+          </p>
+          <ol style="list-style: decimal; padding-left: var(--space-6); display: flex; flex-direction: column; gap: var(--space-2);">
+            <li><strong>Immediate escalation (within 24 hours):</strong> Any climate-related event or development that could materially affect the company's financial position, reputation, or regulatory standing. The CFO and CSO jointly notify the BARC Chair.</li>
+            <li><strong>Quarterly escalation:</strong> All climate risk register updates, emissions performance against targets, and regulatory developments are presented at each BARC quarterly meeting. Responsibility: Risk Manager and CSO.</li>
+            <li><strong>Annual escalation:</strong> Full climate scenario analysis results, transition plan progress, and AASB S2 disclosure draft are presented for board approval. Responsibility: CFO with support from CSO and Company Secretary.</li>
+            <li><strong>Ad-hoc escalation:</strong> Material changes to climate policy, significant new physical risks identified, or failure to meet a disclosed target are escalated within 5 business days to the full Board.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div id="escalationEdit" style="display: none;">
+        <div class="form-group">
+          <label class="form-label">Escalation Procedures</label>
+          <textarea class="form-textarea" rows="10" style="min-height: 200px;">Management escalates climate-related matters to the Board Audit &amp; Risk Committee (BARC) according to the following thresholds and procedures:
+
+1. Immediate escalation (within 24 hours): Any climate-related event or development that could materially affect the company's financial position, reputation, or regulatory standing. The CFO and CSO jointly notify the BARC Chair.
+
+2. Quarterly escalation: All climate risk register updates, emissions performance against targets, and regulatory developments are presented at each BARC quarterly meeting. Responsibility: Risk Manager and CSO.
+
+3. Annual escalation: Full climate scenario analysis results, transition plan progress, and AASB S2 disclosure draft are presented for board approval. Responsibility: CFO with support from CSO and Company Secretary.
+
+4. Ad-hoc escalation: Material changes to climate policy, significant new physical risks identified, or failure to meet a disclosed target are escalated within 5 business days to the full Board.</textarea>
+        </div>
+        <div style="display: flex; gap: var(--space-3);">
+          <button class="btn btn-primary btn-sm" onclick="saveEscalation()">Save Changes</button>
+          <button class="btn btn-ghost btn-sm" onclick="toggleEscalationEdit()">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- RIGHT PANEL -->
+  <aside class="right-panel">
+    <h3>AASB S2 §7(b) Guidance</h3>
+
+    <div class="aasb-ref-item">
+      <div class="aasb-ref-code">§7(b) — Management Role</div>
+      <div class="aasb-ref-text">Disclose information about management's role in the governance of climate-related risks and opportunities.</div>
+      <div class="aasb-mandatory" style="margin-top: var(--space-1);">Mandatory</div>
+    </div>
+
+    <div style="padding: var(--space-3) 0; border-bottom: 1px solid var(--color-neutral-200);">
+      <div style="font-size: var(--text-xs); font-weight: 600; color: var(--color-info-600); margin-bottom: var(--space-2);">Required disclosures include:</div>
+      <ul style="font-size: var(--text-sm); color: var(--color-neutral-600); padding-left: var(--space-4); list-style: disc;">
+        <li style="margin-bottom: var(--space-2);">Whether dedicated management positions or committees have been assigned responsibility for climate-related risks and opportunities</li>
+        <li style="margin-bottom: var(--space-2);">How management reports to the governance body</li>
+        <li style="margin-bottom: var(--space-2);">The organisational position or committee and how it relates to other functions</li>
+        <li>Controls and procedures for managing climate-related risks</li>
+      </ul>
+    </div>
+
+    <div class="aasb-ref-item">
+      <div class="aasb-ref-code">Escalation Procedures</div>
+      <div class="aasb-ref-text">Entities must describe how and when climate issues are escalated to the board, including thresholds and frequency.</div>
+    </div>
+
+    <div style="margin-top: var(--space-4); padding: var(--space-3); background: var(--color-success-100); border-radius: var(--border-radius); font-size: var(--text-xs);">
+      <strong style="color: var(--color-success-600);">&#10003; Section complete</strong>
+      <p style="color: var(--color-neutral-600); margin-top: var(--space-1);">5 roles documented with clear responsibilities and reporting lines. Escalation procedures approved by the Board.</p>
+    </div>
+
+    <div style="margin-top: var(--space-4);">
+      <div style="font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-neutral-600); margin-bottom: var(--space-3);">Related Sections</div>
+      <a href="board.html" style="display: block; font-size: var(--text-sm); color: var(--color-primary-700); padding: var(--space-2) 0; text-decoration: none;">&#8592; Board Oversight (§7(a))</a>
+      <a href="remuneration.html" style="display: block; font-size: var(--text-sm); color: var(--color-primary-700); padding: var(--space-2) 0; text-decoration: none;">Executive Remuneration (§8) &#8594;</a>
+    </div>
+  </aside>
+
+</div>
+
+<script>
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+
+function toggleAddRoleForm() {
+  const form = document.getElementById('addRoleForm');
+  form.classList.toggle('open');
+}
+
+function saveRole() {
+  const title = document.getElementById('roleTitle').value;
+  const responsibilities = document.getElementById('climateResponsibilities').value;
+  if (!title || !responsibilities) {
+    alert('Please fill in all required fields.');
+    return;
+  }
+  alert('Role saved successfully.');
+  toggleAddRoleForm();
+}
+
+function toggleEscalationEdit() {
+  const view = document.getElementById('escalationView');
+  const edit = document.getElementById('escalationEdit');
+  if (edit.style.display === 'none') {
+    view.style.display = 'none';
+    edit.style.display = 'block';
+  } else {
+    view.style.display = 'block';
+    edit.style.display = 'none';
+  }
+}
+
+function saveEscalation() {
+  alert('Escalation procedures saved successfully.');
+  toggleEscalationEdit();
+}
+</script>
+
+</body>
+</html>

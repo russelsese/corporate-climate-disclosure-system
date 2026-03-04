@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Risk Management — CCDS</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">&#9776;</button>
+    <a href="../dashboard.html" class="logo">
+      <span class="logo-icon">🌿</span>
+      <div>
+        <div>CCDS</div>
+        <div class="logo-subtitle">Climate Disclosure System</div>
+      </div>
+    </a>
+  </div>
+  <div class="topbar-center">
+    <span class="period-badge">FY2026 Reporting Period</span>
+  </div>
+  <div class="topbar-right">
+    <a href="../notifications.html" class="notif-btn" aria-label="Notifications">
+      &#128276;
+      <span class="badge">3</span>
+    </a>
+    <div class="avatar" title="Sarah Mitchell — ESG Manager">SM</div>
+  </div>
+</header>
+
+<!-- APP SHELL -->
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-section">
+      <a href="../dashboard.html" class="nav-item">
+        <span class="nav-icon">&#9681;</span>
+        <span class="nav-label">Dashboard</span>
+      </a>
+      <a href="../setup/company.html" class="nav-item">
+        <span class="nav-icon">&#9881;</span>
+        <span class="nav-label">Setup</span>
+      </a>
+      <a href="../governance/index.html" class="nav-item">
+        <span class="nav-icon">&#127963;</span>
+        <span class="nav-label">Governance</span>
+      </a>
+      <a href="../strategy/index.html" class="nav-item">
+        <span class="nav-icon">&#127919;</span>
+        <span class="nav-label">Strategy</span>
+      </a>
+      <a href="index.html" class="nav-item active">
+        <span class="nav-icon">&#9888;</span>
+        <span class="nav-label">Risk Management</span>
+      </a>
+      <a href="../emissions/overview.html" class="nav-item">
+        <span class="nav-icon">&#127981;</span>
+        <span class="nav-label">Emissions</span>
+      </a>
+      <a href="../metrics/targets.html" class="nav-item">
+        <span class="nav-icon">&#128200;</span>
+        <span class="nav-label">Metrics</span>
+      </a>
+      <a href="../reports/index.html" class="nav-item">
+        <span class="nav-icon">&#128196;</span>
+        <span class="nav-label">Reports</span>
+      </a>
+    </div>
+    <div class="nav-section">
+      <a href="../evidence.html" class="nav-item">
+        <span class="nav-icon">&#128193;</span>
+        <span class="nav-label">Evidence</span>
+      </a>
+      <a href="../audit-log.html" class="nav-item">
+        <span class="nav-icon">&#128203;</span>
+        <span class="nav-label">Audit Log</span>
+      </a>
+      <a href="../notifications.html" class="nav-item">
+        <span class="nav-icon">&#128276;</span>
+        <span class="nav-label">Notifications</span>
+        <span class="nav-badge">3</span>
+      </a>
+      <a href="../admin/index.html" class="nav-item">
+        <span class="nav-icon">&#128100;</span>
+        <span class="nav-label">Admin</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+      <a href="../dashboard.html">Dashboard</a>
+      <span class="breadcrumb-sep">/</span>
+      <span class="current">Risk Management</span>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header" style="margin-bottom: var(--space-4);">
+      <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:var(--space-3);">
+        <div>
+          <h1 class="page-title">Risk Management</h1>
+          <p class="page-subtitle">AASB S2 §23–§25 — Risk identification, assessment, prioritisation, and monitoring</p>
+        </div>
+        <span class="badge-status badge-in-progress">In Progress</span>
+      </div>
+      <!-- Progress Bar -->
+      <div class="progress-bar-container" style="margin-top: var(--space-4); max-width: 480px;">
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill danger" style="width: 20%;"></div>
+        </div>
+        <div class="progress-bar-label">
+          <span>Section completion</span>
+          <span>20%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub-nav Tabs -->
+    <div class="tab-nav">
+      <a href="index.html" class="tab-btn active" style="text-decoration:none;">Overview</a>
+      <a href="register.html" class="tab-btn" style="text-decoration:none;">Climate Risk Register</a>
+      <a href="process.html" class="tab-btn" style="text-decoration:none;">Risk Process</a>
+      <a href="disclosure.html" class="tab-btn" style="text-decoration:none;">Risk Management Disclosure</a>
+    </div>
+
+    <!-- Alert Banner -->
+    <div class="alert danger" style="margin-bottom: var(--space-6);">
+      <span>&#10060;</span>
+      <span>Risk process documentation is required under <strong>AASB S2 §24</strong> — not yet started. This must be completed before the disclosure can be prepared.</span>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="card-grid-3" style="margin-bottom: var(--space-6);">
+      <div class="stat-card">
+        <div class="stat-label">Risks &amp; Opportunities Identified</div>
+        <div class="stat-value" style="color: var(--color-neutral-900);">12</div>
+        <div class="stat-meta">8 risks · 4 opportunities · linked from Strategy</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">HIGH Risks</div>
+        <div class="stat-value" style="color: var(--color-danger-600);">4</div>
+        <div class="stat-meta">Requiring immediate management attention</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">ERM Integration</div>
+        <div class="stat-value" style="font-size: var(--text-xl); color: var(--color-warning-600);">Pending</div>
+        <div class="stat-meta">Climate risk not yet integrated into enterprise risk framework</div>
+      </div>
+    </div>
+
+    <!-- Sub-section Cards -->
+    <h2 style="font-size: var(--text-lg); font-weight: 600; margin-bottom: var(--space-4);">Section Overview</h2>
+    <div class="card-grid-3" style="margin-bottom: var(--space-6);">
+
+      <!-- Climate Risk Register Card -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title" style="font-size: var(--text-base);">Climate Risk Register</div>
+            <div class="card-subtitle">Linked from Strategy section</div>
+          </div>
+          <span class="badge-status badge-approved">&#10003; Complete</span>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill success" style="width: 100%;"></div>
+          </div>
+          <div class="progress-bar-label">
+            <span>Completion</span>
+            <span>100%</span>
+          </div>
+        </div>
+        <p style="font-size: var(--text-sm); color: var(--color-neutral-600); margin: var(--space-3) 0;">
+          &#10003; 12 entries in the climate risk register, including physical risks, transition risks, and opportunities. Register was populated in the Strategy section.
+        </p>
+        <ul style="font-size: var(--text-xs); color: var(--color-neutral-600); display:flex; flex-direction:column; gap: var(--space-1); margin-bottom: var(--space-4);">
+          <li>&#10003; 8 risks assessed (physical &amp; transition)</li>
+          <li>&#10003; 4 opportunities identified</li>
+          <li>&#10003; Likelihood × magnitude ratings applied</li>
+        </ul>
+        <a href="register.html" class="btn btn-secondary btn-sm" style="width:100%; justify-content:center;">View Risk Register</a>
+      </div>
+
+      <!-- Risk Process Documentation Card -->
+      <div class="card" style="border-color: var(--color-danger-600); border-width: 2px;">
+        <div class="card-header">
+          <div>
+            <div class="card-title" style="font-size: var(--text-base);">Risk Process Documentation</div>
+            <div class="card-subtitle">AASB S2 §24 — Required</div>
+          </div>
+          <span class="badge-status badge-changes-req">&#10060; Not documented</span>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill danger" style="width: 0%;"></div>
+          </div>
+          <div class="progress-bar-label">
+            <span>Completion</span>
+            <span>0%</span>
+          </div>
+        </div>
+        <p style="font-size: var(--text-sm); color: var(--color-neutral-600); margin: var(--space-3) 0;">
+          &#10060; Required disclosure — describe how climate risks are identified, assessed, prioritised, and monitored. No content entered yet.
+        </p>
+        <ul style="font-size: var(--text-xs); color: var(--color-neutral-600); display:flex; flex-direction:column; gap: var(--space-1); margin-bottom: var(--space-4);">
+          <li>&#10060; Identification process not documented</li>
+          <li>&#10060; Assessment methodology not documented</li>
+          <li>&#10060; Prioritisation criteria not documented</li>
+          <li>&#10060; Monitoring frequency not documented</li>
+        </ul>
+        <a href="process.html" class="btn btn-primary btn-sm" style="width:100%; justify-content:center;">Start Documentation</a>
+      </div>
+
+      <!-- Risk Management Disclosure Card -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title" style="font-size: var(--text-base);">Risk Management Disclosure</div>
+            <div class="card-subtitle">AASB S2 §23–§25 — Narrative disclosure</div>
+          </div>
+          <span class="badge-status badge-not-started">&#9675; Not started</span>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill" style="width: 0%;"></div>
+          </div>
+          <div class="progress-bar-label">
+            <span>Completion</span>
+            <span>0%</span>
+          </div>
+        </div>
+        <p style="font-size: var(--text-sm); color: var(--color-neutral-600); margin: var(--space-3) 0;">
+          &#9675; Awaiting completion of Risk Process Documentation before this section can be started. Requires CFO approval once drafted.
+        </p>
+        <ul style="font-size: var(--text-xs); color: var(--color-neutral-600); display:flex; flex-direction:column; gap: var(--space-1); margin-bottom: var(--space-4);">
+          <li>&#9675; §23(a) identification process disclosure</li>
+          <li>&#9675; §23(b) assessment process disclosure</li>
+          <li>&#9675; §24 prioritisation disclosure</li>
+          <li>&#9675; §25 monitoring disclosure</li>
+        </ul>
+        <a href="disclosure.html" class="btn btn-ghost btn-sm" style="width:100%; justify-content:center;">View Disclosure</a>
+      </div>
+
+    </div>
+
+    <!-- AASB S2 Requirements Summary -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title" style="font-size: var(--text-base);">AASB S2 Requirements — Risk Management</span>
+        <span class="badge badge-amber">3 of 4 incomplete</span>
+      </div>
+      <div class="readiness-list">
+        <div class="readiness-item">
+          <span class="readiness-icon">&#10003;</span>
+          <span class="readiness-label">§23(a) — Identification: Processes used to identify climate-related risks and opportunities</span>
+          <span class="readiness-status" style="color: var(--color-success-600);">Linked from Strategy</span>
+        </div>
+        <div class="readiness-item">
+          <span class="readiness-icon">&#10060;</span>
+          <span class="readiness-label">§23(b) — Assessment: Processes used to assess the nature, likelihood and magnitude of effects</span>
+          <span class="readiness-status" style="color: var(--color-danger-600);">Not started</span>
+        </div>
+        <div class="readiness-item">
+          <span class="readiness-icon">&#10060;</span>
+          <span class="readiness-label">§24 — Prioritisation: How priorities are determined, including relationship to ERM</span>
+          <span class="readiness-status" style="color: var(--color-danger-600);">Not started</span>
+        </div>
+        <div class="readiness-item">
+          <span class="readiness-icon">&#10060;</span>
+          <span class="readiness-label">§25 — Monitoring: How climate-related risks and opportunities are monitored over time</span>
+          <span class="readiness-status" style="color: var(--color-danger-600);">Not started</span>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+</div>
+
+<script>
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+</script>
+
+</body>
+</html>

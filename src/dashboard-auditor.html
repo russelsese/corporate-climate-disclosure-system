@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audit Overview — CCDS</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .readonly-banner {
+      background: var(--color-warning-100); border: 1px solid var(--color-warning-600);
+      border-radius: var(--border-radius); padding: 8px 16px;
+      font-size: var(--text-sm); font-weight: 600; color: var(--color-warning-600);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .trace-chain { display: flex; align-items: center; gap: 8px; font-size: var(--text-sm); flex-wrap: wrap; }
+    .trace-link {
+      background: var(--color-info-100); color: var(--color-info-600);
+      padding: 4px 12px; border-radius: var(--border-radius); font-weight: 500;
+      cursor: pointer; text-decoration: none;
+    }
+    .trace-link:hover { background: #BFDBFE; text-decoration: none; }
+    .trace-arrow { color: var(--color-neutral-400); font-size: 18px; }
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">☰</button>
+    <a href="dashboard-auditor.html" class="logo"><span class="logo-icon">🌿</span><span>CCDS</span></a>
+  </div>
+  <div class="topbar-center">
+    <span class="period-badge">FY2026 · Auditor Access</span>
+  </div>
+  <div class="topbar-right">
+    <div class="readonly-banner">🔒 Read Only</div>
+    <div class="avatar" title="Marcus Thompson — Auditor">MT</div>
+  </div>
+</header>
+
+<div class="app-shell">
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-section">
+      <a href="dashboard-auditor.html" class="nav-item active"><span class="nav-icon">📊</span><span class="nav-label">Audit Overview</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="governance/disclosure.html" class="nav-item"><span class="nav-icon">🛡️</span><span class="nav-label">Governance</span></a>
+      <a href="strategy/disclosure.html" class="nav-item"><span class="nav-icon">🎯</span><span class="nav-label">Strategy</span></a>
+      <a href="risk-management/disclosure.html" class="nav-item"><span class="nav-icon">⚠️</span><span class="nav-label">Risk Management</span></a>
+      <a href="emissions/overview.html" class="nav-item"><span class="nav-icon">🌱</span><span class="nav-label">Emissions &amp; Energy</span></a>
+      <a href="metrics/targets.html" class="nav-item"><span class="nav-icon">📈</span><span class="nav-label">Metrics &amp; Targets</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="evidence.html" class="nav-item"><span class="nav-icon">📁</span><span class="nav-label">Evidence Library</span></a>
+      <a href="audit-log.html" class="nav-item"><span class="nav-icon">📜</span><span class="nav-label">Audit Log</span></a>
+    </div>
+    <div class="nav-section" style="margin-top:auto;">
+      <a href="login.html" class="nav-item"><span class="nav-icon">🚪</span><span class="nav-label">Sign out</span></a>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="alert warning" style="margin-bottom:24px;">
+      <span>🔒</span>
+      <span><strong>Auditor read-only access</strong> — scoped to FY2026 reporting period. You cannot edit any data. All your activity is logged. Access expires <strong>31 May 2026</strong>.</span>
+    </div>
+
+    <div class="page-header">
+      <h1 class="page-title">Audit Overview — FY2026</h1>
+      <p class="page-subtitle">ASSA 5010 Limited Assurance Engagement · Authorised by: Sarah Mitchell (ESG Manager) · 3 Mar 2026</p>
+    </div>
+
+    <!-- Assurance scope banner -->
+    <div class="card" style="margin-bottom:24px;background:var(--color-info-100);border-color:var(--color-info-600);">
+      <div style="font-size:var(--text-sm);font-weight:600;color:var(--color-info-600);margin-bottom:8px;">ASSURANCE SCOPE — YEAR 1 (FY2026)</div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;font-size:var(--text-sm);">
+        <div><span style="font-weight:600;">Scope 1 &amp; 2 emissions:</span> Limited assurance ✅</div>
+        <div><span style="font-weight:600;">Governance disclosure:</span> Limited assurance ✅</div>
+        <div><span style="font-weight:600;">Scope 3:</span> Not in scope (Year 2+)</div>
+        <div><span style="font-weight:600;">Strategy &amp; Risk:</span> Read only (not assured Y1)</div>
+      </div>
+    </div>
+
+    <!-- Section status table -->
+    <div class="card" style="margin-bottom:24px;">
+      <div class="card-header">
+        <span class="card-title">Disclosure Sections — Status</span>
+        <a href="reports/assurance-pack.html" class="btn btn-secondary btn-sm">📦 Export Assurance Pack</a>
+      </div>
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Section</th>
+              <th>AASB S2 Paragraphs</th>
+              <th>Status</th>
+              <th>Assurance Scope</th>
+              <th>Last Updated</th>
+              <th class="actions-col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Governance</strong></td>
+              <td>§6–§9</td>
+              <td><span class="badge-status badge-approved">CFO Approved</span></td>
+              <td><span class="badge badge-green">Limited (Y1)</span></td>
+              <td>13 Feb 2026</td>
+              <td class="actions-col"><a href="governance/disclosure.html" class="btn btn-ghost btn-sm">View →</a></td>
+            </tr>
+            <tr>
+              <td><strong>Strategy &amp; Transition</strong></td>
+              <td>§10–§22</td>
+              <td><span class="badge-status badge-in-progress">In Progress</span></td>
+              <td><span class="badge badge-grey">Read only</span></td>
+              <td>20 Feb 2026</td>
+              <td class="actions-col"><a href="strategy/disclosure.html" class="btn btn-ghost btn-sm">View →</a></td>
+            </tr>
+            <tr>
+              <td><strong>Risk Management</strong></td>
+              <td>§23–§25</td>
+              <td><span class="badge-status badge-in-progress">In Progress</span></td>
+              <td><span class="badge badge-grey">Read only</span></td>
+              <td>19 Feb 2026</td>
+              <td class="actions-col"><a href="risk-management/disclosure.html" class="btn btn-ghost btn-sm">View →</a></td>
+            </tr>
+            <tr>
+              <td><strong>Emissions &amp; Metrics</strong></td>
+              <td>§29–§41</td>
+              <td><span class="badge-status badge-in-review">In Review</span></td>
+              <td><span class="badge badge-green">Limited (Y1)</span></td>
+              <td>22 Feb 2026</td>
+              <td class="actions-col"><a href="emissions/overview.html" class="btn btn-ghost btn-sm">View →</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Evidence trace demo -->
+    <div class="card" style="margin-bottom:24px;">
+      <div class="card-header">
+        <span class="card-title">Evidence Trace — Scope 1 Emissions</span>
+        <span class="badge badge-blue">How to trace a figure</span>
+      </div>
+      <p style="font-size:var(--text-sm);color:var(--color-neutral-600);margin-bottom:16px;">Click any link in the chain to drill into the source data.</p>
+
+      <div style="background:var(--color-neutral-100);border-radius:var(--border-radius-lg);padding:16px;margin-bottom:16px;">
+        <div style="font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--color-neutral-600);margin-bottom:12px;">Disclosed Figure → Source</div>
+        <div class="trace-chain">
+          <a class="trace-link" href="emissions/disclosure.html">Scope 1: 1,240 tCO₂e</a>
+          <span class="trace-arrow">→</span>
+          <a class="trace-link" href="emissions/overview.html">Calculation breakdown (3 sites)</a>
+          <span class="trace-arrow">→</span>
+          <a class="trace-link" href="emissions/site-entry.html">Dandenong Plant data entry</a>
+          <span class="trace-arrow">→</span>
+          <a class="trace-link" href="evidence.html">Utility bill: utility-q4-2025.pdf</a>
+          <span class="trace-arrow">→</span>
+          <a class="trace-link" href="emissions/factors.html">NGER factor table v2024</a>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Site</th>
+              <th>Emission Source</th>
+              <th>Activity Data</th>
+              <th>Factor</th>
+              <th>Result (tCO₂e)</th>
+              <th>Source Doc</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowspan="2">Dandenong Plant</td>
+              <td>Natural gas — stationary</td>
+              <td>4,800 GJ</td>
+              <td>51.53 kgCO₂e/GJ (NGER 2024, Table 1)</td>
+              <td><strong>247</strong></td>
+              <td><a href="evidence.html" class="btn btn-ghost btn-sm">📎</a></td>
+            </tr>
+            <tr>
+              <td>Diesel — mobile</td>
+              <td>28,000 L</td>
+              <td>2.68 kgCO₂e/L (NGER 2024, Table 2)</td>
+              <td><strong>75</strong></td>
+              <td><a href="evidence.html" class="btn btn-ghost btn-sm">📎</a></td>
+            </tr>
+            <tr>
+              <td>Footscray Office</td>
+              <td>Natural gas — stationary</td>
+              <td>2,200 GJ</td>
+              <td>51.53 kgCO₂e/GJ</td>
+              <td><strong>113</strong></td>
+              <td><a href="evidence.html" class="btn btn-ghost btn-sm">📎</a></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr><td colspan="4">Total (partial — 3 sites pending)</td><td><strong>1,240</strong></td><td></td></tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+
+    <!-- Audit queries -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Audit Queries</span>
+        <button class="btn btn-primary btn-sm" onclick="document.getElementById('query-modal').style.display='flex'">+ Raise New Query</button>
+      </div>
+      <div class="task-list">
+        <div class="task-item warning">
+          <div class="task-icon">❓</div>
+          <div class="task-body">
+            <div class="task-title">Q01 — Diesel consumption at Dandenong Plant</div>
+            <div class="task-meta">Raised: 20 Feb 2026 · Assigned to: Sarah Mitchell · <strong style="color:var(--color-warning-600);">Open</strong></div>
+            <div style="font-size:var(--text-sm);color:var(--color-neutral-600);margin-top:4px;font-style:italic;">"Diesel consumption at Dandenong seems high vs. prior year — 28,000L vs 19,500L in FY2025. Please clarify the increase."</div>
+            <div class="task-actions">
+              <button class="btn btn-secondary btn-sm">View thread</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--color-neutral-200);display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:var(--text-sm);color:var(--color-neutral-600);">1 open query · 0 closed</span>
+        <a href="reports/assurance-pack.html" class="btn btn-secondary btn-sm">📦 Export full evidence pack as ZIP</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Raise query modal -->
+<div id="query-modal" class="modal-overlay" style="display:none;">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 class="modal-title">Raise Audit Query</h2>
+      <button class="modal-close" onclick="document.getElementById('query-modal').style.display='none'">✕</button>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="query-section">Section / Field</label>
+      <select class="form-select" id="query-section">
+        <option>Emissions → Scope 1 → Dandenong Plant</option>
+        <option>Governance → Board oversight activities</option>
+        <option>Strategy → Scenario analysis assumptions</option>
+        <option>Metrics → Target baseline year</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="query-text">Query <span class="required">*</span></label>
+      <textarea class="form-textarea" id="query-text" placeholder="Describe what you would like the preparer to clarify or explain..."></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="query-assign">Assign to</label>
+      <select class="form-select" id="query-assign">
+        <option>Sarah Mitchell (ESG Manager)</option>
+        <option>Alex Chen (CFO)</option>
+        <option>David Park (Site Manager — Dandenong)</option>
+      </select>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="document.getElementById('query-modal').style.display='none'">Cancel</button>
+      <button class="btn btn-primary" onclick="document.getElementById('query-modal').style.display='none';alert('Query raised. Sarah Mitchell has been notified.')">Raise Query</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }
+</script>
+</body>
+</html>

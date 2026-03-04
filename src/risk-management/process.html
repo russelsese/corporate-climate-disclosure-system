@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Risk Process Documentation — CCDS</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    .process-section {
+      background: var(--color-white);
+      border: 1px solid var(--color-neutral-200);
+      border-radius: var(--border-radius-lg);
+      margin-bottom: var(--space-4);
+      overflow: hidden;
+    }
+    .process-section-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: var(--space-4) var(--space-6);
+      background: var(--color-neutral-100);
+      border-bottom: 1px solid var(--color-neutral-200);
+    }
+    .process-section-title {
+      font-size: var(--text-base); font-weight: 600; color: var(--color-neutral-900);
+    }
+    .process-section-ref {
+      font-size: var(--text-xs); color: var(--color-info-600); font-weight: 500;
+    }
+    .process-section-body {
+      padding: var(--space-6);
+    }
+    .process-section-guidance {
+      padding: var(--space-3) var(--space-4);
+      background: var(--color-info-100);
+      border-radius: var(--border-radius);
+      font-size: var(--text-xs);
+      color: var(--color-info-600);
+      margin-bottom: var(--space-4);
+    }
+    .process-section-guidance strong { color: var(--color-info-600); }
+
+    .word-count {
+      font-size: var(--text-xs); color: var(--color-neutral-400);
+      text-align: right; margin-top: var(--space-1);
+    }
+    .save-row {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: var(--space-4); padding-top: var(--space-4);
+      border-top: 1px solid var(--color-neutral-200);
+    }
+    .save-status {
+      font-size: var(--text-xs); color: var(--color-neutral-400);
+    }
+    .erm-toggle-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: var(--space-4);
+      border: 1px solid var(--color-neutral-200);
+      border-radius: var(--border-radius);
+      margin-bottom: var(--space-4);
+    }
+    .erm-toggle-label { font-size: var(--text-sm); font-weight: 500; }
+    .erm-toggle-sub { font-size: var(--text-xs); color: var(--color-neutral-600); margin-top: 2px; }
+    .erm-value-yes { color: var(--color-success-600); font-weight: 600; font-size: var(--text-sm); }
+    .erm-value-no  { color: var(--color-danger-600); font-weight: 600; font-size: var(--text-sm); }
+  </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">&#9776;</button>
+    <a href="../dashboard.html" class="logo">
+      <span class="logo-icon">🌿</span>
+      <div>
+        <div>CCDS</div>
+        <div class="logo-subtitle">Climate Disclosure System</div>
+      </div>
+    </a>
+  </div>
+  <div class="topbar-center">
+    <span class="period-badge">FY2026 Reporting Period</span>
+  </div>
+  <div class="topbar-right">
+    <a href="../notifications.html" class="notif-btn" aria-label="Notifications">
+      &#128276;
+      <span class="badge">3</span>
+    </a>
+    <div class="avatar" title="Sarah Mitchell — ESG Manager">SM</div>
+  </div>
+</header>
+
+<!-- APP SHELL -->
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-section">
+      <a href="../dashboard.html" class="nav-item">
+        <span class="nav-icon">&#9681;</span>
+        <span class="nav-label">Dashboard</span>
+      </a>
+      <a href="../setup/company.html" class="nav-item">
+        <span class="nav-icon">&#9881;</span>
+        <span class="nav-label">Setup</span>
+      </a>
+      <a href="../governance/index.html" class="nav-item">
+        <span class="nav-icon">&#127963;</span>
+        <span class="nav-label">Governance</span>
+      </a>
+      <a href="../strategy/index.html" class="nav-item">
+        <span class="nav-icon">&#127919;</span>
+        <span class="nav-label">Strategy</span>
+      </a>
+      <a href="index.html" class="nav-item active">
+        <span class="nav-icon">&#9888;</span>
+        <span class="nav-label">Risk Management</span>
+      </a>
+      <a href="../emissions/overview.html" class="nav-item">
+        <span class="nav-icon">&#127981;</span>
+        <span class="nav-label">Emissions</span>
+      </a>
+      <a href="../metrics/targets.html" class="nav-item">
+        <span class="nav-icon">&#128200;</span>
+        <span class="nav-label">Metrics</span>
+      </a>
+      <a href="../reports/index.html" class="nav-item">
+        <span class="nav-icon">&#128196;</span>
+        <span class="nav-label">Reports</span>
+      </a>
+    </div>
+    <div class="nav-section">
+      <a href="../evidence.html" class="nav-item">
+        <span class="nav-icon">&#128193;</span>
+        <span class="nav-label">Evidence</span>
+      </a>
+      <a href="../audit-log.html" class="nav-item">
+        <span class="nav-icon">&#128203;</span>
+        <span class="nav-label">Audit Log</span>
+      </a>
+      <a href="../notifications.html" class="nav-item">
+        <span class="nav-icon">&#128276;</span>
+        <span class="nav-label">Notifications</span>
+        <span class="nav-badge">3</span>
+      </a>
+      <a href="../admin/index.html" class="nav-item">
+        <span class="nav-icon">&#128100;</span>
+        <span class="nav-label">Admin</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content with-right-panel">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+      <a href="../dashboard.html">Dashboard</a>
+      <span class="breadcrumb-sep">/</span>
+      <a href="index.html">Risk Management</a>
+      <span class="breadcrumb-sep">/</span>
+      <span class="current">Risk Process Documentation</span>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header" style="margin-bottom: var(--space-4);">
+      <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:var(--space-3);">
+        <div>
+          <h1 class="page-title">Risk Process Documentation</h1>
+          <p class="page-subtitle">AASB S2 §24 — Describe how climate-related risks are identified, assessed, prioritised, and monitored</p>
+        </div>
+        <span class="badge-status badge-changes-req">&#10060; Not started</span>
+      </div>
+    </div>
+
+    <!-- Sub-nav Tabs -->
+    <div class="tab-nav">
+      <a href="index.html" class="tab-btn" style="text-decoration:none;">Overview</a>
+      <a href="register.html" class="tab-btn" style="text-decoration:none;">Climate Risk Register</a>
+      <a href="process.html" class="tab-btn active" style="text-decoration:none;">Risk Process</a>
+      <a href="disclosure.html" class="tab-btn" style="text-decoration:none;">Risk Management Disclosure</a>
+    </div>
+
+    <!-- Alert Banner -->
+    <div class="alert danger" style="margin-bottom: var(--space-6);">
+      <span>&#10060;</span>
+      <span>This section is <strong>not started</strong> — required for <strong>AASB S2 §24</strong>. Process documentation must be completed before the Risk Management Disclosure can be drafted.</span>
+    </div>
+
+    <!-- Section 1: Identification Process -->
+    <div class="process-section">
+      <div class="process-section-header">
+        <div>
+          <div class="process-section-title">1. Identification Process</div>
+          <div class="process-section-ref">AASB S2 §23(a) · §24(a)</div>
+        </div>
+        <span class="badge-status badge-not-started">&#9675; Not started</span>
+      </div>
+      <div class="process-section-body">
+        <div class="process-section-guidance">
+          <strong>Guidance:</strong> Describe the processes your organisation uses to identify climate-related risks and opportunities. Include: who is responsible (e.g. ESG team, board committee), what data sources are used (e.g. scenario analysis, industry reports, regulatory updates), and how frequently identification reviews occur.
+        </div>
+        <div class="form-group">
+          <label class="form-label">
+            How does your organisation identify climate-related risks and opportunities?
+            <span class="required">*</span>
+          </label>
+          <textarea
+            class="form-textarea"
+            id="identification-text"
+            rows="7"
+            placeholder="Example: Climate-related risks and opportunities are identified through an annual structured review conducted by the ESG Working Group, in conjunction with the Board Audit and Risk Committee (BARC). The process draws on: (1) IPCC and CSIRO physical climate projections; (2) Australian regulatory pipeline monitoring (ASRS, safeguard mechanism); (3) industry peer benchmarking; (4) scenario analysis outputs from the Strategy section (1.5°C and 4°C scenarios). Identified risks are captured in the Climate Risk Register and reviewed quarterly by management…"
+            oninput="updateWordCount('identification-text', 'identification-count')"
+          ></textarea>
+          <div class="word-count" id="identification-count">0 words</div>
+        </div>
+        <div class="save-row">
+          <span class="save-status" id="identification-saved">Not saved</span>
+          <button class="btn btn-secondary btn-sm" onclick="saveDraft('identification-text', 'identification-saved')">Save draft</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: Assessment Methodology -->
+    <div class="process-section">
+      <div class="process-section-header">
+        <div>
+          <div class="process-section-title">2. Assessment Methodology</div>
+          <div class="process-section-ref">AASB S2 §23(b) · §24(b)</div>
+        </div>
+        <span class="badge-status badge-not-started">&#9675; Not started</span>
+      </div>
+      <div class="process-section-body">
+        <div class="process-section-guidance">
+          <strong>Guidance:</strong> Describe how identified risks and opportunities are assessed for their nature, likelihood, and magnitude of financial effects. Explain your likelihood × magnitude framework, the rating scales used (e.g. Low/Medium/High), and how both physical and transition risk types are evaluated. Reference to scenario analysis assumptions is encouraged.
+        </div>
+
+        <!-- Likelihood x Magnitude explanation box -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-4);">
+          <div style="padding: var(--space-4); background: var(--color-neutral-100); border-radius: var(--border-radius); font-size: var(--text-sm);">
+            <strong style="display:block; margin-bottom: var(--space-2);">Likelihood Scale</strong>
+            <div style="display:flex; flex-direction:column; gap: var(--space-1); font-size:var(--text-xs); color:var(--color-neutral-600);">
+              <div><span class="badge badge-red">High</span> — Very likely to occur within the time horizon</div>
+              <div><span class="badge badge-amber">Medium</span> — Possible, requires monitoring</div>
+              <div><span class="badge badge-green">Low</span> — Unlikely under current projections</div>
+            </div>
+          </div>
+          <div style="padding: var(--space-4); background: var(--color-neutral-100); border-radius: var(--border-radius); font-size: var(--text-sm);">
+            <strong style="display:block; margin-bottom: var(--space-2);">Magnitude Scale</strong>
+            <div style="display:flex; flex-direction:column; gap: var(--space-1); font-size:var(--text-xs); color:var(--color-neutral-600);">
+              <div><span class="badge badge-red">High</span> — Material financial effect (&gt;$1M or &gt;5% revenue)</div>
+              <div><span class="badge badge-amber">Medium</span> — Moderate effect ($200K–$1M)</div>
+              <div><span class="badge badge-green">Low</span> — Minor effect (&lt;$200K)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">
+            How does your organisation assess the nature, likelihood, and magnitude of climate-related risks and opportunities?
+            <span class="required">*</span>
+          </label>
+          <textarea
+            class="form-textarea"
+            id="assessment-text"
+            rows="7"
+            placeholder="Example: Each identified climate risk and opportunity is assessed using a Likelihood × Magnitude matrix on a 3×3 scale (Low/Medium/High for each dimension). Assessment is conducted by the ESG Working Group with input from site operations managers, the CFO, and external climate consultants where required. Physical risks are assessed against 1.5°C and 4°C warming scenarios over short (0–3 year), medium (3–10 year) and long (&gt;10 year) time horizons, consistent with TCFD guidance. Transition risks are assessed against current and anticipated regulatory scenarios, including the Australian Safeguard Mechanism trajectory…"
+            oninput="updateWordCount('assessment-text', 'assessment-count')"
+          ></textarea>
+          <div class="word-count" id="assessment-count">0 words</div>
+        </div>
+        <div class="save-row">
+          <span class="save-status" id="assessment-saved">Not saved</span>
+          <button class="btn btn-secondary btn-sm" onclick="saveDraft('assessment-text', 'assessment-saved')">Save draft</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: Prioritisation Criteria -->
+    <div class="process-section">
+      <div class="process-section-header">
+        <div>
+          <div class="process-section-title">3. Prioritisation Criteria</div>
+          <div class="process-section-ref">AASB S2 §24(c)</div>
+        </div>
+        <span class="badge-status badge-not-started">&#9675; Not started</span>
+      </div>
+      <div class="process-section-body">
+        <div class="process-section-guidance">
+          <strong>Guidance:</strong> Explain how your organisation determines which climate risks and opportunities are prioritised for management action. This should cover: the criteria used to rank risks (e.g. risk level rating, time horizon, financial materiality), how climate risk prioritisation relates to your broader Enterprise Risk Management (ERM) framework, and any thresholds that trigger escalation to board level.
+        </div>
+        <div class="form-group">
+          <label class="form-label">
+            How does your organisation prioritise climate-related risks and opportunities?
+            <span class="required">*</span>
+          </label>
+          <textarea
+            class="form-textarea"
+            id="prioritisation-text"
+            rows="7"
+            placeholder="Example: Climate risks are prioritised based on their overall risk rating (derived from the Likelihood × Magnitude assessment), combined with financial materiality thresholds and time horizon. Risks rated HIGH or with estimated financial effects exceeding $500K are automatically escalated to the Board Audit and Risk Committee for consideration in the corporate risk register. Medium-rated risks are managed by the ESG Working Group with quarterly reporting to the CFO. All climate risks and opportunities are reviewed against the Enterprise Risk Management (ERM) policy framework. Integration into the ERM system is currently in progress…"
+            oninput="updateWordCount('prioritisation-text', 'prioritisation-count')"
+          ></textarea>
+          <div class="word-count" id="prioritisation-count">0 words</div>
+        </div>
+        <div class="save-row">
+          <span class="save-status" id="prioritisation-saved">Not saved</span>
+          <button class="btn btn-secondary btn-sm" onclick="saveDraft('prioritisation-text', 'prioritisation-saved')">Save draft</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 4: Monitoring Frequency -->
+    <div class="process-section">
+      <div class="process-section-header">
+        <div>
+          <div class="process-section-title">4. Monitoring Frequency</div>
+          <div class="process-section-ref">AASB S2 §25</div>
+        </div>
+        <span class="badge-status badge-not-started">&#9675; Not started</span>
+      </div>
+      <div class="process-section-body">
+        <div class="process-section-guidance">
+          <strong>Guidance:</strong> Describe how your organisation monitors climate-related risks and opportunities over time. Include the review frequency (e.g. quarterly, annually), the governance structure that oversees monitoring (e.g. ESG Working Group, board committee), what triggers an out-of-cycle review, and how changes to the risk landscape are captured and reported.
+        </div>
+
+        <!-- Monitoring frequency selector -->
+        <div class="form-group">
+          <label class="form-label">Primary review frequency</label>
+          <div style="display: flex; gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-4);">
+            <label class="form-radio" style="flex:1; padding: var(--space-3); border: 1px solid var(--color-neutral-200); border-radius: var(--border-radius); cursor:pointer;">
+              <input type="radio" name="review-freq" value="monthly"> Monthly
+            </label>
+            <label class="form-radio" style="flex:1; padding: var(--space-3); border: 1px solid var(--color-primary-700); border-radius: var(--border-radius); background: var(--color-primary-100); cursor:pointer;">
+              <input type="radio" name="review-freq" value="quarterly" checked> Quarterly
+            </label>
+            <label class="form-radio" style="flex:1; padding: var(--space-3); border: 1px solid var(--color-neutral-200); border-radius: var(--border-radius); cursor:pointer;">
+              <input type="radio" name="review-freq" value="biannually"> Bi-annually
+            </label>
+            <label class="form-radio" style="flex:1; padding: var(--space-3); border: 1px solid var(--color-neutral-200); border-radius: var(--border-radius); cursor:pointer;">
+              <input type="radio" name="review-freq" value="annually"> Annually
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">
+            How does your organisation monitor climate-related risks and opportunities over time?
+            <span class="required">*</span>
+          </label>
+          <textarea
+            class="form-textarea"
+            id="monitoring-text"
+            rows="7"
+            placeholder="Example: The Climate Risk Register is formally reviewed on a quarterly basis by the ESG Working Group, with summary reporting to the Board Audit and Risk Committee. Annual deep-dive reviews are conducted alongside the financial year planning cycle, incorporating updated climate science projections and regulatory developments. Out-of-cycle reviews are triggered by: (1) material regulatory changes (e.g. Safeguard Mechanism reform); (2) significant climate events affecting company assets; (3) changes to key financial estimates exceeding $500K. The register is updated in the CCDS system with change history maintained in the Audit Log…"
+            oninput="updateWordCount('monitoring-text', 'monitoring-count')"
+          ></textarea>
+          <div class="word-count" id="monitoring-count">0 words</div>
+        </div>
+        <div class="save-row">
+          <span class="save-status" id="monitoring-saved">Not saved</span>
+          <button class="btn btn-secondary btn-sm" onclick="saveDraft('monitoring-text', 'monitoring-saved')">Save draft</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ERM Integration Statement -->
+    <div class="process-section">
+      <div class="process-section-header">
+        <div>
+          <div class="process-section-title">5. ERM Integration Statement</div>
+          <div class="process-section-ref">AASB S2 §24(d)</div>
+        </div>
+        <span class="badge-status badge-not-started">&#9675; Not started</span>
+      </div>
+      <div class="process-section-body">
+        <div class="process-section-guidance">
+          <strong>Guidance:</strong> AASB S2 §24(d) requires disclosure of whether and how climate risk management processes are integrated into the entity's overall enterprise risk management (ERM) framework. Disclose the current integration status and any plans to integrate if not yet complete.
+        </div>
+
+        <!-- Toggle: ERM Integrated? -->
+        <div class="erm-toggle-row">
+          <div>
+            <div class="erm-toggle-label">Climate risk is integrated into our Enterprise Risk Management (ERM) framework</div>
+            <div class="erm-toggle-sub">AASB S2 §24(d) — mandatory disclosure point</div>
+          </div>
+          <div style="display:flex; align-items:center; gap: var(--space-4);">
+            <label class="form-toggle">
+              <label class="toggle-switch">
+                <input type="checkbox" id="erm-toggle" onchange="toggleErmLabel()">
+                <span class="toggle-slider"></span>
+              </label>
+            </label>
+            <span id="erm-label" class="erm-value-no">No</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">
+            Explain the current status of ERM integration and any planned steps
+            <span class="required">*</span>
+          </label>
+          <textarea
+            class="form-textarea"
+            id="erm-text"
+            rows="5"
+            placeholder="Example: Climate risk management processes are not yet fully integrated into the company's Enterprise Risk Management framework. The ESG Working Group operates a standalone Climate Risk Register which is reported to the BARC quarterly. Integration into the company-wide ERM system (MetricStream) is planned for completion by 30 June 2027, following the appointment of a dedicated Group Risk Manager in FY2026 Q4. In the interim, HIGH-rated climate risks are manually cross-referenced in board risk reports…"
+            oninput="updateWordCount('erm-text', 'erm-count')"
+          ></textarea>
+          <div class="word-count" id="erm-count">0 words</div>
+        </div>
+        <div class="save-row">
+          <span class="save-status" id="erm-saved">Not saved</span>
+          <button class="btn btn-secondary btn-sm" onclick="saveDraft('erm-text', 'erm-saved')">Save draft</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom action bar -->
+    <div style="display:flex; align-items:center; justify-content:space-between; padding: var(--space-4) 0; border-top: 1px solid var(--color-neutral-200); margin-top: var(--space-4);">
+      <div style="font-size: var(--text-sm); color: var(--color-neutral-600);">
+        All 5 sections required before submission. Last auto-save: <span id="last-autosave">—</span>
+      </div>
+      <div style="display:flex; gap: var(--space-3);">
+        <button class="btn btn-ghost" onclick="saveAll()">Save all drafts</button>
+        <button class="btn btn-secondary" onclick="saveAll()">Save Draft</button>
+        <button class="btn btn-primary" disabled title="Complete all sections before submitting">Submit for Review</button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- RIGHT PANEL -->
+  <aside class="right-panel">
+    <h3>AASB S2 §24 Guidance</h3>
+
+    <div style="padding: var(--space-3); background: var(--color-danger-100); border-radius: var(--border-radius); margin-bottom: var(--space-4); font-size: var(--text-xs); color: var(--color-danger-600);">
+      <strong>&#10060; Not yet started</strong> — This section is mandatory and must be completed before the Risk Management Disclosure can be finalised.
+    </div>
+
+    <div class="aasb-ref-item">
+      <div class="aasb-ref-code">§23 — Risk &amp; Opportunity Processes</div>
+      <div class="aasb-ref-text">An entity shall disclose information about its processes for identifying, assessing, and managing climate-related risks and opportunities and whether those processes are integrated into its overall risk management framework.</div>
+      <div class="aasb-mandatory" style="margin-top: var(--space-1);">Mandatory</div>
+    </div>
+
+    <div class="aasb-ref-item">
+      <div class="aasb-ref-code">§24 — Prioritisation</div>
+      <div class="aasb-ref-text">An entity shall disclose information about its processes for prioritising climate-related risks and opportunities, including how those processes are integrated into the entity's overall risk management. Disclose: (a) identification inputs; (b) assessment criteria; (c) prioritisation method; (d) ERM integration status.</div>
+      <div class="aasb-mandatory" style="margin-top: var(--space-1);">Mandatory</div>
+    </div>
+
+    <div class="aasb-ref-item">
+      <div class="aasb-ref-code">§25 — Monitoring</div>
+      <div class="aasb-ref-text">An entity shall disclose information about how it monitors climate-related risks and opportunities. This includes monitoring frequency, governance oversight, and how the entity responds to changes in the risk landscape over time.</div>
+      <div class="aasb-mandatory" style="margin-top: var(--space-1);">Mandatory</div>
+    </div>
+
+    <div class="aasb-ref-item">
+      <div class="aasb-ref-code">§24(d) — ERM Integration</div>
+      <div class="aasb-ref-text">Disclose whether and how the entity's processes for managing climate-related risks are integrated into its overall risk management. If not integrated, provide context on current arrangements and any planned integration steps.</div>
+      <div class="aasb-mandatory" style="margin-top: var(--space-1);">Mandatory</div>
+    </div>
+
+    <div style="margin-top: var(--space-4); padding: var(--space-4); background: var(--color-warning-100); border-radius: var(--border-radius); font-size: var(--text-xs); color: var(--color-warning-600);">
+      <strong>Tip:</strong> You can cross-reference your Strategy section scenario analysis outputs as evidence for the assessment methodology. Use the Evidence Library to attach supporting documents to each process section.
+    </div>
+
+    <div style="margin-top: var(--space-4);">
+      <h3>Completion Checklist</h3>
+      <div style="display:flex; flex-direction:column; gap: var(--space-2); margin-top: var(--space-3); font-size: var(--text-xs);">
+        <div style="display:flex; align-items:center; gap: var(--space-2); color: var(--color-neutral-600);">
+          <span>&#9675;</span> §23(a) Identification process documented
+        </div>
+        <div style="display:flex; align-items:center; gap: var(--space-2); color: var(--color-neutral-600);">
+          <span>&#9675;</span> §23(b) Assessment methodology documented
+        </div>
+        <div style="display:flex; align-items:center; gap: var(--space-2); color: var(--color-neutral-600);">
+          <span>&#9675;</span> §24(c) Prioritisation criteria documented
+        </div>
+        <div style="display:flex; align-items:center; gap: var(--space-2); color: var(--color-neutral-600);">
+          <span>&#9675;</span> §25 Monitoring frequency documented
+        </div>
+        <div style="display:flex; align-items:center; gap: var(--space-2); color: var(--color-neutral-600);">
+          <span>&#9675;</span> §24(d) ERM integration statement completed
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: var(--space-6); padding: var(--space-4); background: var(--color-info-100); border-radius: var(--border-radius); font-size: var(--text-xs); color: var(--color-info-600);">
+      <strong>Mandatory from:</strong> 1 July 2026 (Group 1 entities). Process documentation must be reviewed and approved by the CFO before inclusion in the annual sustainability report.
+    </div>
+  </aside>
+
+</div>
+
+<script>
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+
+function updateWordCount(textareaId, countId) {
+  var text = document.getElementById(textareaId).value.trim();
+  var words = text ? text.split(/\s+/).length : 0;
+  document.getElementById(countId).textContent = words + ' word' + (words !== 1 ? 's' : '');
+}
+
+function saveDraft(textareaId, statusId) {
+  var text = document.getElementById(textareaId).value.trim();
+  var statusEl = document.getElementById(statusId);
+  if (!text) {
+    statusEl.textContent = 'Nothing to save';
+    statusEl.style.color = 'var(--color-warning-600)';
+    return;
+  }
+  statusEl.textContent = 'Saved at ' + new Date().toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit' });
+  statusEl.style.color = 'var(--color-success-600)';
+  document.getElementById('last-autosave').textContent = new Date().toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit' });
+}
+
+function saveAll() {
+  var sections = ['identification', 'assessment', 'prioritisation', 'monitoring', 'erm'];
+  sections.forEach(function(s) {
+    saveDraft(s + '-text', s + '-saved');
+  });
+}
+
+function toggleErmLabel() {
+  var checked = document.getElementById('erm-toggle').checked;
+  var label = document.getElementById('erm-label');
+  if (checked) {
+    label.textContent = 'Yes';
+    label.className = 'erm-value-yes';
+  } else {
+    label.textContent = 'No';
+    label.className = 'erm-value-no';
+  }
+}
+</script>
+
+</body>
+</html>

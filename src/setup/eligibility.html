@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eligibility Assessment — CCDS</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+    <a href="../dashboard.html" class="logo"><span class="logo-icon">🌿</span><span>CCDS</span></a>
+  </div>
+  <div class="topbar-center"><span class="period-badge">FY2026 Reporting Period</span></div>
+  <div class="topbar-right">
+    <a href="../notifications.html" class="notif-btn">🔔<span class="badge">3</span></a>
+    <div class="avatar">SM</div>
+  </div>
+</header>
+<div class="app-shell">
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-section">
+      <a href="../dashboard.html" class="nav-item"><span class="nav-icon">📊</span><span class="nav-label">Dashboard</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="company.html" class="nav-item active"><span class="nav-icon">⚙️</span><span class="nav-label">Setup &amp; Eligibility</span></a>
+      <a href="../governance/index.html" class="nav-item"><span class="nav-icon">🛡️</span><span class="nav-label">Governance</span></a>
+      <a href="../strategy/index.html" class="nav-item"><span class="nav-icon">🎯</span><span class="nav-label">Strategy &amp; Transition</span></a>
+      <a href="../risk-management/index.html" class="nav-item"><span class="nav-icon">⚠️</span><span class="nav-label">Risk Management</span></a>
+      <a href="../emissions/overview.html" class="nav-item"><span class="nav-icon">🌱</span><span class="nav-label">Emissions &amp; Energy</span></a>
+      <a href="../metrics/targets.html" class="nav-item"><span class="nav-icon">📈</span><span class="nav-label">Metrics &amp; Targets</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="../reports/index.html" class="nav-item"><span class="nav-icon">📄</span><span class="nav-label">Reports</span></a>
+      <a href="../evidence.html" class="nav-item"><span class="nav-icon">📁</span><span class="nav-label">Evidence Library</span></a>
+      <a href="../audit-log.html" class="nav-item"><span class="nav-icon">📜</span><span class="nav-label">Audit Log</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="../notifications.html" class="nav-item"><span class="nav-icon">🔔</span><span class="nav-label">Notifications</span><span class="nav-badge">3</span></a>
+      <a href="../admin/index.html" class="nav-item"><span class="nav-icon">👥</span><span class="nav-label">Administration</span></a>
+    </div>
+  </nav>
+  <main class="main-content">
+    <div class="breadcrumb">
+      <a href="../dashboard.html">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="company.html">Setup &amp; Eligibility</a><span class="breadcrumb-sep">›</span>
+      <span class="current">Eligibility Assessment</span>
+    </div>
+    <div class="tab-nav">
+      <a href="company.html" class="tab-btn">Company Profile</a>
+      <a href="eligibility.html" class="tab-btn active">Eligibility Assessment</a>
+      <a href="sites.html" class="tab-btn">Sites &amp; Facilities</a>
+      <a href="users.html" class="tab-btn">User Management</a>
+    </div>
+    <div class="page-header">
+      <h1 class="page-title">Eligibility Assessment Wizard</h1>
+      <p class="page-subtitle">Determine your reporting group and first mandatory reporting date. Results are recorded for audit purposes.</p>
+    </div>
+
+    <!-- Current result banner -->
+    <div class="alert success" style="margin-bottom:24px;">
+      <span>✅</span>
+      <div>
+        <strong>Assessment complete — Group 1 entity</strong><br>
+        <span style="font-size:var(--text-sm);">First mandatory reporting period: FY beginning 1 January 2025. Assessed on 12 Aug 2024 by Sarah Mitchell.</span>
+      </div>
+      <button class="btn btn-secondary btn-sm" style="margin-left:auto;white-space:nowrap;" onclick="showReassess()">Re-assess</button>
+    </div>
+
+    <!-- Wizard (collapsed by default, show on re-assess) -->
+    <div id="wizard" style="display:none;">
+      <div class="wizard-steps">
+        <div class="wizard-step done" id="step1-indicator">
+          <div class="wizard-step-num">✓</div>
+          <div class="wizard-step-label">Financial thresholds</div>
+        </div>
+        <div class="wizard-connector done"></div>
+        <div class="wizard-step done" id="step2-indicator">
+          <div class="wizard-step-num">✓</div>
+          <div class="wizard-step-label">Employee count</div>
+        </div>
+        <div class="wizard-connector"></div>
+        <div class="wizard-step active" id="step3-indicator">
+          <div class="wizard-step-num">3</div>
+          <div class="wizard-step-label">NGER status</div>
+        </div>
+        <div class="wizard-connector"></div>
+        <div class="wizard-step" id="step4-indicator">
+          <div class="wizard-step-num">4</div>
+          <div class="wizard-step-label">Result</div>
+        </div>
+      </div>
+
+      <!-- Step 1: Financials -->
+      <div id="step-1" class="card" style="max-width:640px;margin-bottom:24px;">
+        <h3 style="font-size:var(--text-lg);font-weight:600;margin-bottom:4px;">Step 1 — Financial Thresholds</h3>
+        <p style="font-size:var(--text-sm);color:var(--color-neutral-600);margin-bottom:16px;">Based on your most recent audited consolidated financials.</p>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Consolidated revenue (AUD) <span class="tooltip-icon" title="Total revenue of parent + subsidiaries">i</span></label>
+            <select class="form-select">
+              <option>Under $50M</option>
+              <option>$50M–$199M</option>
+              <option>$200M–$499M</option>
+              <option selected>$500M or more</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Consolidated gross assets (AUD)</label>
+            <select class="form-select">
+              <option>Under $25M</option>
+              <option>$25M–$499M</option>
+              <option>$500M–$999M</option>
+              <option selected>$1 billion or more</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+      </div>
+
+      <!-- Step 2: Employees -->
+      <div id="step-2" class="card" style="max-width:640px;margin-bottom:24px;display:none;">
+        <h3 style="font-size:var(--text-lg);font-weight:600;margin-bottom:4px;">Step 2 — Employee Count</h3>
+        <div class="form-group">
+          <label class="form-label">Number of employees (consolidated group)</label>
+          <select class="form-select">
+            <option>Fewer than 50</option>
+            <option>50–99</option>
+            <option>100–499</option>
+            <option selected>500 or more</option>
+          </select>
+        </div>
+        <div style="display:flex;gap:12px;">
+          <button class="btn btn-ghost" onclick="prevStep()">← Back</button>
+          <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+        </div>
+      </div>
+
+      <!-- Step 3: NGER -->
+      <div id="step-3" class="card" style="max-width:640px;margin-bottom:24px;display:none;">
+        <h3 style="font-size:var(--text-lg);font-weight:600;margin-bottom:4px;">Step 3 — NGER Status</h3>
+        <p style="font-size:var(--text-sm);color:var(--color-neutral-600);margin-bottom:16px;">Are you a controlling corporation under the National Greenhouse and Energy Reporting Act 2007?</p>
+        <div class="form-radio-group">
+          <label class="form-radio"><input type="radio" name="nger2" value="yes" checked> Yes — registered NGER controlling corporation</label>
+          <label class="form-radio"><input type="radio" name="nger2" value="no"> No</label>
+          <label class="form-radio"><input type="radio" name="nger2" value="unsure"> Not sure — consult your legal team</label>
+        </div>
+        <div style="display:flex;gap:12px;margin-top:16px;">
+          <button class="btn btn-ghost" onclick="prevStep()">← Back</button>
+          <button class="btn btn-primary" onclick="showResult()">Calculate result →</button>
+        </div>
+      </div>
+
+      <!-- Step 4: Result -->
+      <div id="step-4" style="display:none;">
+        <div class="card" style="max-width:640px;background:var(--color-success-100);border-color:var(--color-success-600);">
+          <div style="font-size:32px;margin-bottom:8px;">✅</div>
+          <h2 style="font-size:var(--text-xl);font-weight:700;margin-bottom:8px;">GROUP 1 — Reporting Entity</h2>
+          <div style="font-size:var(--text-sm);display:flex;flex-direction:column;gap:8px;">
+            <div><strong>First mandatory reporting:</strong> Financial year beginning on or after 1 January 2025</div>
+            <div><strong>Year 1 assurance:</strong> Limited assurance (ASSA 5010) — Scope 1 &amp; 2 + Governance</div>
+            <div><strong>Scope 3 mandatory from:</strong> Year 2 (FY2026)</div>
+            <div><strong>Basis:</strong> Meets 3/3 size thresholds + NGER controlling corporation</div>
+          </div>
+          <div style="margin-top:16px;display:flex;gap:12px;">
+            <button class="btn btn-primary" onclick="saveAssessment()">Save assessment</button>
+            <button class="btn btn-ghost" onclick="document.getElementById('wizard').style.display='none'">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Historical assessments -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Assessment History</span>
+      </div>
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr><th>Date</th><th>Assessed by</th><th>Result</th><th>Thresholds met</th><th class="actions-col">Record</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>12 Aug 2024</td>
+              <td>Sarah Mitchell</td>
+              <td><span class="badge-status badge-approved">Group 1</span></td>
+              <td>Revenue ✓ · Assets ✓ · Employees ✓ · NGER ✓</td>
+              <td class="actions-col"><a href="../evidence.html" class="btn btn-ghost btn-sm">📎 View</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+<script>
+let currentStep = 1;
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }
+function showReassess() { document.getElementById('wizard').style.display='block'; currentStep=1; updateSteps(); }
+function nextStep() { currentStep++; updateSteps(); }
+function prevStep() { currentStep--; updateSteps(); }
+function updateSteps() {
+  [1,2,3,4].forEach(i => { document.getElementById('step-'+i).style.display = i === currentStep ? 'block' : 'none'; });
+}
+function showResult() { currentStep = 4; updateSteps(); document.getElementById('step-4').style.display='block'; document.getElementById('step-3').style.display='none'; }
+function saveAssessment() { document.getElementById('wizard').style.display='none'; alert('Assessment saved to audit log.'); }
+</script>
+</body>
+</html>

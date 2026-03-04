@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Profile — CCDS</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+    <a href="../dashboard.html" class="logo"><span class="logo-icon">🌿</span><span>CCDS</span></a>
+  </div>
+  <div class="topbar-center"><span class="period-badge">FY2026 Reporting Period</span></div>
+  <div class="topbar-right">
+    <a href="../notifications.html" class="notif-btn">🔔<span class="badge">3</span></a>
+    <div class="avatar">SM</div>
+  </div>
+</header>
+<div class="app-shell">
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-section">
+      <a href="../dashboard.html" class="nav-item"><span class="nav-icon">📊</span><span class="nav-label">Dashboard</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="company.html" class="nav-item active"><span class="nav-icon">⚙️</span><span class="nav-label">Setup &amp; Eligibility</span></a>
+      <a href="../governance/index.html" class="nav-item"><span class="nav-icon">🛡️</span><span class="nav-label">Governance</span></a>
+      <a href="../strategy/index.html" class="nav-item"><span class="nav-icon">🎯</span><span class="nav-label">Strategy &amp; Transition</span></a>
+      <a href="../risk-management/index.html" class="nav-item"><span class="nav-icon">⚠️</span><span class="nav-label">Risk Management</span></a>
+      <a href="../emissions/overview.html" class="nav-item"><span class="nav-icon">🌱</span><span class="nav-label">Emissions &amp; Energy</span></a>
+      <a href="../metrics/targets.html" class="nav-item"><span class="nav-icon">📈</span><span class="nav-label">Metrics &amp; Targets</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="../reports/index.html" class="nav-item"><span class="nav-icon">📄</span><span class="nav-label">Reports</span></a>
+      <a href="../evidence.html" class="nav-item"><span class="nav-icon">📁</span><span class="nav-label">Evidence Library</span></a>
+      <a href="../audit-log.html" class="nav-item"><span class="nav-icon">📜</span><span class="nav-label">Audit Log</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="../notifications.html" class="nav-item"><span class="nav-icon">🔔</span><span class="nav-label">Notifications</span><span class="nav-badge">3</span></a>
+      <a href="../admin/index.html" class="nav-item"><span class="nav-icon">👥</span><span class="nav-label">Administration</span></a>
+    </div>
+  </nav>
+  <main class="main-content">
+    <div class="breadcrumb">
+      <a href="../dashboard.html">Dashboard</a>
+      <span class="breadcrumb-sep">›</span>
+      <span class="current">Setup &amp; Eligibility</span>
+    </div>
+
+    <!-- Sub-nav tabs -->
+    <div class="tab-nav">
+      <a href="company.html" class="tab-btn active">Company Profile</a>
+      <a href="eligibility.html" class="tab-btn">Eligibility Assessment</a>
+      <a href="sites.html" class="tab-btn">Sites &amp; Facilities</a>
+      <a href="users.html" class="tab-btn">User Management</a>
+    </div>
+
+    <div class="page-header">
+      <h1 class="page-title">Company Profile</h1>
+      <p class="page-subtitle">Organisation details used across all disclosures. Keep this accurate — it flows into your Sustainability Report.</p>
+    </div>
+
+    <div style="max-width:760px;">
+      <div class="card" style="margin-bottom:24px;">
+        <div class="card-header">
+          <span class="card-title">Organisation Details</span>
+          <button class="btn btn-primary btn-sm" onclick="document.getElementById('edit-form').style.display='block';this.style.display='none'">Edit</button>
+        </div>
+
+        <div id="view-mode">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:var(--text-sm);">
+            <div>
+              <div style="color:var(--color-neutral-600);margin-bottom:2px;">Legal entity name</div>
+              <div style="font-weight:500;">AusMetal Holdings Pty Ltd</div>
+            </div>
+            <div>
+              <div style="color:var(--color-neutral-600);margin-bottom:2px;">ABN</div>
+              <div style="font-weight:500;">52 001 234 567</div>
+            </div>
+            <div>
+              <div style="color:var(--color-neutral-600);margin-bottom:2px;">ACN</div>
+              <div style="font-weight:500;">001 234 567</div>
+            </div>
+            <div>
+              <div style="color:var(--color-neutral-600);margin-bottom:2px;">Industry sector</div>
+              <div style="font-weight:500;">Manufacturing — Metal Products</div>
+            </div>
+            <div>
+              <div style="color:var(--color-neutral-600);margin-bottom:2px;">Financial year end</div>
+              <div style="font-weight:500;">30 June</div>
+            </div>
+            <div>
+              <div style="color:var(--color-neutral-600);margin-bottom:2px;">ASIC reporting entity type</div>
+              <div style="font-weight:500;">Large proprietary company (Group 1)</div>
+            </div>
+            <div>
+              <div style="color:var(--color-neutral-600);margin-bottom:2px;">ASX listed</div>
+              <div style="font-weight:500;">Yes — AUM</div>
+            </div>
+            <div>
+              <div style="color:var(--color-neutral-600);margin-bottom:2px;">Registered address</div>
+              <div style="font-weight:500;">Level 15, 100 Collins St, Melbourne VIC 3000</div>
+            </div>
+          </div>
+        </div>
+
+        <form id="edit-form" style="display:none;" onsubmit="saveCompany(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="company-name">Legal entity name <span class="required">*</span></label>
+              <input class="form-input" id="company-name" type="text" value="AusMetal Holdings Pty Ltd">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="abn">ABN <span class="required">*</span></label>
+              <input class="form-input" id="abn" type="text" value="52 001 234 567" placeholder="XX XXX XXX XXX">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="acn">ACN</label>
+              <input class="form-input" id="acn" type="text" value="001 234 567">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="sector">Industry sector <span class="required">*</span></label>
+              <select class="form-select" id="sector">
+                <option selected>Manufacturing — Metal Products</option>
+                <option>Mining</option>
+                <option>Construction</option>
+                <option>Financial Services</option>
+                <option>Retail</option>
+                <option>Transport &amp; Logistics</option>
+                <option>Energy</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="fy-end">Financial year end <span class="required">*</span></label>
+              <select class="form-select" id="fy-end">
+                <option selected>30 June (standard Australian FY)</option>
+                <option>31 December</option>
+                <option>31 March</option>
+                <option>30 September</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="group-type">Reporting group</label>
+              <select class="form-select" id="group-type">
+                <option selected>Group 1 (large entity — from 1 Jan 2025)</option>
+                <option>Group 2 (mid-size — from 1 Jul 2026)</option>
+                <option>Group 3 (smaller — from 1 Jul 2027)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-address">Registered address</label>
+            <input class="form-input" id="reg-address" type="text" value="Level 15, 100 Collins St, Melbourne VIC 3000">
+          </div>
+          <div style="display:flex;gap:12px;margin-top:8px;">
+            <button type="submit" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-ghost" onclick="document.getElementById('edit-form').style.display='none';document.querySelector('.btn-primary.btn-sm').style.display='block'">Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Group structure -->
+      <div class="card" style="margin-bottom:24px;">
+        <div class="card-header">
+          <span class="card-title">Group Structure</span>
+          <button class="btn btn-secondary btn-sm">+ Add subsidiary</button>
+        </div>
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr><th>Entity name</th><th>ABN</th><th>Relationship</th><th>Included in report</th><th class="actions-col"></th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>AusMetal Holdings Pty Ltd</strong></td>
+                <td>52 001 234 567</td>
+                <td>Parent entity</td>
+                <td>✅ Yes</td>
+                <td class="actions-col"><button class="btn btn-ghost btn-sm">Edit</button></td>
+              </tr>
+              <tr>
+                <td>AusMetal Manufacturing Pty Ltd</td>
+                <td>71 002 345 678</td>
+                <td>Wholly-owned subsidiary</td>
+                <td>✅ Yes</td>
+                <td class="actions-col"><button class="btn btn-ghost btn-sm">Edit</button></td>
+              </tr>
+              <tr>
+                <td>AusMetal Distribution Pty Ltd</td>
+                <td>88 003 456 789</td>
+                <td>Wholly-owned subsidiary</td>
+                <td>✅ Yes</td>
+                <td class="actions-col"><button class="btn btn-ghost btn-sm">Edit</button></td>
+              </tr>
+              <tr>
+                <td>Pacific Metals JV</td>
+                <td>44 004 567 890</td>
+                <td>50% joint venture</td>
+                <td><span class="badge badge-amber">Partial — 50% equity share</span></td>
+                <td class="actions-col"><button class="btn btn-ghost btn-sm">Edit</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Reporting period config -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Reporting Period Configuration — FY2026</span>
+          <button class="btn btn-secondary btn-sm">Edit deadlines</button>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:var(--text-sm);">
+          <div style="padding:12px;background:var(--color-neutral-100);border-radius:var(--border-radius);">
+            <div style="color:var(--color-neutral-600);margin-bottom:4px;">Reporting period</div>
+            <div style="font-weight:600;">1 Jul 2025 – 30 Jun 2026</div>
+          </div>
+          <div style="padding:12px;background:var(--color-neutral-100);border-radius:var(--border-radius);">
+            <div style="color:var(--color-neutral-600);margin-bottom:4px;">ASIC lodgement deadline</div>
+            <div style="font-weight:600;color:var(--color-warning-600);">30 Sep 2026</div>
+          </div>
+          <div style="padding:12px;background:var(--color-neutral-100);border-radius:var(--border-radius);">
+            <div style="color:var(--color-neutral-600);margin-bottom:4px;">Site data due date</div>
+            <div style="font-weight:600;">28 Feb 2026</div>
+          </div>
+          <div style="padding:12px;background:var(--color-neutral-100);border-radius:var(--border-radius);">
+            <div style="color:var(--color-neutral-600);margin-bottom:4px;">Draft report due (internal)</div>
+            <div style="font-weight:600;">31 Jul 2026</div>
+          </div>
+          <div style="padding:12px;background:var(--color-neutral-100);border-radius:var(--border-radius);">
+            <div style="color:var(--color-neutral-600);margin-bottom:4px;">Board approval due</div>
+            <div style="font-weight:600;">20 Aug 2026</div>
+          </div>
+          <div style="padding:12px;background:var(--color-neutral-100);border-radius:var(--border-radius);">
+            <div style="color:var(--color-neutral-600);margin-bottom:4px;">Auditor access window</div>
+            <div style="font-weight:600;">3 Mar – 31 May 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script>
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }
+function saveCompany(e) {
+  e.preventDefault();
+  document.getElementById('edit-form').style.display = 'none';
+  document.querySelector('.btn-primary.btn-sm').style.display = 'block';
+  alert('Company profile saved.');
+}
+</script>
+</body>
+</html>

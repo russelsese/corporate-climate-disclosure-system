@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emissions Overview — CCDS</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">&#9776;</button>
+    <a href="../dashboard.html" class="logo">
+      <span class="logo-icon">🌿</span>
+      <div>
+        <div>CCDS</div>
+        <div class="logo-subtitle">Climate Disclosure System</div>
+      </div>
+    </a>
+  </div>
+  <div class="topbar-center">
+    <span class="period-badge">FY2026 Reporting Period</span>
+  </div>
+  <div class="topbar-right">
+    <a href="../notifications.html" class="notif-btn" aria-label="Notifications">
+      🔔
+      <span class="badge">3</span>
+    </a>
+    <div class="avatar" title="Sarah Mitchell — ESG Manager">SM</div>
+  </div>
+</header>
+
+<!-- APP SHELL -->
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-section">
+      <a href="../dashboard.html" class="nav-item">
+        <span class="nav-icon">📊</span>
+        <span class="nav-label">Dashboard</span>
+      </a>
+    </div>
+    <div class="nav-section">
+      <a href="../setup/company.html" class="nav-item">
+        <span class="nav-icon">⚙️</span>
+        <span class="nav-label">Setup</span>
+      </a>
+      <a href="../governance/index.html" class="nav-item">
+        <span class="nav-icon">🛡️</span>
+        <span class="nav-label">Governance</span>
+      </a>
+      <a href="../strategy/index.html" class="nav-item">
+        <span class="nav-icon">🎯</span>
+        <span class="nav-label">Strategy</span>
+      </a>
+      <a href="../risk-management/index.html" class="nav-item">
+        <span class="nav-icon">⚠️</span>
+        <span class="nav-label">Risk Management</span>
+      </a>
+      <a href="overview.html" class="nav-item active">
+        <span class="nav-icon">🌱</span>
+        <span class="nav-label">Emissions &amp; Energy</span>
+      </a>
+      <a href="../metrics/targets.html" class="nav-item">
+        <span class="nav-icon">📈</span>
+        <span class="nav-label">Metrics</span>
+      </a>
+    </div>
+    <div class="nav-section">
+      <a href="../reports/index.html" class="nav-item">
+        <span class="nav-icon">📄</span>
+        <span class="nav-label">Reports</span>
+      </a>
+      <a href="../evidence.html" class="nav-item">
+        <span class="nav-icon">📁</span>
+        <span class="nav-label">Evidence</span>
+      </a>
+      <a href="../audit-log.html" class="nav-item">
+        <span class="nav-icon">📜</span>
+        <span class="nav-label">Audit Log</span>
+      </a>
+    </div>
+    <div class="nav-section">
+      <a href="../notifications.html" class="nav-item">
+        <span class="nav-icon">🔔</span>
+        <span class="nav-label">Notifications</span>
+        <span class="nav-badge">3</span>
+      </a>
+      <a href="../admin/index.html" class="nav-item">
+        <span class="nav-icon">👥</span>
+        <span class="nav-label">Admin</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+      <a href="../dashboard.html">Dashboard</a>
+      <span class="breadcrumb-sep">/</span>
+      <span class="current">Emissions &amp; Energy</span>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+        <div>
+          <h1 class="page-title">Emissions &amp; Energy</h1>
+          <p class="page-subtitle">AASB S2 §29–§36 — Group-level GHG emissions rollup across all reporting sites</p>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="btn btn-secondary btn-sm">&#8593; Import CSV</button>
+          <button class="btn btn-primary btn-sm">Send reminder to all outstanding sites</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub-nav tabs -->
+    <div class="tab-nav">
+      <a href="overview.html" class="tab-btn active" style="text-decoration:none;">Emissions Overview</a>
+      <a href="site-entry.html" class="tab-btn" style="text-decoration:none;">Site Data Entry</a>
+      <a href="factors.html" class="tab-btn" style="text-decoration:none;">Emission Factors</a>
+      <a href="disclosure.html" class="tab-btn" style="text-decoration:none;">Emissions Disclosure</a>
+    </div>
+
+    <!-- Alert: outstanding sites -->
+    <div class="alert warning">
+      <span>⚠️</span>
+      <span><strong>3 sites outstanding</strong> — emissions totals are incomplete. Final figures cannot be submitted until all sites have submitted their data.</span>
+    </div>
+
+    <!-- Scope Summary Cards -->
+    <div class="emissions-summary" style="margin-bottom:24px;">
+      <div class="emissions-scope-card">
+        <div class="emissions-scope-name">Scope 1 — Direct Emissions</div>
+        <div class="emissions-scope-value">1,240</div>
+        <div class="emissions-scope-unit">tCO₂e &nbsp;·&nbsp; 5 of 8 sites submitted</div>
+        <div style="margin-top:8px;">
+          <div class="progress-bar-track"><div class="progress-bar-fill" style="width:62.5%;"></div></div>
+          <div style="font-size:11px;color:var(--color-neutral-600);margin-top:4px;">5 / 8 sites &nbsp;·&nbsp; 3 pending</div>
+        </div>
+      </div>
+      <div class="emissions-scope-card scope-2">
+        <div class="emissions-scope-name">Scope 2 — Location-based</div>
+        <div class="emissions-scope-value">3,890</div>
+        <div class="emissions-scope-unit">tCO₂e &nbsp;·&nbsp; 5 of 8 sites submitted</div>
+        <div style="margin-top:8px;">
+          <div class="progress-bar-track"><div class="progress-bar-fill" style="width:62.5%;"></div></div>
+          <div style="font-size:11px;color:var(--color-neutral-600);margin-top:4px;">5 / 8 sites &nbsp;·&nbsp; 3 pending</div>
+        </div>
+      </div>
+      <div class="emissions-scope-card scope-3">
+        <div class="emissions-scope-name">Scope 3 — Value Chain</div>
+        <div class="emissions-scope-value" style="color:var(--color-neutral-400);font-size:var(--text-xl);">Not entered</div>
+        <div class="emissions-scope-unit">Optional in Year 1 — Mandatory from Year 2</div>
+        <div style="margin-top:8px;">
+          <a href="site-entry.html" class="btn btn-ghost btn-sm" style="padding-left:0;">Enter Scope 3 data →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Year-on-Year Comparison Chart -->
+    <div class="card" style="margin-bottom:24px;">
+      <div class="card-header">
+        <span class="card-title">Year-on-Year Comparison</span>
+        <div style="display:flex;align-items:center;gap:16px;font-size:var(--text-xs);color:var(--color-neutral-600);">
+          <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;background:var(--color-scope1);border-radius:2px;display:inline-block;"></span> Scope 1</span>
+          <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;background:var(--color-scope2-loc);border-radius:2px;display:inline-block;"></span> Scope 2 (Location)</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:32px;align-items:flex-end;padding:8px 0 0 0;">
+        <!-- Chart area -->
+        <div style="flex:1;">
+          <div style="display:flex;align-items:flex-end;gap:24px;height:160px;padding-bottom:0;">
+            <!-- FY2024 -->
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0;">
+              <div style="display:flex;align-items:flex-end;gap:3px;width:100%;justify-content:center;">
+                <div style="width:28px;background:var(--color-scope1);border-radius:2px 2px 0 0;height:88px;" title="FY2024 Scope 1: 1,100 tCO₂e"></div>
+                <div style="width:28px;background:var(--color-scope2-loc);border-radius:2px 2px 0 0;height:130px;" title="FY2024 Scope 2: 3,620 tCO₂e"></div>
+              </div>
+              <div style="font-size:var(--text-xs);color:var(--color-neutral-600);margin-top:6px;text-align:center;">FY2024</div>
+              <div style="font-size:10px;color:var(--color-neutral-400);text-align:center;">4,720 tCO₂e</div>
+            </div>
+            <!-- FY2025 -->
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0;">
+              <div style="display:flex;align-items:flex-end;gap:3px;width:100%;justify-content:center;">
+                <div style="width:28px;background:var(--color-scope1);border-radius:2px 2px 0 0;height:96px;" title="FY2025 Scope 1: 1,185 tCO₂e"></div>
+                <div style="width:28px;background:var(--color-scope2-loc);border-radius:2px 2px 0 0;height:141px;" title="FY2025 Scope 2: 3,760 tCO₂e"></div>
+              </div>
+              <div style="font-size:var(--text-xs);color:var(--color-neutral-600);margin-top:6px;text-align:center;">FY2025</div>
+              <div style="font-size:10px;color:var(--color-neutral-400);text-align:center;">4,945 tCO₂e</div>
+            </div>
+            <!-- FY2026* -->
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0;">
+              <div style="display:flex;align-items:flex-end;gap:3px;width:100%;justify-content:center;">
+                <div style="width:28px;background:var(--color-scope1);border-radius:2px 2px 0 0;height:100px;opacity:0.75;" title="FY2026 Scope 1: 1,240 tCO₂e (partial)"></div>
+                <div style="width:28px;background:var(--color-scope2-loc);border-radius:2px 2px 0 0;height:148px;opacity:0.75;" title="FY2026 Scope 2: 3,890 tCO₂e (partial)"></div>
+              </div>
+              <div style="font-size:var(--text-xs);color:var(--color-neutral-600);margin-top:6px;text-align:center;">FY2026*</div>
+              <div style="font-size:10px;color:var(--color-neutral-400);text-align:center;">5,130 tCO₂e</div>
+            </div>
+          </div>
+          <div style="border-top:1px solid var(--color-neutral-200);margin-top:4px;"></div>
+          <div style="font-size:10px;color:var(--color-neutral-400);margin-top:4px;">* FY2026 figures are partial — 3 sites outstanding</div>
+        </div>
+        <!-- Totals panel -->
+        <div style="width:200px;display:flex;flex-direction:column;gap:12px;flex-shrink:0;">
+          <div style="background:var(--color-neutral-100);border-radius:6px;padding:12px;">
+            <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--color-neutral-600);">Total Scope 1+2</div>
+            <div style="font-size:22px;font-weight:700;margin:4px 0;">5,130 <span style="font-size:12px;font-weight:400;color:var(--color-neutral-600);">tCO₂e</span></div>
+            <div style="font-size:11px;color:var(--color-warning-600);">&#8593; +3.7% vs FY2025</div>
+          </div>
+          <div style="background:var(--color-neutral-100);border-radius:6px;padding:12px;">
+            <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--color-neutral-600);">Intensity</div>
+            <div style="font-size:18px;font-weight:700;margin:4px 0;">4.2 <span style="font-size:12px;font-weight:400;color:var(--color-neutral-600);">tCO₂e / $M</span></div>
+            <div style="font-size:11px;color:var(--color-success-600);">&#8595; -1.2% vs FY2025</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Site-by-site Breakdown -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Site-by-Site Emissions Breakdown</span>
+        <div style="display:flex;gap:8px;">
+          <a href="site-entry.html" class="btn btn-secondary btn-sm">Enter site data</a>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Site</th>
+              <th>Status</th>
+              <th>Scope 1 (tCO₂e)</th>
+              <th>Scope 2 Location (tCO₂e)</th>
+              <th>Last Updated</th>
+              <th class="actions-col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div style="font-weight:500;">Dandenong Plant</div>
+                <div style="font-size:var(--text-xs);color:var(--color-neutral-600);">David Park · VIC</div>
+              </td>
+              <td><span class="badge-status badge-overdue">Overdue</span></td>
+              <td style="color:var(--color-neutral-400);">—</td>
+              <td style="color:var(--color-neutral-400);">—</td>
+              <td style="color:var(--color-danger-600);font-size:var(--text-xs);">Due 15 Feb 2026</td>
+              <td class="actions-col">
+                <button class="btn btn-danger btn-sm">Send reminder</button>
+                <a href="site-entry.html" class="btn btn-ghost btn-sm">View</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="font-weight:500;">Footscray Office</div>
+                <div style="font-size:var(--text-xs);color:var(--color-neutral-600);">James Wong · VIC</div>
+              </td>
+              <td><span class="badge-status badge-approved">Submitted</span></td>
+              <td style="font-weight:500;">113</td>
+              <td style="font-weight:500;">146</td>
+              <td style="font-size:var(--text-xs);">18 Feb 2026</td>
+              <td class="actions-col">
+                <a href="site-entry.html" class="btn btn-ghost btn-sm">Review</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="font-weight:500;">Geelong Warehouse</div>
+                <div style="font-size:var(--text-xs);color:var(--color-neutral-600);">Priya Sharma · VIC</div>
+              </td>
+              <td><span class="badge-status badge-approved">Submitted</span></td>
+              <td style="font-weight:500;">284</td>
+              <td style="font-weight:500;">420</td>
+              <td style="font-size:var(--text-xs);">17 Feb 2026</td>
+              <td class="actions-col">
+                <a href="site-entry.html" class="btn btn-ghost btn-sm">Review</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="font-weight:500;">Brisbane Depot</div>
+                <div style="font-size:var(--text-xs);color:var(--color-neutral-600);">Tom Ellis · QLD</div>
+              </td>
+              <td><span class="badge-status badge-in-progress">In Progress</span></td>
+              <td style="color:var(--color-neutral-400);">—</td>
+              <td style="color:var(--color-neutral-400);">—</td>
+              <td style="font-size:var(--text-xs);">20 Feb 2026</td>
+              <td class="actions-col">
+                <a href="site-entry.html" class="btn btn-secondary btn-sm">Continue</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="font-weight:500;">Sydney HQ</div>
+                <div style="font-size:var(--text-xs);color:var(--color-neutral-600);">Mei Lin · NSW</div>
+              </td>
+              <td><span class="badge-status badge-not-started">Not Started</span></td>
+              <td style="color:var(--color-neutral-400);">—</td>
+              <td style="color:var(--color-neutral-400);">—</td>
+              <td style="font-size:var(--text-xs);color:var(--color-neutral-400);">—</td>
+              <td class="actions-col">
+                <button class="btn btn-ghost btn-sm">Send reminder</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="font-weight:500;">Perth Distribution</div>
+                <div style="font-size:var(--text-xs);color:var(--color-neutral-600);">Aisha Rahman · WA</div>
+              </td>
+              <td><span class="badge-status badge-approved">Submitted</span></td>
+              <td style="font-weight:500;">195</td>
+              <td style="font-weight:500;">310</td>
+              <td style="font-size:var(--text-xs);">16 Feb 2026</td>
+              <td class="actions-col">
+                <a href="site-entry.html" class="btn btn-ghost btn-sm">Review</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="font-weight:500;">Adelaide Facility</div>
+                <div style="font-size:var(--text-xs);color:var(--color-neutral-600);">Liam Chen · SA</div>
+              </td>
+              <td><span class="badge-status badge-approved">Submitted</span></td>
+              <td style="font-weight:500;">320</td>
+              <td style="font-weight:500;">480</td>
+              <td style="font-size:var(--text-xs);">19 Feb 2026</td>
+              <td class="actions-col">
+                <a href="site-entry.html" class="btn btn-ghost btn-sm">Review</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="font-weight:500;">Townsville Depot</div>
+                <div style="font-size:var(--text-xs);color:var(--color-neutral-600);">Sandra Kowalski · QLD</div>
+              </td>
+              <td><span class="badge-status badge-not-started">Not Started</span></td>
+              <td style="color:var(--color-neutral-400);">—</td>
+              <td style="color:var(--color-neutral-400);">—</td>
+              <td style="font-size:var(--text-xs);color:var(--color-neutral-400);">—</td>
+              <td class="actions-col">
+                <button class="btn btn-ghost btn-sm">Send reminder</button>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="2"><strong>Group Total (5 of 8 sites)</strong></td>
+              <td><strong>1,240</strong></td>
+              <td><strong>3,890</strong> <span class="badge badge-amber" style="margin-left:4px;">partial</span></td>
+              <td colspan="2"></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div style="padding:16px 24px;border-top:1px solid var(--color-neutral-200);display:flex;justify-content:flex-end;gap:8px;">
+        <button class="btn btn-danger btn-sm" onclick="alert('Reminders sent to: Dandenong Plant, Sydney HQ, Townsville Depot')">Send reminder to all outstanding sites</button>
+        <button class="btn btn-secondary btn-sm">&#8593; Export table</button>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- Mobile bottom nav -->
+<nav class="mobile-nav">
+  <a href="../dashboard.html" class="mobile-nav-item"><span class="mobile-nav-icon">📊</span>Dashboard</a>
+  <a href="../notifications.html" class="mobile-nav-item"><span class="mobile-nav-icon">🔔</span>Tasks</a>
+  <a href="overview.html" class="mobile-nav-item active"><span class="mobile-nav-icon">🌱</span>Emissions</a>
+  <a href="../evidence.html" class="mobile-nav-item"><span class="mobile-nav-icon">📁</span>Evidence</a>
+  <a href="../admin/index.html" class="mobile-nav-item"><span class="mobile-nav-icon">&#8943;</span>More</a>
+</nav>
+
+<script>
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+</script>
+</body>
+</html>

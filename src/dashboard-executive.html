@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Executive Dashboard — CCDS</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">☰</button>
+    <a href="dashboard-executive.html" class="logo"><span class="logo-icon">🌿</span><span>CCDS</span></a>
+  </div>
+  <div class="topbar-center">
+    <span class="period-badge">FY2026 · Executive View</span>
+  </div>
+  <div class="topbar-right">
+    <a href="notifications.html" class="notif-btn" aria-label="Notifications">🔔<span class="badge">1</span></a>
+    <div class="avatar" title="Alex Chen — CFO">AC</div>
+  </div>
+</header>
+
+<div class="app-shell">
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-section">
+      <a href="dashboard-executive.html" class="nav-item active"><span class="nav-icon">📊</span><span class="nav-label">Dashboard</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="governance/disclosure.html" class="nav-item"><span class="nav-icon">🛡️</span><span class="nav-label">Governance</span></a>
+      <a href="strategy/disclosure.html" class="nav-item"><span class="nav-icon">🎯</span><span class="nav-label">Strategy</span></a>
+      <a href="risk-management/disclosure.html" class="nav-item"><span class="nav-icon">⚠️</span><span class="nav-label">Risk Management</span></a>
+      <a href="emissions/overview.html" class="nav-item"><span class="nav-icon">🌱</span><span class="nav-label">Emissions</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="reports/executive-summary.html" class="nav-item"><span class="nav-icon">📄</span><span class="nav-label">Reports</span></a>
+      <a href="admin/users.html" class="nav-item"><span class="nav-icon">👥</span><span class="nav-label">User Mgmt</span></a>
+    </div>
+    <div class="nav-section" style="margin-top:auto;">
+      <a href="dashboard.html" class="nav-item"><span class="nav-icon">🔄</span><span class="nav-label">ESG Manager View</span></a>
+      <a href="login.html" class="nav-item"><span class="nav-icon">🚪</span><span class="nav-label">Sign out</span></a>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="page-header">
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <div>
+          <h1 class="page-title">FY2026 Compliance Status</h1>
+          <p class="page-subtitle">Deadline: 30 September 2026 &nbsp;·&nbsp; 62 days remaining</p>
+        </div>
+        <div style="display:flex;gap:12px;">
+          <a href="reports/executive-summary.html" class="btn btn-primary">📋 Download Executive Summary</a>
+          <a href="reports/sustainability-report.html" class="btn btn-secondary">View Full Report Draft</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 Pillar Status Cards (Executive) -->
+    <div class="card-grid-4" style="margin-bottom:32px;">
+      <div class="stat-card" style="text-align:center;border-top:4px solid var(--color-success-600);">
+        <div style="font-size:32px;margin-bottom:8px;">🛡️</div>
+        <div style="font-size:var(--text-sm);font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--color-neutral-600);margin-bottom:4px;">Governance</div>
+        <span class="badge-status badge-approved" style="font-size:var(--text-sm);padding:6px 14px;">CFO Approved</span>
+        <div style="margin-top:12px;">
+          <a href="governance/disclosure.html" class="btn btn-secondary btn-sm w-full">Review →</a>
+        </div>
+      </div>
+
+      <div class="stat-card" style="text-align:center;border-top:4px solid var(--color-warning-600);">
+        <div style="font-size:32px;margin-bottom:8px;">🎯</div>
+        <div style="font-size:var(--text-sm);font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--color-neutral-600);margin-bottom:4px;">Strategy</div>
+        <span class="badge-status badge-in-progress" style="font-size:var(--text-sm);padding:6px 14px;">In Draft</span>
+        <div style="margin-top:12px;font-size:var(--text-xs);color:var(--color-neutral-600);">Ready soon</div>
+      </div>
+
+      <div class="stat-card" style="text-align:center;border-top:4px solid var(--color-warning-600);">
+        <div style="font-size:32px;margin-bottom:8px;">⚠️</div>
+        <div style="font-size:var(--text-sm);font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--color-neutral-600);margin-bottom:4px;">Risk Management</div>
+        <span class="badge-status badge-in-progress" style="font-size:var(--text-sm);padding:6px 14px;">In Draft</span>
+        <div style="margin-top:12px;">
+          <a href="risk-management/disclosure.html" class="btn btn-secondary btn-sm w-full">Review →</a>
+        </div>
+      </div>
+
+      <div class="stat-card" style="text-align:center;border-top:4px solid var(--color-warning-600);">
+        <div style="font-size:32px;margin-bottom:8px;">🌱</div>
+        <div style="font-size:var(--text-sm);font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--color-neutral-600);margin-bottom:4px;">Emissions &amp; Metrics</div>
+        <span class="badge-status badge-overdue" style="font-size:var(--text-sm);padding:6px 14px;">Data Pending</span>
+        <div style="margin-top:12px;font-size:var(--text-xs);color:var(--color-neutral-600);">3 sites outstanding</div>
+      </div>
+    </div>
+
+    <!-- Items awaiting approval -->
+    <div class="card" style="margin-bottom:24px;">
+      <div class="card-header">
+        <span class="card-title">Items Awaiting Your Approval</span>
+        <span class="badge badge-amber">1 pending</span>
+      </div>
+      <div class="task-list">
+        <div class="task-item warning" style="background:var(--color-warning-100);">
+          <div class="task-icon">📋</div>
+          <div class="task-body">
+            <div class="task-title" style="font-size:var(--text-base);">Governance Disclosure — FY2026</div>
+            <div class="task-meta">Submitted by Sarah Mitchell · 14 Feb 2026 · AASB S2 §6–§9</div>
+            <div style="font-size:var(--text-sm);color:var(--color-neutral-600);margin-top:4px;">Approval chain: Prepared ✓ → CFO (YOU) → Board Director</div>
+            <div class="task-actions">
+              <a href="governance/disclosure.html" class="btn btn-secondary btn-sm">Preview disclosure</a>
+              <button class="btn btn-approve btn-sm" onclick="showApprovalModal()">✅ Approve</button>
+              <button class="btn btn-ghost btn-sm" style="color:var(--color-warning-600);">↩ Request changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:12px;padding:12px;background:var(--color-neutral-100);border-radius:var(--border-radius);font-size:var(--text-sm);color:var(--color-neutral-600);">
+        <strong>No other items pending.</strong> Risk Management and Strategy will appear here once submitted by the ESG team.
+      </div>
+    </div>
+
+    <!-- GHG Emissions Summary -->
+    <div class="card-grid" style="margin-bottom:24px;grid-template-columns:1fr 1fr;">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Total GHG Emissions — FY2026</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--color-neutral-200);">
+            <span style="font-size:var(--text-sm);">Scope 1 — Direct emissions</span>
+            <strong style="font-size:var(--text-lg);">1,240 tCO₂e</strong>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--color-neutral-200);">
+            <span style="font-size:var(--text-sm);">Scope 2 — Location-based</span>
+            <strong style="font-size:var(--text-lg);">3,890 tCO₂e</strong>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--color-neutral-200);">
+            <span style="font-size:var(--text-sm);">Scope 3 — Value chain</span>
+            <span style="font-size:var(--text-sm);color:var(--color-neutral-400);">— (Year 1, optional)</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;">
+            <span style="font-size:var(--text-sm);font-weight:600;">Total (Scope 1+2)</span>
+            <strong style="font-size:var(--text-2xl);color:var(--color-primary-700);">5,130 tCO₂e</strong>
+          </div>
+        </div>
+        <div class="alert warning" style="margin-top:12px;margin-bottom:0;">
+          <span>⚠️</span><span>3 sites still pending — totals incomplete</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Year-on-Year Trend</span>
+        </div>
+        <div style="display:flex;align-items:flex-end;gap:16px;height:120px;padding:0 8px;">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+            <div style="flex:1;width:100%;display:flex;flex-direction:column;justify-content:flex-end;">
+              <div style="background:var(--color-primary-500);height:70%;border-radius:3px 3px 0 0;opacity:.6;"></div>
+            </div>
+            <span style="font-size:var(--text-xs);color:var(--color-neutral-600);">FY2024</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+            <div style="flex:1;width:100%;display:flex;flex-direction:column;justify-content:flex-end;">
+              <div style="background:var(--color-primary-500);height:85%;border-radius:3px 3px 0 0;opacity:.8;"></div>
+            </div>
+            <span style="font-size:var(--text-xs);color:var(--color-neutral-600);">FY2025</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+            <div style="flex:1;width:100%;display:flex;flex-direction:column;justify-content:flex-end;">
+              <div style="background:var(--color-primary-700);height:60%;border-radius:3px 3px 0 0;position:relative;">
+                <span style="position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--color-success-600);font-weight:700;">-7%↓</span>
+              </div>
+            </div>
+            <span style="font-size:var(--text-xs);color:var(--color-primary-700);font-weight:600;">FY2026*</span>
+          </div>
+        </div>
+        <p style="font-size:var(--text-xs);color:var(--color-neutral-400);margin-top:8px;">* Partial — 3 sites outstanding</p>
+        <div style="margin-top:12px;display:flex;gap:8px;">
+          <a href="metrics/performance.html" class="btn btn-secondary btn-sm">Full performance view</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Board oversight calendar (for Board Director view) -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Governance Calendar — FY2026</span>
+        <a href="governance/board.html" class="btn btn-ghost btn-sm">View all oversight activities →</a>
+      </div>
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Activity</th>
+              <th>Body</th>
+              <th>Climate Items</th>
+              <th>Minutes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>14 Mar 2025</td>
+              <td>Audit &amp; Risk Committee</td>
+              <td>BARC</td>
+              <td>Climate risk register review; FY2026 reporting timeline approved</td>
+              <td><a href="evidence.html" class="btn btn-ghost btn-sm">📎 View</a></td>
+            </tr>
+            <tr>
+              <td>22 Jun 2025</td>
+              <td>Full Board Meeting</td>
+              <td>Board</td>
+              <td>Approved Climate Policy update; reviewed scenario analysis methodology</td>
+              <td><a href="evidence.html" class="btn btn-ghost btn-sm">📎 View</a></td>
+            </tr>
+            <tr>
+              <td>12 Sep 2025</td>
+              <td>Audit &amp; Risk Committee</td>
+              <td>BARC</td>
+              <td>Half-year emissions performance review; auditor engagement approval</td>
+              <td><a href="evidence.html" class="btn btn-ghost btn-sm">📎 View</a></td>
+            </tr>
+            <tr>
+              <td>05 Dec 2025</td>
+              <td>Full Board Meeting</td>
+              <td>Board</td>
+              <td>Approved Climate Transition Plan v2; reviewed Scope 3 boundary decision</td>
+              <td><a href="evidence.html" class="btn btn-ghost btn-sm">📎 View</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Approval modal -->
+<div id="approval-modal" class="modal-overlay" style="display:none;">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 class="modal-title">Approve Governance Disclosure</h2>
+      <button class="modal-close" onclick="document.getElementById('approval-modal').style.display='none'">✕</button>
+    </div>
+    <p style="font-size:var(--text-sm);color:var(--color-neutral-600);margin-bottom:16px;">You are approving the Governance Disclosure for FY2026. This action will be recorded in the audit log.</p>
+    <div class="form-group">
+      <label class="form-label" for="approval-comment">Optional comment</label>
+      <textarea class="form-textarea" id="approval-comment" placeholder="Add any notes for the record..."></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="approval-pin">Confirm identity — enter your PIN <span class="required">*</span></label>
+      <input class="form-input" id="approval-pin" type="password" placeholder="••••••" style="max-width:180px;">
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="document.getElementById('approval-modal').style.display='none'">Cancel</button>
+      <button class="btn btn-approve" onclick="confirmApproval()">✅ Confirm Approval</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }
+function showApprovalModal() { document.getElementById('approval-modal').style.display='flex'; }
+function confirmApproval() {
+  document.getElementById('approval-modal').style.display='none';
+  alert('Governance Disclosure approved. Board Director has been notified.');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sites &amp; Facilities — CCDS</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+    <a href="../dashboard.html" class="logo"><span class="logo-icon">🌿</span><span>CCDS</span></a>
+  </div>
+  <div class="topbar-center"><span class="period-badge">FY2026 Reporting Period</span></div>
+  <div class="topbar-right">
+    <a href="../notifications.html" class="notif-btn">🔔<span class="badge">3</span></a>
+    <div class="avatar">SM</div>
+  </div>
+</header>
+<div class="app-shell">
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-section">
+      <a href="../dashboard.html" class="nav-item"><span class="nav-icon">📊</span><span class="nav-label">Dashboard</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="company.html" class="nav-item active"><span class="nav-icon">⚙️</span><span class="nav-label">Setup &amp; Eligibility</span></a>
+      <a href="../governance/index.html" class="nav-item"><span class="nav-icon">🛡️</span><span class="nav-label">Governance</span></a>
+      <a href="../strategy/index.html" class="nav-item"><span class="nav-icon">🎯</span><span class="nav-label">Strategy &amp; Transition</span></a>
+      <a href="../risk-management/index.html" class="nav-item"><span class="nav-icon">⚠️</span><span class="nav-label">Risk Management</span></a>
+      <a href="../emissions/overview.html" class="nav-item"><span class="nav-icon">🌱</span><span class="nav-label">Emissions &amp; Energy</span></a>
+      <a href="../metrics/targets.html" class="nav-item"><span class="nav-icon">📈</span><span class="nav-label">Metrics &amp; Targets</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="../reports/index.html" class="nav-item"><span class="nav-icon">📄</span><span class="nav-label">Reports</span></a>
+      <a href="../evidence.html" class="nav-item"><span class="nav-icon">📁</span><span class="nav-label">Evidence Library</span></a>
+      <a href="../audit-log.html" class="nav-item"><span class="nav-icon">📜</span><span class="nav-label">Audit Log</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="../notifications.html" class="nav-item"><span class="nav-icon">🔔</span><span class="nav-label">Notifications</span><span class="nav-badge">3</span></a>
+      <a href="../admin/index.html" class="nav-item"><span class="nav-icon">👥</span><span class="nav-label">Administration</span></a>
+    </div>
+  </nav>
+  <main class="main-content">
+    <div class="breadcrumb">
+      <a href="../dashboard.html">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="company.html">Setup &amp; Eligibility</a><span class="breadcrumb-sep">›</span>
+      <span class="current">Sites &amp; Facilities</span>
+    </div>
+    <div class="tab-nav">
+      <a href="company.html" class="tab-btn">Company Profile</a>
+      <a href="eligibility.html" class="tab-btn">Eligibility Assessment</a>
+      <a href="sites.html" class="tab-btn active">Sites &amp; Facilities</a>
+      <a href="users.html" class="tab-btn">User Management</a>
+    </div>
+    <div class="page-header" style="display:flex;align-items:flex-start;justify-content:space-between;">
+      <div>
+        <h1 class="page-title">Sites &amp; Facilities</h1>
+        <p class="page-subtitle">Each site needs a manager assigned to submit emissions data. 8 sites registered.</p>
+      </div>
+      <button class="btn btn-primary" onclick="document.getElementById('add-site-modal').style.display='flex'">+ Add site</button>
+    </div>
+
+    <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-bottom:24px;">
+      <div class="stat-card">
+        <div class="stat-label">Total Sites</div>
+        <div class="stat-value">8</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Sites with Manager Assigned</div>
+        <div class="stat-value">8</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Submitted FY2026</div>
+        <div class="stat-value" style="color:var(--color-warning-600);">5 / 8</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="table-toolbar">
+        <div class="table-filters">
+          <select class="table-filter-select"><option>All states</option><option>VIC</option><option>NSW</option><option>QLD</option><option>WA</option></select>
+          <select class="table-filter-select"><option>All site types</option><option>Manufacturing</option><option>Office</option><option>Warehouse</option><option>Depot</option></select>
+          <select class="table-filter-select"><option>All statuses</option><option>Submitted</option><option>In Progress</option><option>Overdue</option><option>Not Started</option></select>
+        </div>
+        <div class="table-search"><span>🔍</span><input type="text" placeholder="Search sites…"></div>
+      </div>
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Site name</th>
+              <th>Location</th>
+              <th>Type</th>
+              <th>Site Manager</th>
+              <th>FY2026 Status</th>
+              <th>Data due</th>
+              <th class="actions-col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Dandenong Plant</strong></td>
+              <td>Dandenong VIC 3175</td>
+              <td>Manufacturing</td>
+              <td>David Park</td>
+              <td><span class="badge-status badge-overdue">Overdue</span></td>
+              <td style="color:var(--color-danger-600);">15 Feb 2026 ⚠</td>
+              <td class="actions-col">
+                <a href="../emissions/site-entry.html" class="btn btn-ghost btn-sm">View data</a>
+                <button class="btn btn-ghost btn-sm">Edit</button>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Footscray Office</strong></td>
+              <td>Footscray VIC 3011</td>
+              <td>Office</td>
+              <td>James Wong</td>
+              <td><span class="badge-status badge-approved">Submitted</span></td>
+              <td>18 Feb 2026</td>
+              <td class="actions-col">
+                <a href="../emissions/site-entry.html" class="btn btn-ghost btn-sm">Review</a>
+                <button class="btn btn-ghost btn-sm">Edit</button>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Geelong Warehouse</strong></td>
+              <td>Geelong VIC 3220</td>
+              <td>Warehouse</td>
+              <td>Priya Sharma</td>
+              <td><span class="badge-status badge-approved">Submitted</span></td>
+              <td>18 Feb 2026</td>
+              <td class="actions-col">
+                <a href="../emissions/site-entry.html" class="btn btn-ghost btn-sm">Review</a>
+                <button class="btn btn-ghost btn-sm">Edit</button>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Brisbane Depot</strong></td>
+              <td>Rocklea QLD 4106</td>
+              <td>Depot</td>
+              <td>Tom Ellis</td>
+              <td><span class="badge-status badge-in-progress">In Progress</span></td>
+              <td>20 Feb 2026</td>
+              <td class="actions-col">
+                <a href="../emissions/site-entry.html" class="btn btn-ghost btn-sm">View data</a>
+                <button class="btn btn-ghost btn-sm">Edit</button>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Sydney HQ</strong></td>
+              <td>Pyrmont NSW 2009</td>
+              <td>Office</td>
+              <td>Mei Lin</td>
+              <td><span class="badge-status badge-not-started">Not Started</span></td>
+              <td>22 Feb 2026</td>
+              <td class="actions-col">
+                <button class="btn btn-ghost btn-sm">Send reminder</button>
+                <button class="btn btn-ghost btn-sm">Edit</button>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Perth Distribution</strong></td>
+              <td>Welshpool WA 6106</td>
+              <td>Warehouse</td>
+              <td>Rob Nguyen</td>
+              <td><span class="badge-status badge-approved">Submitted</span></td>
+              <td>22 Feb 2026</td>
+              <td class="actions-col">
+                <a href="../emissions/site-entry.html" class="btn btn-ghost btn-sm">Review</a>
+                <button class="btn btn-ghost btn-sm">Edit</button>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Adelaide Facility</strong></td>
+              <td>Dry Creek SA 5094</td>
+              <td>Manufacturing</td>
+              <td>Lucy Park</td>
+              <td><span class="badge-status badge-approved">Submitted</span></td>
+              <td>25 Feb 2026</td>
+              <td class="actions-col">
+                <a href="../emissions/site-entry.html" class="btn btn-ghost btn-sm">Review</a>
+                <button class="btn btn-ghost btn-sm">Edit</button>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Townsville Depot</strong></td>
+              <td>Garbutt QLD 4814</td>
+              <td>Depot</td>
+              <td>Craig Miles</td>
+              <td><span class="badge-status badge-not-started">Not Started</span></td>
+              <td>28 Feb 2026</td>
+              <td class="actions-col">
+                <button class="btn btn-ghost btn-sm">Send reminder</button>
+                <button class="btn btn-ghost btn-sm">Edit</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Add site modal -->
+<div id="add-site-modal" class="modal-overlay" style="display:none;">
+  <div class="modal" style="max-width:640px;">
+    <div class="modal-header">
+      <h2 class="modal-title">Add Site / Facility</h2>
+      <button class="modal-close" onclick="document.getElementById('add-site-modal').style.display='none'">✕</button>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Site name <span class="required">*</span></label>
+        <input class="form-input" type="text" placeholder="e.g. Melbourne North Plant">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Site type <span class="required">*</span></label>
+        <select class="form-select">
+          <option>Manufacturing</option>
+          <option>Office</option>
+          <option>Warehouse</option>
+          <option>Depot</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Address <span class="required">*</span></label>
+      <input class="form-input" type="text" placeholder="Street address, suburb, state, postcode">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Site manager</label>
+        <select class="form-select">
+          <option value="">— Assign later —</option>
+          <option>David Park</option>
+          <option>James Wong</option>
+          <option>Priya Sharma</option>
+          <option>Tom Ellis</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Reporting periods</label>
+        <select class="form-select">
+          <option>FY2026 only</option>
+          <option>FY2026 + future years</option>
+          <option>Future years only</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="document.getElementById('add-site-modal').style.display='none'">Cancel</button>
+      <button class="btn btn-primary" onclick="document.getElementById('add-site-modal').style.display='none';alert('Site added. Site manager will be notified.')">Add site</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }
+</script>
+</body>
+</html>

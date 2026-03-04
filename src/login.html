@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In — CCDS</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="public-page">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <div style="font-size:40px; margin-bottom:8px;">🌿</div>
+      <div class="logo-text">CCDS</div>
+      <div class="logo-subtitle">Corporate Climate Disclosure System</div>
+    </div>
+
+    <form action="dashboard.html" method="get">
+      <div class="form-group">
+        <label class="form-label" for="email">Work email</label>
+        <input class="form-input" id="email" type="email" placeholder="name@company.com.au" autocomplete="email">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="password">Password</label>
+        <div style="position:relative;">
+          <input class="form-input" id="password" type="password" placeholder="••••••••••" autocomplete="current-password" style="padding-right:44px;">
+          <button type="button" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--color-neutral-400);font-size:18px;" title="Show password">👁</button>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-full btn-lg" style="margin-top:8px;">
+        Sign in securely
+      </button>
+
+      <div style="display:flex;justify-content:space-between;margin-top:16px;font-size:var(--text-sm);">
+        <a href="forgot-password.html">Forgot password?</a>
+        <a href="mailto:admin@ccds.com.au">Need access?</a>
+      </div>
+    </form>
+
+    <div class="auth-footer">
+      <p>🔒&nbsp; Secured by MFA &nbsp;·&nbsp; Data hosted in Australia</p>
+      <p style="margin-top:8px;">
+        Not required to report?&nbsp;
+        <a href="eligibility-check.html">Check your eligibility</a>
+      </p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

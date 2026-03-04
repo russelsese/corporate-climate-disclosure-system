@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Emissions Entry — CCDS</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    /* ---- Site-entry-specific styles ---- */
+    .site-selector-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--color-white);
+      border: 1px solid var(--color-neutral-200);
+      border-radius: var(--border-radius-lg);
+      padding: 14px 20px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .site-selector-bar .site-name {
+      font-size: var(--text-base);
+      font-weight: 600;
+      color: var(--color-neutral-900);
+      flex: 1;
+    }
+    .site-selector-bar .site-meta {
+      font-size: var(--text-sm);
+      color: var(--color-neutral-600);
+    }
+    .progress-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .progress-header span {
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--color-neutral-900);
+    }
+    .progress-pct {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--color-primary-700);
+    }
+    .scope-accordion {
+      border: 1px solid var(--color-neutral-200);
+      border-radius: var(--border-radius-lg);
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .scope-accordion-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      background: var(--color-neutral-100);
+      cursor: pointer;
+      border: none;
+      width: 100%;
+      text-align: left;
+      font-family: inherit;
+      font-size: var(--text-base);
+      font-weight: 600;
+      color: var(--color-neutral-900);
+      transition: background 80ms ease;
+      border-bottom: 1px solid var(--color-neutral-200);
+    }
+    .scope-accordion-header:hover { background: var(--color-neutral-200); }
+    .scope-accordion-header .scope-label {
+      flex: 1;
+    }
+    .scope-accordion-header .scope-subtotal {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--color-primary-700);
+    }
+    .scope-accordion-header .chevron {
+      font-size: 14px;
+      color: var(--color-neutral-400);
+      transition: transform 200ms ease;
+    }
+    .scope-accordion-header.collapsed .chevron {
+      transform: rotate(-90deg);
+    }
+    .scope-accordion-body {
+      background: var(--color-white);
+      padding: 0;
+    }
+    .scope-accordion-body.hidden {
+      display: none;
+    }
+    .subsection {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--color-neutral-200);
+    }
+    .subsection:last-child { border-bottom: none; }
+    .subsection-title {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-neutral-600);
+      margin-bottom: 14px;
+    }
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .toggle-row .toggle-label {
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--color-neutral-900);
+    }
+    .toggle-row .toggle-options {
+      display: flex;
+      gap: 0;
+      border: 1px solid var(--color-neutral-300);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+    }
+    .toggle-options label {
+      padding: 5px 14px;
+      font-size: var(--text-xs);
+      font-weight: 500;
+      cursor: pointer;
+      background: var(--color-white);
+      color: var(--color-neutral-600);
+      transition: background 80ms ease, color 80ms ease;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .toggle-options label:not(:last-child) {
+      border-right: 1px solid var(--color-neutral-300);
+    }
+    .toggle-options input[type="radio"] { display: none; }
+    .toggle-options input[type="radio"]:checked + label {
+      background: var(--color-primary-700);
+      color: white;
+    }
+    .fuel-entry {
+      background: var(--color-neutral-100);
+      border-radius: var(--border-radius);
+      padding: 14px 16px;
+      margin-bottom: 10px;
+    }
+    .fuel-entry:last-child { margin-bottom: 0; }
+    .fuel-entry-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .fuel-entry-name {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-neutral-900);
+    }
+    .input-unit-group {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+    }
+    .input-unit-group input {
+      flex: 1;
+      border: 1px solid var(--color-neutral-300);
+      border-right: none;
+      border-radius: var(--border-radius) 0 0 var(--border-radius);
+      padding: 8px 12px;
+      font-size: var(--text-sm);
+      font-family: inherit;
+      background: white;
+    }
+    .input-unit-group input:focus {
+      outline: none;
+      border-color: var(--color-primary-500);
+      box-shadow: 0 0 0 3px var(--color-primary-100);
+    }
+    .input-unit-group select {
+      border: 1px solid var(--color-neutral-300);
+      border-radius: 0 var(--border-radius) var(--border-radius) 0;
+      padding: 8px 10px;
+      font-size: var(--text-sm);
+      font-family: inherit;
+      background: var(--color-neutral-100);
+      color: var(--color-neutral-900);
+      cursor: pointer;
+    }
+    .input-unit-group select:focus { outline: none; }
+    .form-hint-tooltip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: var(--text-xs);
+      color: var(--color-neutral-600);
+      margin-top: 4px;
+    }
+    .tooltip-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--color-info-100);
+      color: var(--color-info-600);
+      font-size: 10px;
+      font-weight: 700;
+      cursor: help;
+    }
+    .na-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 10px;
+      background: var(--color-neutral-100);
+      color: var(--color-neutral-600);
+      border-radius: var(--border-radius);
+      font-size: var(--text-xs);
+      font-weight: 500;
+    }
+    .scope-total-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      background: var(--color-primary-100);
+      border-top: 1px solid var(--color-neutral-200);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-primary-700);
+    }
+    .summary-card {
+      background: var(--color-white);
+      border: 2px solid var(--color-primary-500);
+      border-radius: var(--border-radius-lg);
+      padding: 20px 24px;
+      margin-top: 24px;
+      margin-bottom: 24px;
+    }
+    .summary-card-title {
+      font-size: var(--text-base);
+      font-weight: 700;
+      color: var(--color-neutral-900);
+      margin-bottom: 14px;
+    }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .summary-item {
+      background: var(--color-neutral-100);
+      border-radius: var(--border-radius);
+      padding: 12px 14px;
+    }
+    .summary-item-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--color-neutral-600);
+      margin-bottom: 4px;
+    }
+    .summary-item-value {
+      font-size: var(--text-xl);
+      font-weight: 700;
+      color: var(--color-neutral-900);
+    }
+    .summary-item-unit {
+      font-size: 11px;
+      color: var(--color-neutral-600);
+    }
+    .action-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    /* Modal success */
+    .modal-success-icon {
+      text-align: center;
+      font-size: 48px;
+      margin-bottom: 12px;
+    }
+    .modal-ref {
+      background: var(--color-neutral-100);
+      border-radius: var(--border-radius);
+      padding: 10px 14px;
+      font-size: var(--text-sm);
+      font-family: monospace;
+      color: var(--color-neutral-900);
+      text-align: center;
+      margin: 12px 0;
+    }
+    /* Scope 3 optional section */
+    .scope3-optional {
+      background: var(--color-neutral-100);
+      border-radius: var(--border-radius-lg);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 768px) {
+      .summary-grid { grid-template-columns: 1fr; }
+      .site-selector-bar { flex-direction: column; align-items: flex-start; }
+      .scope3-optional { flex-direction: column; align-items: flex-start; }
+      .action-bar { flex-direction: column; }
+      .action-bar .btn { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">&#9776;</button>
+    <a href="../dashboard.html" class="logo">
+      <span class="logo-icon">🌿</span>
+      <div>
+        <div>CCDS</div>
+        <div class="logo-subtitle">Climate Disclosure System</div>
+      </div>
+    </a>
+  </div>
+  <div class="topbar-center">
+    <span class="period-badge">FY2026 Reporting Period</span>
+  </div>
+  <div class="topbar-right">
+    <a href="../notifications.html" class="notif-btn" aria-label="Notifications">
+      🔔
+      <span class="badge">3</span>
+    </a>
+    <div class="avatar" title="Sarah Mitchell — ESG Manager">SM</div>
+  </div>
+</header>
+
+<!-- APP SHELL -->
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-section">
+      <a href="../dashboard.html" class="nav-item">
+        <span class="nav-icon">📊</span>
+        <span class="nav-label">Dashboard</span>
+      </a>
+    </div>
+    <div class="nav-section">
+      <a href="../setup/company.html" class="nav-item">
+        <span class="nav-icon">⚙️</span>
+        <span class="nav-label">Setup</span>
+      </a>
+      <a href="../governance/index.html" class="nav-item">
+        <span class="nav-icon">🛡️</span>
+        <span class="nav-label">Governance</span>
+      </a>
+      <a href="../strategy/index.html" class="nav-item">
+        <span class="nav-icon">🎯</span>
+        <span class="nav-label">Strategy</span>
+      </a>
+      <a href="../risk-management/index.html" class="nav-item">
+        <span class="nav-icon">⚠️</span>
+        <span class="nav-label">Risk Management</span>
+      </a>
+      <a href="overview.html" class="nav-item active">
+        <span class="nav-icon">🌱</span>
+        <span class="nav-label">Emissions &amp; Energy</span>
+      </a>
+      <a href="../metrics/targets.html" class="nav-item">
+        <span class="nav-icon">📈</span>
+        <span class="nav-label">Metrics</span>
+      </a>
+    </div>
+    <div class="nav-section">
+      <a href="../reports/index.html" class="nav-item">
+        <span class="nav-icon">📄</span>
+        <span class="nav-label">Reports</span>
+      </a>
+      <a href="../evidence.html" class="nav-item">
+        <span class="nav-icon">📁</span>
+        <span class="nav-label">Evidence</span>
+      </a>
+      <a href="../audit-log.html" class="nav-item">
+        <span class="nav-icon">📜</span>
+        <span class="nav-label">Audit Log</span>
+      </a>
+    </div>
+    <div class="nav-section">
+      <a href="../notifications.html" class="nav-item">
+        <span class="nav-icon">🔔</span>
+        <span class="nav-label">Notifications</span>
+        <span class="nav-badge">3</span>
+      </a>
+      <a href="../admin/index.html" class="nav-item">
+        <span class="nav-icon">👥</span>
+        <span class="nav-label">Admin</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+      <a href="../dashboard.html">Dashboard</a>
+      <span class="breadcrumb-sep">/</span>
+      <a href="overview.html">Emissions &amp; Energy</a>
+      <span class="breadcrumb-sep">/</span>
+      <span class="current">Site Data Entry</span>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <h1 class="page-title">Site Emissions Entry</h1>
+      <p class="page-subtitle">Enter quarterly emissions data for each site. Data is auto-calculated using NGER 2024 emission factors.</p>
+    </div>
+
+    <!-- Sub-nav tabs -->
+    <div class="tab-nav">
+      <a href="overview.html" class="tab-btn" style="text-decoration:none;">Emissions Overview</a>
+      <a href="site-entry.html" class="tab-btn active" style="text-decoration:none;">Site Data Entry</a>
+      <a href="factors.html" class="tab-btn" style="text-decoration:none;">Emission Factors</a>
+      <a href="disclosure.html" class="tab-btn" style="text-decoration:none;">Emissions Disclosure</a>
+    </div>
+
+    <!-- Site Selector -->
+    <div class="site-selector-bar">
+      <div>
+        <div class="site-name">Dandenong Plant</div>
+        <div class="site-meta">Q4 FY2025 &nbsp;·&nbsp; Due: 15 Feb 2026 &nbsp;·&nbsp; Site Manager: David Park</div>
+      </div>
+      <span class="badge-status badge-overdue">Overdue</span>
+      <select class="form-select" style="width:auto;margin-left:auto;" aria-label="Switch site">
+        <option>Dandenong Plant (Overdue)</option>
+        <option>Footscray Office (Submitted)</option>
+        <option>Geelong Warehouse (Submitted)</option>
+        <option>Brisbane Depot (In Progress)</option>
+        <option>Sydney HQ (Not Started)</option>
+        <option>Perth Distribution (Submitted)</option>
+        <option>Adelaide Facility (Submitted)</option>
+        <option>Townsville Depot (Not Started)</option>
+      </select>
+    </div>
+
+    <!-- Progress bar -->
+    <div style="margin-bottom:20px;">
+      <div class="progress-header">
+        <span>Form completion</span>
+        <span class="progress-pct">65%</span>
+      </div>
+      <div class="progress-bar-track" style="height:10px;">
+        <div class="progress-bar-fill warning" style="width:65%;"></div>
+      </div>
+      <div style="font-size:var(--text-xs);color:var(--color-neutral-600);margin-top:4px;">Scope 3 skipped — complete Scope 1 &amp; 2 to reach 100%</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SCOPE 1 — Direct Emissions                                   -->
+    <!-- ============================================================ -->
+    <div class="scope-accordion">
+      <button class="scope-accordion-header" onclick="toggleAccordion(this)" aria-expanded="true">
+        <span class="scope-badge scope-1" style="flex-shrink:0;">Scope 1</span>
+        <span class="scope-label">Direct Emissions</span>
+        <span class="scope-subtotal">336 tCO₂e</span>
+        <span class="chevron">&#9660;</span>
+      </button>
+      <div class="scope-accordion-body">
+
+        <!-- Stationary Combustion -->
+        <div class="subsection">
+          <div class="subsection-title">Stationary Combustion</div>
+
+          <!-- Natural Gas -->
+          <div class="fuel-entry">
+            <div class="fuel-entry-header">
+              <span class="fuel-entry-name">Natural Gas</span>
+              <div class="toggle-row" style="margin-bottom:0;">
+                <div class="toggle-options" role="group" aria-label="Natural gas applicable?">
+                  <input type="radio" name="ng" id="ng-yes" checked>
+                  <label for="ng-yes">Yes</label>
+                  <input type="radio" name="ng" id="ng-no">
+                  <label for="ng-no">No</label>
+                  <input type="radio" name="ng" id="ng-na">
+                  <label for="ng-na">N/A</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:6px;">
+              <label class="form-label" for="ng-volume">
+                Volume consumed
+                <span class="tooltip-icon" title="From gas meter or utility bill">?</span>
+              </label>
+              <div class="input-unit-group">
+                <input type="number" id="ng-volume" value="4800" placeholder="0">
+                <select aria-label="Unit">
+                  <option selected>GJ</option>
+                  <option>MJ</option>
+                  <option>kWh</option>
+                </select>
+              </div>
+              <div class="form-hint-tooltip">
+                <span class="tooltip-icon">?</span>
+                From gas meter or utility bill
+              </div>
+            </div>
+            <div class="calc-result">&#10003; = 247 tCO₂e &nbsp;<span style="font-weight:400;font-size:var(--text-xs);">(4,800 GJ × 51.53 kgCO₂e/GJ)</span></div>
+          </div>
+
+          <!-- Diesel - Stationary -->
+          <div class="fuel-entry">
+            <div class="fuel-entry-header">
+              <span class="fuel-entry-name">Diesel — Stationary</span>
+              <div class="toggle-row" style="margin-bottom:0;">
+                <div class="toggle-options" role="group" aria-label="Diesel applicable?">
+                  <input type="radio" name="diesel-stat" id="dstat-yes" checked>
+                  <label for="dstat-yes">Yes</label>
+                  <input type="radio" name="diesel-stat" id="dstat-no">
+                  <label for="dstat-no">No</label>
+                  <input type="radio" name="diesel-stat" id="dstat-na">
+                  <label for="dstat-na">N/A</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:6px;">
+              <label class="form-label" for="diesel-vol">
+                Volume consumed
+                <span class="tooltip-icon" title="From fuel receipts or tank dip records">?</span>
+              </label>
+              <div class="input-unit-group">
+                <input type="number" id="diesel-vol" value="28000" placeholder="0">
+                <select aria-label="Unit">
+                  <option selected>L</option>
+                  <option>kL</option>
+                  <option>GJ</option>
+                </select>
+              </div>
+            </div>
+            <div class="calc-result">&#10003; = 75 tCO₂e &nbsp;<span style="font-weight:400;font-size:var(--text-xs);">(28,000 L × 2.68 kgCO₂e/L)</span></div>
+          </div>
+        </div>
+
+        <!-- Mobile Combustion -->
+        <div class="subsection">
+          <div class="subsection-title">Mobile Combustion</div>
+          <div class="fuel-entry">
+            <div class="fuel-entry-header">
+              <span class="fuel-entry-name">Company Vehicles — Fleet Diesel</span>
+              <div class="toggle-row" style="margin-bottom:0;">
+                <div class="toggle-options" role="group" aria-label="Company vehicles applicable?">
+                  <input type="radio" name="vehicles" id="veh-yes" checked>
+                  <label for="veh-yes">Yes</label>
+                  <input type="radio" name="vehicles" id="veh-no">
+                  <label for="veh-no">No</label>
+                  <input type="radio" name="vehicles" id="veh-na">
+                  <label for="veh-na">N/A</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:6px;">
+              <label class="form-label" for="fleet-vol">
+                Fleet diesel consumed
+                <span class="tooltip-icon" title="Total fuel card spend or odometer-based estimate">?</span>
+              </label>
+              <div class="input-unit-group">
+                <input type="number" id="fleet-vol" value="5200" placeholder="0">
+                <select aria-label="Unit">
+                  <option selected>L</option>
+                  <option>kL</option>
+                </select>
+              </div>
+            </div>
+            <div class="calc-result">&#10003; = 14 tCO₂e &nbsp;<span style="font-weight:400;font-size:var(--text-xs);">(5,200 L × 2.68 kgCO₂e/L)</span></div>
+          </div>
+        </div>
+
+        <!-- Process Emissions -->
+        <div class="subsection">
+          <div class="subsection-title">Process Emissions</div>
+          <div class="toggle-row">
+            <span class="toggle-label">Industrial process emissions</span>
+            <div class="toggle-options" role="group" aria-label="Process emissions applicable?">
+              <input type="radio" name="process" id="proc-yes">
+              <label for="proc-yes">Yes</label>
+              <input type="radio" name="process" id="proc-no">
+              <label for="proc-no">No</label>
+              <input type="radio" name="process" id="proc-na" checked>
+              <label for="proc-na">N/A</label>
+            </div>
+            <span class="na-badge">&#10003; Not applicable</span>
+          </div>
+        </div>
+
+        <!-- Fugitive Emissions -->
+        <div class="subsection">
+          <div class="subsection-title">Fugitive Emissions</div>
+          <div class="toggle-row">
+            <span class="toggle-label">Refrigerants / fugitive releases</span>
+            <div class="toggle-options" role="group" aria-label="Fugitive emissions applicable?">
+              <input type="radio" name="fugitive" id="fug-yes">
+              <label for="fug-yes">Yes</label>
+              <input type="radio" name="fugitive" id="fug-no">
+              <label for="fug-no">No</label>
+              <input type="radio" name="fugitive" id="fug-na" checked>
+              <label for="fug-na">N/A</label>
+            </div>
+            <span class="na-badge">&#10003; Not applicable</span>
+          </div>
+        </div>
+
+        <!-- Scope 1 total bar -->
+        <div class="scope-total-bar">
+          <span>Scope 1 Subtotal</span>
+          <span>336 tCO₂e</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SCOPE 2 — Electricity                                        -->
+    <!-- ============================================================ -->
+    <div class="scope-accordion">
+      <button class="scope-accordion-header" onclick="toggleAccordion(this)" aria-expanded="true">
+        <span class="scope-badge scope-2" style="flex-shrink:0;">Scope 2</span>
+        <span class="scope-label">Purchased Electricity</span>
+        <span class="scope-subtotal">146 tCO₂e</span>
+        <span class="chevron">&#9660;</span>
+      </button>
+      <div class="scope-accordion-body">
+        <div class="subsection">
+          <div class="form-group">
+            <label class="form-label" for="electricity-kwh">
+              Electricity consumed <span class="required">*</span>
+              <span class="tooltip-icon" title="From your electricity utility bill — check the kWh consumption figure">?</span>
+            </label>
+            <div class="input-unit-group">
+              <input type="number" id="electricity-kwh" value="180000" placeholder="0">
+              <select aria-label="Unit">
+                <option selected>kWh</option>
+                <option>MWh</option>
+                <option>GJ</option>
+              </select>
+            </div>
+            <div class="form-hint">Grid region: Victoria (VIC) — NGER 2024 factor: 0.81 kgCO₂e/kWh</div>
+          </div>
+
+          <!-- File upload -->
+          <div class="form-group">
+            <label class="form-label">Supporting evidence — Utility bill</label>
+            <div class="uploaded-file">
+              <span style="font-size:20px;">📄</span>
+              <span class="file-name">utility-q4-2025.pdf</span>
+              <span class="file-size">284 KB</span>
+              <span style="color:var(--color-success-600);font-weight:600;">&#10003;</span>
+              <button class="btn btn-ghost btn-sm" style="color:var(--color-danger-600);">Remove</button>
+            </div>
+          </div>
+
+          <!-- Calculated results -->
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div class="calc-result">
+              &#10003; Location-based CO₂e = <strong style="margin-left:4px;">146 tCO₂e</strong>
+              <span style="font-weight:400;font-size:var(--text-xs);margin-left:4px;">(180,000 kWh × 0.81 kgCO₂e/kWh · NGER grid factor VIC)</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--color-neutral-100);border-radius:var(--border-radius);font-size:var(--text-sm);color:var(--color-neutral-600);">
+              <span style="font-size:16px;">ℹ️</span>
+              Market-based: No renewable energy certificates held — same as location-based (<strong>146 tCO₂e</strong>).
+              <a href="#" style="font-size:var(--text-xs);margin-left:auto;white-space:nowrap;">Add GreenPower / LGC</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="scope-total-bar">
+          <span>Scope 2 Subtotal (location-based)</span>
+          <span>146 tCO₂e</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SCOPE 3 — Value Chain (Optional Year 1)                      -->
+    <!-- ============================================================ -->
+    <div class="scope-accordion">
+      <button class="scope-accordion-header" onclick="toggleAccordion(this)" aria-expanded="false" style="background:var(--color-neutral-100);">
+        <span class="scope-badge scope-3" style="flex-shrink:0;">Scope 3</span>
+        <span class="scope-label">Value Chain Emissions</span>
+        <span class="badge badge-amber" style="font-size:10px;">Optional — Year 1</span>
+        <span class="chevron" style="transform:rotate(-90deg);">&#9660;</span>
+      </button>
+      <div class="scope-accordion-body hidden">
+        <div class="subsection">
+          <div class="scope3-optional">
+            <div>
+              <div style="font-size:var(--text-base);font-weight:600;color:var(--color-neutral-900);margin-bottom:4px;">Scope 3 is optional in Year 1 of AASB S2 reporting</div>
+              <div style="font-size:var(--text-sm);color:var(--color-neutral-600);">From Year 2 (FY2027 reporting), Scope 3 disclosures will be mandatory for Group 1 entities. You may choose to enter Scope 3 data now to prepare for next year.</div>
+            </div>
+            <div style="display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;">
+              <button class="btn btn-ghost btn-sm">Skip for now</button>
+              <button class="btn btn-secondary btn-sm">Enter Scope 3 data</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- Summary                                                       -->
+    <!-- ============================================================ -->
+    <div class="summary-card">
+      <div class="summary-card-title">Submission Summary — Dandenong Plant, Q4 FY2025</div>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <div class="summary-item-label">Total Scope 1</div>
+          <div class="summary-item-value">336</div>
+          <div class="summary-item-unit">tCO₂e</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-item-label">Scope 2 (location)</div>
+          <div class="summary-item-value">146</div>
+          <div class="summary-item-unit">tCO₂e</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-item-label">Scope 2 (market)</div>
+          <div class="summary-item-value">146</div>
+          <div class="summary-item-unit">tCO₂e</div>
+        </div>
+      </div>
+      <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--color-neutral-200);display:flex;align-items:center;gap:8px;font-size:var(--text-sm);">
+        <span style="color:var(--color-neutral-600);">Combined Scope 1+2 (location):</span>
+        <strong style="font-size:var(--text-lg);">482 tCO₂e</strong>
+        <span class="badge badge-amber">Pending submission</span>
+      </div>
+    </div>
+
+    <!-- Action bar -->
+    <div class="action-bar">
+      <a href="overview.html" class="btn btn-ghost">&#8592; Back to overview</a>
+      <div style="display:flex;gap:8px;">
+        <button class="btn btn-secondary" onclick="alert('Draft saved at ' + new Date().toLocaleTimeString())">Save Draft</button>
+        <button class="btn btn-primary" onclick="document.getElementById('submitModal').style.display='flex'">Submit Data</button>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- Mobile bottom nav -->
+<nav class="mobile-nav">
+  <a href="../dashboard.html" class="mobile-nav-item"><span class="mobile-nav-icon">📊</span>Dashboard</a>
+  <a href="../notifications.html" class="mobile-nav-item"><span class="mobile-nav-icon">🔔</span>Tasks</a>
+  <a href="overview.html" class="mobile-nav-item active"><span class="mobile-nav-icon">🌱</span>Emissions</a>
+  <a href="../evidence.html" class="mobile-nav-item"><span class="mobile-nav-icon">📁</span>Evidence</a>
+  <a href="../admin/index.html" class="mobile-nav-item"><span class="mobile-nav-icon">&#8943;</span>More</a>
+</nav>
+
+<!-- ============================================================ -->
+<!-- Submission Confirmation Modal                                 -->
+<!-- ============================================================ -->
+<div class="modal-overlay" id="submitModal" style="display:none;" onclick="closeModal(event)">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-success-icon">&#9989;</div>
+    <div class="modal-header" style="justify-content:center;border-bottom:none;margin-bottom:8px;">
+      <h2 class="modal-title" id="modal-title" style="text-align:center;">Submitted successfully</h2>
+    </div>
+    <p style="text-align:center;font-size:var(--text-sm);color:var(--color-neutral-600);margin-bottom:16px;">
+      Your emissions data for <strong>Dandenong Plant — Q4 FY2025</strong> has been submitted and is now awaiting review by your ESG Manager.
+    </p>
+    <div class="modal-ref">Reference: SITE-DAN-Q4-2025</div>
+    <div style="background:var(--color-success-100);border-radius:var(--border-radius);padding:12px 16px;font-size:var(--text-sm);color:var(--color-neutral-900);margin-bottom:8px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+        <span style="font-weight:600;">Scope 1:</span> 336 tCO₂e
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+        <span style="font-weight:600;">Scope 2 (location):</span> 146 tCO₂e
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="font-weight:600;">Scope 2 (market):</span> 146 tCO₂e
+      </div>
+    </div>
+    <p style="font-size:var(--text-xs);color:var(--color-neutral-600);text-align:center;margin-bottom:4px;">
+      Your ESG Manager will review and confirm. You will be notified once approved.
+    </p>
+    <div class="modal-footer" style="justify-content:center;">
+      <a href="overview.html" class="btn btn-primary">Return to overview</a>
+      <button class="btn btn-ghost" onclick="closeModalById('submitModal')">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+
+function toggleAccordion(header) {
+  const body = header.nextElementSibling;
+  const chevron = header.querySelector('.chevron');
+  const isOpen = !body.classList.contains('hidden');
+  if (isOpen) {
+    body.classList.add('hidden');
+    chevron.style.transform = 'rotate(-90deg)';
+    header.setAttribute('aria-expanded', 'false');
+  } else {
+    body.classList.remove('hidden');
+    chevron.style.transform = '';
+    header.setAttribute('aria-expanded', 'true');
+  }
+}
+
+function closeModal(event) {
+  if (event.target === event.currentTarget) {
+    event.currentTarget.style.display = 'none';
+  }
+}
+
+function closeModalById(id) {
+  document.getElementById(id).style.display = 'none';
+}
+</script>
+</body>
+</html>

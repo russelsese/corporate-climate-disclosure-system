@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Governance — CCDS</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">&#9776;</button>
+    <a href="../dashboard.html" class="logo">
+      <span class="logo-icon">🌿</span>
+      <div>
+        <div>CCDS</div>
+        <div class="logo-subtitle">Climate Disclosure System</div>
+      </div>
+    </a>
+  </div>
+  <div class="topbar-center">
+    <span class="period-badge">FY 2025–26</span>
+  </div>
+  <div class="topbar-right">
+    <a href="../notifications.html" class="notif-btn" aria-label="Notifications">
+      &#128276;
+      <span class="badge">3</span>
+    </a>
+    <div class="avatar" title="Sarah Mitchell">SM</div>
+  </div>
+</header>
+
+<!-- APP SHELL -->
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-section">
+      <a href="../dashboard.html" class="nav-item">
+        <span class="nav-icon">&#9681;</span>
+        <span class="nav-label">Dashboard</span>
+      </a>
+      <a href="../setup/company.html" class="nav-item">
+        <span class="nav-icon">&#9881;</span>
+        <span class="nav-label">Setup</span>
+      </a>
+      <a href="index.html" class="nav-item active">
+        <span class="nav-icon">&#127963;</span>
+        <span class="nav-label">Governance</span>
+      </a>
+      <a href="../strategy/index.html" class="nav-item">
+        <span class="nav-icon">&#127919;</span>
+        <span class="nav-label">Strategy</span>
+      </a>
+      <a href="../risk-management/index.html" class="nav-item">
+        <span class="nav-icon">&#9888;</span>
+        <span class="nav-label">Risk Management</span>
+      </a>
+      <a href="../emissions/overview.html" class="nav-item">
+        <span class="nav-icon">&#127981;</span>
+        <span class="nav-label">Emissions</span>
+      </a>
+      <a href="../metrics/targets.html" class="nav-item">
+        <span class="nav-icon">&#128200;</span>
+        <span class="nav-label">Metrics</span>
+      </a>
+      <a href="../reports/index.html" class="nav-item">
+        <span class="nav-icon">&#128196;</span>
+        <span class="nav-label">Reports</span>
+      </a>
+    </div>
+    <div class="nav-section">
+      <a href="../evidence.html" class="nav-item">
+        <span class="nav-icon">&#128193;</span>
+        <span class="nav-label">Evidence</span>
+      </a>
+      <a href="../audit-log.html" class="nav-item">
+        <span class="nav-icon">&#128203;</span>
+        <span class="nav-label">Audit Log</span>
+      </a>
+      <a href="../notifications.html" class="nav-item">
+        <span class="nav-icon">&#128276;</span>
+        <span class="nav-label">Notifications</span>
+        <span class="nav-badge">3</span>
+      </a>
+      <a href="../admin/index.html" class="nav-item">
+        <span class="nav-icon">&#128100;</span>
+        <span class="nav-label">Admin</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content with-right-panel">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+      <a href="../dashboard.html">Dashboard</a>
+      <span class="breadcrumb-sep">/</span>
+      <span class="current">Governance</span>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <h1 class="page-title">Governance</h1>
+      <p class="page-subtitle">AASB S2 §6–§9 — Board oversight, management responsibilities, and remuneration</p>
+    </div>
+
+    <!-- Sub-nav Tabs -->
+    <div class="tab-nav">
+      <a href="board.html" class="tab-btn" style="text-decoration:none;">Board Oversight</a>
+      <a href="management.html" class="tab-btn" style="text-decoration:none;">Management Responsibilities</a>
+      <a href="remuneration.html" class="tab-btn" style="text-decoration:none;">Executive Remuneration</a>
+      <a href="disclosure.html" class="tab-btn" style="text-decoration:none;">Governance Disclosure</a>
+    </div>
+
+    <!-- Alert Banner -->
+    <div class="alert info" style="margin-bottom: var(--space-6);">
+      <span>&#8505;</span>
+      <span>Governance disclosure submitted for CFO approval on <strong>14 Feb 2026</strong>. Awaiting review by Alex Chen.</span>
+    </div>
+
+    <!-- Progress Rail -->
+    <div class="progress-rail">
+      <h4>Section Progress</h4>
+      <div class="rail-item">
+        <div class="rail-dot approved"></div>
+        <span class="rail-label"><a href="board.html">Board Oversight</a></span>
+        <span class="rail-status" style="color: var(--color-success-600);">&#10003; Approved</span>
+      </div>
+      <div class="rail-item">
+        <div class="rail-dot approved"></div>
+        <span class="rail-label"><a href="management.html">Management Responsibilities</a></span>
+        <span class="rail-status" style="color: var(--color-success-600);">&#10003; Approved</span>
+      </div>
+      <div class="rail-item">
+        <div class="rail-dot in-progress"></div>
+        <span class="rail-label"><a href="remuneration.html">Exec Remuneration</a></span>
+        <span class="rail-status" style="color: var(--color-warning-600);">&#9203; In Progress</span>
+      </div>
+      <div class="rail-item">
+        <div class="rail-dot in-progress"></div>
+        <span class="rail-label"><a href="disclosure.html">Governance Disclosure</a></span>
+        <span class="rail-status" style="color: var(--color-warning-600);">&#9203; In Review (Pending CFO)</span>
+      </div>
+      <div class="rail-footer">
+        2 of 4 sections approved &mdash; Governance disclosure pending CFO sign-off
+      </div>
+    </div>
+
+    <!-- Section Cards Grid -->
+    <div class="card-grid" style="grid-template-columns: repeat(2, 1fr); gap: var(--space-6); margin-bottom: var(--space-6);">
+
+      <!-- Board Oversight Card -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title" style="font-size: var(--text-base);">Board Oversight</div>
+            <div class="card-subtitle">BARC committee oversight activities</div>
+          </div>
+          <span class="badge-status badge-approved">Approved</span>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill success" style="width: 100%;"></div>
+          </div>
+          <div class="progress-bar-label">
+            <span>Completion</span>
+            <span>100%</span>
+          </div>
+        </div>
+        <p style="font-size: var(--text-sm); color: var(--color-neutral-600); margin: var(--space-3) 0;">
+          Board Audit and Risk Committee (BARC) oversight activities documented, including quarterly climate agenda items and board minutes uploaded.
+        </p>
+        <a href="board.html" class="btn btn-secondary btn-sm">Go to section</a>
+      </div>
+
+      <!-- Management Responsibilities Card -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title" style="font-size: var(--text-base);">Management Responsibilities</div>
+            <div class="card-subtitle">Climate role register and escalation</div>
+          </div>
+          <span class="badge-status badge-approved">Approved</span>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill success" style="width: 100%;"></div>
+          </div>
+          <div class="progress-bar-label">
+            <span>Completion</span>
+            <span>100%</span>
+          </div>
+        </div>
+        <p style="font-size: var(--text-sm); color: var(--color-neutral-600); margin: var(--space-3) 0;">
+          5 management roles assigned with climate responsibilities. Escalation procedures documented and approved by the Board.
+        </p>
+        <a href="management.html" class="btn btn-secondary btn-sm">Go to section</a>
+      </div>
+
+      <!-- Exec Remuneration Card -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title" style="font-size: var(--text-base);">Executive Remuneration</div>
+            <div class="card-subtitle">Climate-linked remuneration metrics</div>
+          </div>
+          <span class="badge-status badge-in-progress">In Progress</span>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill warning" style="width: 67%;"></div>
+          </div>
+          <div class="progress-bar-label">
+            <span>Completion</span>
+            <span>67%</span>
+          </div>
+        </div>
+        <p style="font-size: var(--text-sm); color: var(--color-neutral-600); margin: var(--space-3) 0;">
+          3 executive remuneration links documented. Board rationale statement pending for non-linked roles.
+        </p>
+        <a href="remuneration.html" class="btn btn-secondary btn-sm">Go to section</a>
+      </div>
+
+      <!-- Governance Disclosure Card -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title" style="font-size: var(--text-base);">Governance Disclosure</div>
+            <div class="card-subtitle">Narrative draft &amp; approval workflow</div>
+          </div>
+          <span class="badge-status badge-in-review">In Review</span>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill warning" style="width: 50%;"></div>
+          </div>
+          <div class="progress-bar-label">
+            <span>Completion</span>
+            <span>50%</span>
+          </div>
+        </div>
+        <p style="font-size: var(--text-sm); color: var(--color-neutral-600); margin: var(--space-3) 0;">
+          Disclosure narrative drafted and submitted. Awaiting CFO review (Step 2 of 3). Board director approval pending.
+        </p>
+        <a href="disclosure.html" class="btn btn-secondary btn-sm">Go to section</a>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- RIGHT PANEL -->
+  <aside class="right-panel">
+    <h3>AASB S2 Quick Reference</h3>
+
+    <div class="aasb-ref-item">
+      <div class="aasb-ref-code">§6 — Governance Body</div>
+      <div class="aasb-ref-text">Identify the governance body or bodies (e.g. board, committee) responsible for oversight of climate-related risks and opportunities.</div>
+      <div class="aasb-mandatory" style="margin-top: var(--space-1);">Mandatory</div>
+    </div>
+
+    <div class="aasb-ref-item">
+      <div class="aasb-ref-code">§7(a) — Board Oversight</div>
+      <div class="aasb-ref-text">Disclose how the governance body oversees climate-related risks and opportunities, including how it is informed and how it integrates climate into strategy and risk.</div>
+      <div class="aasb-mandatory" style="margin-top: var(--space-1);">Mandatory</div>
+    </div>
+
+    <div class="aasb-ref-item">
+      <div class="aasb-ref-code">§7(b) — Management Role</div>
+      <div class="aasb-ref-text">Disclose management's role in overseeing climate-related risks and opportunities, including relevant controls and procedures.</div>
+      <div class="aasb-mandatory" style="margin-top: var(--space-1);">Mandatory</div>
+    </div>
+
+    <div class="aasb-ref-item">
+      <div class="aasb-ref-code">§8 — Remuneration</div>
+      <div class="aasb-ref-text">Whether and how executive remuneration policies are linked to climate-related considerations, or explain why remuneration is not linked.</div>
+      <div class="aasb-mandatory" style="margin-top: var(--space-1);">Mandatory</div>
+    </div>
+
+    <div class="aasb-ref-item">
+      <div class="aasb-ref-code">§9 — Transition Plan Link</div>
+      <div class="aasb-ref-text">Reference to transition plan governance arrangements where relevant to board oversight disclosures.</div>
+      <div class="aasb-mandatory" style="margin-top: var(--space-1);">Conditional</div>
+    </div>
+
+    <div style="margin-top: var(--space-6); padding: var(--space-4); background: var(--color-info-100); border-radius: var(--border-radius); font-size: var(--text-xs); color: var(--color-info-600);">
+      <strong>Mandatory from:</strong> 1 July 2026 (Group 1 entities). Ensure all governance disclosures are finalised before annual report lodgement.
+    </div>
+  </aside>
+
+</div>
+
+<script>
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Management — CCDS</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+    <a href="../dashboard.html" class="logo"><span class="logo-icon">🌿</span><span>CCDS</span></a>
+  </div>
+  <div class="topbar-center"><span class="period-badge">FY2026 Reporting Period</span></div>
+  <div class="topbar-right">
+    <a href="../notifications.html" class="notif-btn">🔔<span class="badge">3</span></a>
+    <div class="avatar">SM</div>
+  </div>
+</header>
+<div class="app-shell">
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-section">
+      <a href="../dashboard.html" class="nav-item"><span class="nav-icon">📊</span><span class="nav-label">Dashboard</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="company.html" class="nav-item active"><span class="nav-icon">⚙️</span><span class="nav-label">Setup &amp; Eligibility</span></a>
+      <a href="../governance/index.html" class="nav-item"><span class="nav-icon">🛡️</span><span class="nav-label">Governance</span></a>
+      <a href="../strategy/index.html" class="nav-item"><span class="nav-icon">🎯</span><span class="nav-label">Strategy &amp; Transition</span></a>
+      <a href="../risk-management/index.html" class="nav-item"><span class="nav-icon">⚠️</span><span class="nav-label">Risk Management</span></a>
+      <a href="../emissions/overview.html" class="nav-item"><span class="nav-icon">🌱</span><span class="nav-label">Emissions &amp; Energy</span></a>
+      <a href="../metrics/targets.html" class="nav-item"><span class="nav-icon">📈</span><span class="nav-label">Metrics &amp; Targets</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="../reports/index.html" class="nav-item"><span class="nav-icon">📄</span><span class="nav-label">Reports</span></a>
+      <a href="../evidence.html" class="nav-item"><span class="nav-icon">📁</span><span class="nav-label">Evidence Library</span></a>
+      <a href="../audit-log.html" class="nav-item"><span class="nav-icon">📜</span><span class="nav-label">Audit Log</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="../notifications.html" class="nav-item"><span class="nav-icon">🔔</span><span class="nav-label">Notifications</span><span class="nav-badge">3</span></a>
+      <a href="../admin/index.html" class="nav-item"><span class="nav-icon">👥</span><span class="nav-label">Administration</span></a>
+    </div>
+  </nav>
+  <main class="main-content">
+    <div class="breadcrumb">
+      <a href="../dashboard.html">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="company.html">Setup &amp; Eligibility</a><span class="breadcrumb-sep">›</span>
+      <span class="current">User Management</span>
+    </div>
+    <div class="tab-nav">
+      <a href="company.html" class="tab-btn">Company Profile</a>
+      <a href="eligibility.html" class="tab-btn">Eligibility Assessment</a>
+      <a href="sites.html" class="tab-btn">Sites &amp; Facilities</a>
+      <a href="users.html" class="tab-btn active">User Management</a>
+    </div>
+    <div class="page-header" style="display:flex;align-items:flex-start;justify-content:space-between;">
+      <div>
+        <h1 class="page-title">User Management</h1>
+        <p class="page-subtitle">Manage who has access to CCDS and their roles. Changes are recorded in the audit log.</p>
+      </div>
+      <button class="btn btn-primary" onclick="document.getElementById('invite-modal').style.display='flex'">+ Invite user</button>
+    </div>
+
+    <div class="card" style="margin-bottom:24px;">
+      <div class="card-header"><span class="card-title">Role Descriptions</span></div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;font-size:var(--text-sm);">
+        <div style="padding:12px;background:var(--color-neutral-100);border-radius:var(--border-radius);">
+          <div style="font-weight:600;margin-bottom:4px;">ESG Manager</div>
+          <div style="color:var(--color-neutral-600);">Full edit access. Manages reporting cycle, enters narrative, generates reports.</div>
+        </div>
+        <div style="padding:12px;background:var(--color-neutral-100);border-radius:var(--border-radius);">
+          <div style="font-weight:600;margin-bottom:4px;">CFO / Finance</div>
+          <div style="color:var(--color-neutral-600);">Executive view. Reviews and approves disclosure sections.</div>
+        </div>
+        <div style="padding:12px;background:var(--color-neutral-100);border-radius:var(--border-radius);">
+          <div style="font-weight:600;margin-bottom:4px;">Site Manager</div>
+          <div style="color:var(--color-neutral-600);">Limited access. Enters own site emissions data only.</div>
+        </div>
+        <div style="padding:12px;background:var(--color-neutral-100);border-radius:var(--border-radius);">
+          <div style="font-weight:600;margin-bottom:4px;">Board Director</div>
+          <div style="color:var(--color-neutral-600);">Executive view. Reviews governance disclosures, approves final.</div>
+        </div>
+        <div style="padding:12px;background:var(--color-neutral-100);border-radius:var(--border-radius);">
+          <div style="font-weight:600;margin-bottom:4px;">External Auditor</div>
+          <div style="color:var(--color-neutral-600);">Read-only scoped access. Raises queries, exports evidence packs.</div>
+        </div>
+        <div style="padding:12px;background:var(--color-neutral-100);border-radius:var(--border-radius);">
+          <div style="font-weight:600;margin-bottom:4px;">Company Secretary</div>
+          <div style="color:var(--color-neutral-600);">Compliance view. Manages deadlines, finalises and exports reports.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="table-toolbar">
+        <div class="table-filters">
+          <select class="table-filter-select"><option>All roles</option><option>ESG Manager</option><option>CFO / Finance</option><option>Site Manager</option><option>Board Director</option><option>Auditor</option><option>Company Secretary</option></select>
+          <select class="table-filter-select"><option>All statuses</option><option>Active</option><option>Invited</option><option>Inactive</option></select>
+        </div>
+        <div class="table-search"><span>🔍</span><input type="text" placeholder="Search users…"></div>
+      </div>
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr><th>Name</th><th>Email</th><th>Role</th><th>Access scope</th><th>Last active</th><th>Status</th><th class="actions-col">Actions</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Sarah Mitchell</strong> <span class="badge badge-blue" style="font-size:10px;">You</span></td>
+              <td>s.mitchell@ausmetals.com.au</td>
+              <td>ESG Manager</td>
+              <td>Full</td>
+              <td>Today</td>
+              <td><span class="badge-status badge-approved">Active</span></td>
+              <td class="actions-col"><button class="btn btn-ghost btn-sm">Edit</button></td>
+            </tr>
+            <tr>
+              <td>Alex Chen</td>
+              <td>a.chen@ausmetals.com.au</td>
+              <td>CFO / Finance</td>
+              <td>Executive view + Approve</td>
+              <td>3 Mar 2026</td>
+              <td><span class="badge-status badge-approved">Active</span></td>
+              <td class="actions-col"><button class="btn btn-ghost btn-sm">Edit</button></td>
+            </tr>
+            <tr>
+              <td>David Park</td>
+              <td>d.park@ausmetals.com.au</td>
+              <td>Site Manager</td>
+              <td>Dandenong Plant only</td>
+              <td>18 Feb 2026</td>
+              <td><span class="badge-status badge-approved">Active</span></td>
+              <td class="actions-col"><button class="btn btn-ghost btn-sm">Edit</button></td>
+            </tr>
+            <tr>
+              <td>Jennifer Walsh</td>
+              <td>j.walsh@ausmetals.com.au</td>
+              <td>Board Director</td>
+              <td>Executive view + Approve (Governance)</td>
+              <td>5 Dec 2025</td>
+              <td><span class="badge-status badge-approved">Active</span></td>
+              <td class="actions-col"><button class="btn btn-ghost btn-sm">Edit</button></td>
+            </tr>
+            <tr>
+              <td>Marcus Thompson</td>
+              <td>m.thompson@bigfouraudit.com.au</td>
+              <td>External Auditor</td>
+              <td>FY2026 read-only (expires 31 May 2026)</td>
+              <td>3 Mar 2026</td>
+              <td><span class="badge-status badge-in-review">Temporary</span></td>
+              <td class="actions-col">
+                <button class="btn btn-ghost btn-sm">Edit</button>
+                <button class="btn btn-danger btn-sm">Revoke</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Lisa Nguyen</td>
+              <td>l.nguyen@ausmetals.com.au</td>
+              <td>Company Secretary</td>
+              <td>Compliance view + Export</td>
+              <td>28 Feb 2026</td>
+              <td><span class="badge-status badge-approved">Active</span></td>
+              <td class="actions-col"><button class="btn btn-ghost btn-sm">Edit</button></td>
+            </tr>
+            <tr>
+              <td>James Wong</td>
+              <td>j.wong@ausmetals.com.au</td>
+              <td>Site Manager</td>
+              <td>Footscray Office only</td>
+              <td>18 Feb 2026</td>
+              <td><span class="badge-status badge-approved">Active</span></td>
+              <td class="actions-col"><button class="btn btn-ghost btn-sm">Edit</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Invite user modal -->
+<div id="invite-modal" class="modal-overlay" style="display:none;">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 class="modal-title">Invite User</h2>
+      <button class="modal-close" onclick="document.getElementById('invite-modal').style.display='none'">✕</button>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Work email <span class="required">*</span></label>
+      <input class="form-input" type="email" placeholder="name@company.com.au">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">First name</label>
+        <input class="form-input" type="text">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Last name</label>
+        <input class="form-input" type="text">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Role <span class="required">*</span></label>
+      <select class="form-select" id="invite-role" onchange="toggleSiteScope()">
+        <option>— Select role —</option>
+        <option>ESG Manager</option>
+        <option>CFO / Finance</option>
+        <option value="site">Site Manager</option>
+        <option>Board Director</option>
+        <option>External Auditor</option>
+        <option>Company Secretary</option>
+      </select>
+    </div>
+    <div id="site-scope" style="display:none;" class="form-group">
+      <label class="form-label">Assign to site(s)</label>
+      <select class="form-select">
+        <option>Dandenong Plant</option>
+        <option>Footscray Office</option>
+        <option>Geelong Warehouse</option>
+        <option>Brisbane Depot</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="invite-note">Personal message (optional)</label>
+      <textarea class="form-textarea" id="invite-note" placeholder="Add a welcome message for the invitee…" style="min-height:80px;"></textarea>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="document.getElementById('invite-modal').style.display='none'">Cancel</button>
+      <button class="btn btn-primary" onclick="sendInvite()">Send invitation</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }
+function toggleSiteScope() {
+  const role = document.getElementById('invite-role').value;
+  document.getElementById('site-scope').style.display = role === 'site' ? 'block' : 'none';
+}
+function sendInvite() {
+  document.getElementById('invite-modal').style.display = 'none';
+  alert('Invitation sent. The user will receive an email to set up their account.');
+}
+</script>
+</body>
+</html>

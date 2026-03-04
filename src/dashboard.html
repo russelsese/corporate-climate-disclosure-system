@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — CCDS</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Top Bar -->
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">☰</button>
+    <a href="dashboard.html" class="logo"><span class="logo-icon">🌿</span><span>CCDS</span></a>
+  </div>
+  <div class="topbar-center">
+    <span class="period-badge">FY2026 Reporting Period</span>
+  </div>
+  <div class="topbar-right">
+    <a href="notifications.html" class="notif-btn" aria-label="Notifications">🔔<span class="badge">3</span></a>
+    <div class="avatar" title="Sarah Mitchell — ESG Manager">SM</div>
+  </div>
+</header>
+
+<div class="app-shell">
+  <!-- Sidebar -->
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-section">
+      <a href="dashboard.html" class="nav-item active"><span class="nav-icon">📊</span><span class="nav-label">Dashboard</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="setup/company.html" class="nav-item"><span class="nav-icon">⚙️</span><span class="nav-label">Setup &amp; Eligibility</span></a>
+      <a href="governance/index.html" class="nav-item"><span class="nav-icon">🛡️</span><span class="nav-label">Governance</span></a>
+      <a href="strategy/index.html" class="nav-item"><span class="nav-icon">🎯</span><span class="nav-label">Strategy &amp; Transition</span></a>
+      <a href="risk-management/index.html" class="nav-item"><span class="nav-icon">⚠️</span><span class="nav-label">Risk Management</span></a>
+      <a href="emissions/overview.html" class="nav-item"><span class="nav-icon">🌱</span><span class="nav-label">Emissions &amp; Energy</span></a>
+      <a href="metrics/targets.html" class="nav-item"><span class="nav-icon">📈</span><span class="nav-label">Metrics &amp; Targets</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="reports/index.html" class="nav-item"><span class="nav-icon">📄</span><span class="nav-label">Reports</span></a>
+      <a href="evidence.html" class="nav-item"><span class="nav-icon">📁</span><span class="nav-label">Evidence Library</span></a>
+      <a href="audit-log.html" class="nav-item"><span class="nav-icon">📜</span><span class="nav-label">Audit Log</span></a>
+    </div>
+    <div class="nav-section">
+      <a href="notifications.html" class="nav-item"><span class="nav-icon">🔔</span><span class="nav-label">Notifications</span><span class="nav-badge">3</span></a>
+      <a href="admin/index.html" class="nav-item"><span class="nav-icon">👥</span><span class="nav-label">Administration</span></a>
+    </div>
+    <div class="nav-section" style="margin-top:auto;">
+      <a href="#" class="nav-item"><span class="nav-icon">❓</span><span class="nav-label">Help &amp; Guidance</span></a>
+      <a href="login.html" class="nav-item"><span class="nav-icon">🚪</span><span class="nav-label">Sign out</span></a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Greeting + Deadline bar -->
+    <div class="deadline-bar">
+      <div>
+        <div class="deadline-label">Good morning, Sarah.</div>
+        <div class="deadline-date">FY2026 Sustainability Report</div>
+      </div>
+      <div class="deadline-progress">
+        <div class="deadline-track"><div class="deadline-fill" style="width:62%;"></div></div>
+        <span style="font-size:var(--text-sm);color:var(--color-neutral-600);">62% complete</span>
+      </div>
+      <div class="deadline-countdown">⏰ Deadline: 30 Sep 2026 · 62 days</div>
+      <a href="dashboard-executive.html" class="btn btn-ghost btn-sm">Switch to Executive View</a>
+    </div>
+
+    <!-- 4 Pillar Status Cards -->
+    <div class="card-grid-4" style="margin-bottom:24px;">
+      <!-- Governance -->
+      <div class="pillar-card">
+        <div class="pillar-card-header">
+          <span class="pillar-card-title">Governance</span>
+          <span class="badge-status badge-in-review">In Review</span>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar-track"><div class="progress-bar-fill" style="width:75%;"></div></div>
+          <div class="progress-bar-label"><span>75%</span></div>
+        </div>
+        <ul style="font-size:var(--text-xs);color:var(--color-neutral-600);margin-top:8px;display:flex;flex-direction:column;gap:4px;">
+          <li>✅ Board committee entered</li>
+          <li>✅ Oversight activities logged</li>
+          <li>⏳ Pending CFO approval</li>
+        </ul>
+        <a href="governance/index.html" class="btn btn-secondary btn-sm w-full" style="margin-top:12px;">View section</a>
+      </div>
+
+      <!-- Strategy -->
+      <div class="pillar-card">
+        <div class="pillar-card-header">
+          <span class="pillar-card-title">Strategy</span>
+          <span class="badge-status badge-in-progress">In Progress</span>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar-track"><div class="progress-bar-fill warning" style="width:40%;"></div></div>
+          <div class="progress-bar-label"><span>40%</span></div>
+        </div>
+        <ul style="font-size:var(--text-xs);color:var(--color-neutral-600);margin-top:8px;display:flex;flex-direction:column;gap:4px;">
+          <li>✅ Risks &amp; opportunities entered</li>
+          <li>⏳ CTP in draft</li>
+          <li>❌ 2°C scenario not started</li>
+        </ul>
+        <a href="strategy/index.html" class="btn btn-secondary btn-sm w-full" style="margin-top:12px;">View section</a>
+      </div>
+
+      <!-- Risk Management -->
+      <div class="pillar-card">
+        <div class="pillar-card-header">
+          <span class="pillar-card-title">Risk Mgmt</span>
+          <span class="badge-status badge-in-progress">In Progress</span>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar-track"><div class="progress-bar-fill danger" style="width:20%;"></div></div>
+          <div class="progress-bar-label"><span>20%</span></div>
+        </div>
+        <ul style="font-size:var(--text-xs);color:var(--color-neutral-600);margin-top:8px;display:flex;flex-direction:column;gap:4px;">
+          <li>✅ Register linked from Strategy</li>
+          <li>❌ Process docs not done</li>
+          <li>❌ Disclosure not started</li>
+        </ul>
+        <a href="risk-management/index.html" class="btn btn-secondary btn-sm w-full" style="margin-top:12px;">View section</a>
+      </div>
+
+      <!-- Emissions & Metrics -->
+      <div class="pillar-card">
+        <div class="pillar-card-header">
+          <span class="pillar-card-title">Emissions</span>
+          <span class="badge-status badge-warning">⚠ Data Pending</span>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar-track"><div class="progress-bar-fill" style="width:70%;"></div></div>
+          <div class="progress-bar-label"><span>70%</span></div>
+        </div>
+        <ul style="font-size:var(--text-xs);color:var(--color-neutral-600);margin-top:8px;display:flex;flex-direction:column;gap:4px;">
+          <li>✅ Sites submitted: 5 / 8</li>
+          <li>⚠️ 3 sites overdue</li>
+          <li>❌ Actuals not updated</li>
+        </ul>
+        <a href="emissions/overview.html" class="btn btn-secondary btn-sm w-full" style="margin-top:12px;">View section</a>
+      </div>
+    </div>
+
+    <!-- Emissions summary bar -->
+    <div class="card" style="margin-bottom:24px;">
+      <div class="card-header">
+        <span class="card-title">Total GHG Emissions — FY2026 (Year to Date)</span>
+        <a href="emissions/overview.html" class="btn btn-ghost btn-sm">View full data →</a>
+      </div>
+      <div class="emissions-summary">
+        <div class="emissions-scope-card">
+          <div class="emissions-scope-name">Scope 1 — Direct</div>
+          <div class="emissions-scope-value">1,240</div>
+          <div class="emissions-scope-unit">tCO₂e</div>
+        </div>
+        <div class="emissions-scope-card scope-2">
+          <div class="emissions-scope-name">Scope 2 — Location-based</div>
+          <div class="emissions-scope-value">3,890</div>
+          <div class="emissions-scope-unit">tCO₂e</div>
+        </div>
+        <div class="emissions-scope-card scope-3">
+          <div class="emissions-scope-name">Scope 3 — Value Chain</div>
+          <div class="emissions-scope-value" style="color:var(--color-neutral-400);">———</div>
+          <div class="emissions-scope-unit">Optional in Year 1</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:var(--text-sm);color:var(--color-neutral-600);">
+        <span>Total (Scope 1+2):</span>
+        <strong style="font-size:var(--text-lg);color:var(--color-neutral-900);">5,130 tCO₂e</strong>
+        <span class="badge badge-amber">3 sites pending</span>
+      </div>
+    </div>
+
+    <!-- My Tasks -->
+    <div class="card-header" style="margin-bottom:12px;">
+      <h2 class="page-title" style="font-size:var(--text-xl);">My Tasks</h2>
+      <a href="notifications.html" class="btn btn-ghost btn-sm">View all notifications</a>
+    </div>
+
+    <div class="task-list">
+      <div class="task-item overdue">
+        <div class="task-icon">⚠️</div>
+        <div class="task-body">
+          <div class="task-title">Dandenong Plant — emissions data overdue</div>
+          <div class="task-meta">Due 3 days ago · Assigned to David Park</div>
+          <div class="task-actions">
+            <button class="btn btn-danger btn-sm">Send reminder</button>
+            <a href="emissions/site-entry.html" class="btn btn-secondary btn-sm">View site</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-item warning">
+        <div class="task-icon">📝</div>
+        <div class="task-body">
+          <div class="task-title">Strategy section — 2°C scenario analysis not started</div>
+          <div class="task-meta">Needed to complete Strategy pillar · Due 15 Jul 2026</div>
+          <div class="task-actions">
+            <a href="strategy/scenarios.html" class="btn btn-primary btn-sm">Go to Scenario Analysis</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-item info">
+        <div class="task-icon">🔍</div>
+        <div class="task-body">
+          <div class="task-title">Auditor Marcus Thompson raised a query on Scope 1 emissions</div>
+          <div class="task-meta">Query Q01 raised 20 Feb 2026 · Open</div>
+          <div class="task-actions">
+            <a href="audit-log.html" class="btn btn-secondary btn-sm">View query</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-item success">
+        <div class="task-icon">✅</div>
+        <div class="task-body">
+          <div class="task-title">CFO approved Governance section — no action needed</div>
+          <div class="task-meta">Approved by Alex Chen on 13 Feb 2026</div>
+        </div>
+      </div>
+
+      <div class="task-item success">
+        <div class="task-icon">✅</div>
+        <div class="task-body">
+          <div class="task-title">Footscray Office submitted Q4 emissions data</div>
+          <div class="task-meta">Submitted by James Wong on 18 Feb 2026</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sites progress table -->
+    <div class="card" style="margin-top:24px;">
+      <div class="card-header">
+        <span class="card-title">Site Emissions — Submission Status</span>
+        <a href="emissions/overview.html" class="btn btn-ghost btn-sm">Manage sites →</a>
+      </div>
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Site</th>
+              <th>Site Manager</th>
+              <th>Due Date</th>
+              <th>Status</th>
+              <th>Scope 1 (tCO₂e)</th>
+              <th class="actions-col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Dandenong Plant</td>
+              <td>David Park</td>
+              <td style="color:var(--color-danger-600);font-weight:500;">15 Feb 2026 ⚠</td>
+              <td><span class="badge-status badge-overdue">Overdue</span></td>
+              <td>—</td>
+              <td class="actions-col"><button class="btn btn-ghost btn-sm">Send reminder</button></td>
+            </tr>
+            <tr>
+              <td>Footscray Office</td>
+              <td>James Wong</td>
+              <td>18 Feb 2026</td>
+              <td><span class="badge-status badge-approved">Submitted</span></td>
+              <td>146</td>
+              <td class="actions-col"><a href="emissions/site-entry.html" class="btn btn-ghost btn-sm">Review</a></td>
+            </tr>
+            <tr>
+              <td>Geelong Warehouse</td>
+              <td>Priya Sharma</td>
+              <td>18 Feb 2026</td>
+              <td><span class="badge-status badge-approved">Submitted</span></td>
+              <td>284</td>
+              <td class="actions-col"><a href="emissions/site-entry.html" class="btn btn-ghost btn-sm">Review</a></td>
+            </tr>
+            <tr>
+              <td>Brisbane Depot</td>
+              <td>Tom Ellis</td>
+              <td>20 Feb 2026</td>
+              <td><span class="badge-status badge-in-progress">In Progress</span></td>
+              <td>—</td>
+              <td class="actions-col"><a href="emissions/site-entry.html" class="btn btn-ghost btn-sm">View</a></td>
+            </tr>
+            <tr>
+              <td>Sydney HQ</td>
+              <td>Mei Lin</td>
+              <td>22 Feb 2026</td>
+              <td><span class="badge-status badge-not-started">Not Started</span></td>
+              <td>—</td>
+              <td class="actions-col"><button class="btn btn-ghost btn-sm">Send reminder</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-pagination">
+        <span>Showing 5 of 8 sites</span>
+        <div class="pagination-controls">
+          <button class="btn btn-ghost btn-sm">← Prev</button>
+          <button class="btn btn-ghost btn-sm">Next →</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Mobile bottom nav -->
+<nav class="mobile-nav">
+  <a href="dashboard.html" class="mobile-nav-item active"><span class="mobile-nav-icon">📊</span>Dashboard</a>
+  <a href="notifications.html" class="mobile-nav-item"><span class="mobile-nav-icon">🔔</span>Tasks</a>
+  <a href="emissions/site-entry.html" class="mobile-nav-item"><span class="mobile-nav-icon">🌱</span>Emissions</a>
+  <a href="evidence.html" class="mobile-nav-item"><span class="mobile-nav-icon">📁</span>Evidence</a>
+  <a href="admin/index.html" class="mobile-nav-item"><span class="mobile-nav-icon">⋯</span>More</a>
+</nav>
+
+<script>
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+</script>
+</body>
+</html>
